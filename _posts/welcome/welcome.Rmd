@@ -3,6 +3,7 @@ title: "Welcome to andreaspano blog "
 description: |
   Welcome to my blog; 
   the place where I am trying to write what I learn about 
+preview: images/download.jpeg
 author:
   - name: Andrea Spano
     url: https://andreaspano.github.io/
@@ -13,9 +14,3 @@ output:
   distill::distill_article:
     self_contained: false
 ---
-
-<aside>
-![alt text here](images/download.jpeg)
-</aside>
-
-
