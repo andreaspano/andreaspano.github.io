@@ -1,7 +1,8 @@
 name: "andreaspano.github.io"
 title: "andreaspano blog "
 description: |
-  andreaspano blog 
+  andreaspano blog: a place where I can store and share all what I learn and write about
+base_url: https://andreaspano.github.io/
 output_dir: "docs"
 navbar:
   right:

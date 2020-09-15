@@ -14,5 +14,21 @@
     "preview": {},
     "last_modified": "2020-09-15T22:51:33+02:00",
     "input_file": {}
+  },
+  {
+    "path": "posts/2020-09-15-install-docker-engine/",
+    "title": "Install Docker Engine",
+    "description": "How to install Docker system on Ubuntu",
+    "author": [
+      {
+        "name": "Andrea Spano",
+        "url": "https://example.com/norajones"
+      }
+    ],
+    "date": "2020-09-15",
+    "categories": [],
+    "preview": {},
+    "last_modified": "2020-09-15T23:12:51+02:00",
+    "input_file": "install-docker-engine.utf8.md"
   }
 ]
