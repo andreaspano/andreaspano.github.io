@@ -1,21 +1,5 @@
 [
   {
-    "path": "posts/welcome/",
-    "title": "Welcome to andreaspano blog ",
-    "description": "Welcome to our new blog, andreaspano blog . We hope you enjoy \nreading what we have to say!",
-    "author": [
-      {
-        "name": "Nora Jones",
-        "url": "https://example.com/norajones"
-      }
-    ],
-    "date": "2020-09-15",
-    "categories": [],
-    "preview": {},
-    "last_modified": "2020-09-15T22:51:33+02:00",
-    "input_file": {}
-  },
-  {
     "path": "posts/2020-09-15-install-docker-engine/",
     "title": "Install Docker Engine",
     "description": "How to install Docker system on Ubuntu",
@@ -30,5 +14,21 @@
     "preview": {},
     "last_modified": "2020-09-15T23:12:51+02:00",
     "input_file": "install-docker-engine.utf8.md"
+  },
+  {
+    "path": "posts/welcome/",
+    "title": "Welcome to andreaspano blog ",
+    "description": "Welcome to my blog; \nthe place where I am trying to write what I learn about",
+    "author": [
+      {
+        "name": "Andrea Spano",
+        "url": "https://andreaspano.github.io/"
+      }
+    ],
+    "date": "2020-09-01",
+    "categories": [],
+    "preview": {},
+    "last_modified": "2020-09-15T23:34:24+02:00",
+    "input_file": "welcome.utf8.md"
   }
 ]

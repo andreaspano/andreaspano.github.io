@@ -1,26 +1,19 @@
 ---
 title: "Welcome to andreaspano blog "
 description: |
-  Welcome to our new blog, andreaspano blog . We hope you enjoy 
-  reading what we have to say!
+  Welcome to my blog; 
+  the place where I am trying to write what I learn about 
 author:
-  - name: Nora Jones 
-    url: https://example.com/norajones
-    affiliation: Spacely Sprockets
-    affiliation_url: https://example.com/spacelysprokets
-date: 09-15-2020
+  - name: Andrea Spano
+    url: https://andreaspano.github.io/
+    affiliation: Quantide
+    affiliation_url: www.quantide.com
+date: 09-01-2020
 output:
   distill::distill_article:
     self_contained: false
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-
-# Learn more about creating blogs with Distill at:
-# https://rstudio.github.io/distill/blog.html
-
-```
 
 
 
