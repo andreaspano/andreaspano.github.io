@@ -3,7 +3,7 @@ title: "Welcome to andreaspano blog "
 description: |
   Welcome to my blog; 
   the place where I am trying to write what I learn about 
-preview: images/download.jpeg
+preview: images/welcome.jpeg
 author:
   - name: Andrea Spano
     url: https://andreaspano.github.io/
