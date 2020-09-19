@@ -44,7 +44,7 @@
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["How to dockerise a Shiny app"]},{"type":"character","attributes":{},"value":["How to port a shiny app into a container \n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Andrea Spano"]},{"type":"character","attributes":{},"value":["andreaspano.github.io"]},{"type":"character","attributes":{},"value":["Quantide"]},{"type":"character","attributes":{},"value":["www.quantide.com"]}]}]},{"type":"character","attributes":{},"value":["2020-09-20"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","preview"]}},"value":[{"type":"character","attributes":{},"value":["How to dockerise a Shiny app"]},{"type":"character","attributes":{},"value":["How to port a shiny app into a container \n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Andrea Spano"]},{"type":"character","attributes":{},"value":["andreaspano.github.io"]},{"type":"character","attributes":{},"value":["Quantide"]},{"type":"character","attributes":{},"value":["www.quantide.com"]}]}]},{"type":"character","attributes":{},"value":["2020-09-20"]},{"type":"character","attributes":{},"value":["distill::distill_article"]},{"type":"character","attributes":{},"value":["images/shinylogo.jpg"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1986,23 +1986,36 @@ No bash or R build required
 <p>Your docker file contains the following instructions:</p>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="bash"><code>
-# where to download the base shiny  docker image from
-FROM rocker/shiny
+# where to download the base R docker image from
+FROM rocker/r-base
 
-# make a directory for hosting the app.R file inside teh docker image 
-#RUN mkdir /root/iris
+# system libraries commonly required by R packages
+RUN apt-get update &amp;&amp; apt-get install -y \
+    sudo \
+    pandoc \
+    pandoc-citeproc \
+    libcurl4-gnutls-dev \
+    libcairo2-dev \
+    libxt-dev \
+    libssl-dev \
+    libssh2-1-dev
 
-# copy  the app directory ( iris) to the image
+
+# Install required packages
+RUN R -e &quot;install.packages(c(&#39;shiny&#39;, &#39;rmarkdown&#39;), repos=&#39;https://cloud.r-project.org/&#39;)&quot;
+
+
+# copy the app to the image
+RUN mkdir /root/iris
 COPY iris /root/iris
 
-# copy  Rprofile.site into the image
+
 COPY Rprofile.site /usr/lib/R/etc/
 
-# The port where the shiny app will be exposed    
-EXPOSE 9393
+EXPOSE 3333
 
-# Run the shiny app 
-CMD [&quot;R&quot;, &quot;-e&quot;, &quot;shiny::runApp(&#39;/root/iris&#39;)&quot;]</code></pre>
+CMD [&quot;R&quot;, &quot;-e&quot;, &quot;shiny::runApp(&#39;/root/iris&#39;)&quot;]
+</code></pre>
 </div>
 <h2 id="rprofile.site">Rprofile.site</h2>
 <p>The Rprofile.site file states that:</p>

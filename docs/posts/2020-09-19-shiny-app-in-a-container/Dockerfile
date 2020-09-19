@@ -24,6 +24,6 @@ COPY iris /root/iris
 
 COPY Rprofile.site /usr/lib/R/etc/
 
-EXPOSE 3838
+EXPOSE 3333
 
 CMD ["R", "-e", "shiny::runApp('/root/iris')"]
