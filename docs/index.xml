@@ -7,7 +7,15 @@
     <description>andreaspano blog: a place where I can store and share all what I learn and write about
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>mar, 15 set 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>sab, 19 set 2020 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>How to dockerise a Shiny app</title>
+      <dc:creator>Andrea Spano</dc:creator>
+      <link>https://andreaspano.github.io/posts/2020-09-19-shiny-app-in-a-container</link>
+      <description>How to port a shiny app into a container</description>
+      <guid>https://andreaspano.github.io/posts/2020-09-19-shiny-app-in-a-container</guid>
+      <pubDate>sab, 19 set 2020 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Install Docker Engine</title>
       <dc:creator>Andrea Spano</dc:creator>
@@ -23,7 +31,7 @@
       <description>Welcome to my blog; 
 the place where I am trying to write what I learn about</description>
       <guid>https://andreaspano.github.io/posts/welcome</guid>
-      <pubDate>lun, 31 ago 2020 00:00:00 +0000</pubDate>
+      <pubDate>mar, 01 set 2020 00:00:00 +0000</pubDate>
       <media:content url="https://andreaspano.github.io/posts/welcome/images/welcome.jpg" medium="image" type="image/jpeg"/>
     </item>
   </channel>

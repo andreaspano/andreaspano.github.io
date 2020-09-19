@@ -1,0 +1,112 @@
+---
+title: "Shiny Proxy"
+description: |
+  How to install shiny proxy as a docker 
+author:
+  - name: Andrea Spano
+    url: https://example.com/norajones
+    affiliation: Quantide
+    affiliation_url: www.quantide.com
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article
+---
+
+
+<!-- COMMENTS 
+Build with 
+R -e "rmarkdown::render('test.Rmd',output_file='test.html')" 
+Issue sudo cmd priior building 
+
+First of docker articles
+--> 
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Prerequisites 
+
+
+Install Java
+
+```{bash, eval = FALSE}
+sudo apt install default-jre
+```
+
+Check your version of Java is Java 8
+
+
+```{bash}
+java -version
+```
+
+
+Update your system 
+
+```{bash, eval = FALSE}
+sudo apt-get update
+```
+
+Install dependencies 
+
+```{bash, eval = FALSE}
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+```
+
+Add gpk key 
+
+```{bash, eval = FALSE}
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+```
+
+Verify it is installed
+
+```{bash }
+sudo apt-key fingerprint 0EBFCD88
+```
+
+Add docker repository 
+
+```{bash, eval = FALSE}
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+```
+
+## Install docker 
+
+```{bash, eval = FALSE}
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+```
+
+## Verify installation 
+
+Your system should take care of downloading the docker image from Docker Hub, build it and run it.
+Output should look like:
+
+```{bash}
+sudo docker run hello-world
+```
+
+You can check the status of the docker service by
+
+```{bash}
+sudo service docker status
+```
+
+
+Docker version is returned by:
+
+```{bash}
+sudo docker version
+```

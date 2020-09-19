@@ -1,0 +1,122 @@
+---
+title: "How to dockerise a Shiny app"
+description: |
+  How to port a shiny app into a container 
+author:
+  - name: Andrea Spano
+    url: andreaspano.github.io
+    affiliation: Quantide
+    affiliation_url: www.quantide.com
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article
+---
+
+
+<!-- COMMENTS 
+No bash or R build required
+--> 
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Prerequisites 
+
+In order to build a container with your shiny app inside you need three files:
+
+1. app.R containing your working shiny app 
+2. Dockerfile 
+3. Rprofile.site
+
+Starting from your working directory `proj`, teh file hierarchy  must be:
+
+
+```
+-- proj 
+   -- Dockerfile
+   -- Rprofile.site
+   -- iris
+      -- app.R
+```      
+      
+      
+## app.R
+
+Your app.R contains your shiny app. As a first example you may consider the iris example from https://shiny.rstudio.com/gallery/kmeans-example.html. The iris example is also available [here](app.R).
+Store app.R inside the application directory say `iris`.
+
+
+## Dockerfile
+
+Your docker file contains the following instructions: 
+
+
+```{bash, eval = FALSE}
+# where to download the base R docker image from
+FROM rocker/r-base
+
+# system libraries commonly required by R packages
+RUN apt-get update && apt-get install -y \
+    sudo \
+    pandoc \
+    pandoc-citeproc \
+    libcurl4-gnutls-dev \
+    libcairo2-dev \
+    libxt-dev \
+    libssl-dev \
+    libssh2-1-dev
+
+
+# Install required packages
+RUN R -e "install.packages(c('shiny', 'rmarkdown'), repos='https://cloud.r-project.org/')"
+
+
+# copy the app to the image
+RUN mkdir /root/iris
+COPY iris /root/iris
+
+
+COPY Rprofile.site /usr/lib/R/etc/
+
+EXPOSE 3333
+
+CMD ["R", "-e", "shiny::runApp('/root/iris')"]
+
+```
+
+
+## Rprofile.site
+
+The Rprofile.site file states that:
+
+```{R , eval = FALSE}
+local({
+   options(shiny.port = 3333, shiny.host = "0.0.0.0")
+})
+```
+
+## Build the container 
+
+Build  docker image with 
+
+```{bash , eval = FALSE}
+sudo docker build   --tag iris .
+```
+
+
+## Test by 
+
+Assuming that everything worked out correctly, if you issue: 
+
+```{bash , eval = FALSE}
+sudo docker run -it --rm -p 3333:3333 iris 
+```
+
+you should see the iris application at `0.0.0.0:3333`
+
+
+
+
