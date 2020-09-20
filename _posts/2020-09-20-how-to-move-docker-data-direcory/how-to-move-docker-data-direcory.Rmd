@@ -1,0 +1,86 @@
+---
+title: "Docker data direcory"
+description: |
+  How to move docker data direcory to a different location in ubuntu. 
+author:
+  - name: Andrea Spano
+    url: andreaspano.github.io
+    affiliation: Quantide
+    affiliation_url: www.quantide.com
+date: "`r Sys.Date()`"
+references:
+  - id: augusto2019a
+    title: How to move docker data directory to another location on Ubuntu
+    author:
+    - family: Augusto
+      given: Destrero
+    URL: 'https://www.guguweb.com/2019/02/07/how-to-move-docker-data-directory-to-another-location-on-ubuntu/'
+    type: article-journal
+    issued:
+      year: 2019
+      month: 2
+output:
+  distill::distill_article
+  
+---
+
+
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The default data directory used by docker system for storing images is `/var/lib/docker`. 
+You may want to move this directory to another location on your system.
+
+This goal can be achieved by following the next steps:
+
+
+1. Stop the docker daemon
+
+```{bash, eval = F}
+sudo service docker stop`
+```
+
+2. Add a configuration file named daemon.json under the directory /etc/docker. The file should have this content:
+
+```{bash, eval=FALSE}
+{ 
+   "graph": "/path/to/your/docker" 
+}
+```
+
+
+3. Copy the current data directory to the new one
+
+```{bash, eval=FALSE}
+sudo rsync -aP /var/lib/docker/ /path/to/your/docker
+```
+
+
+4. Rename the old docker directory
+
+```{bash , eval=FALSE}
+sudo mv /var/lib/docker /var/lib/docker.old
+```
+
+5. Restart the docker daemon
+
+```{bash , eval=FALSE }
+sudo service docker start
+```
+
+6. Test
+
+Create a new doocker and check that a new image appears in /path/to/your/docker
+
+7. Cleanup
+
+When you are sure that the new directory is being used correctly by docker daemon you can delete the old data directory.
+
+```{bash , eval=FALSE}
+sudo rm /var/lib/docker
+```
+

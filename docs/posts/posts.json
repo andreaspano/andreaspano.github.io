@@ -16,6 +16,22 @@
     "input_file": "shiny-app-in-a-container.utf8.md"
   },
   {
+    "path": "posts/2020-09-20-how-to-move-docker-data-direcory/",
+    "title": "Docker data direcory",
+    "description": "How to move docker data direcory to a different location in ubuntu.",
+    "author": [
+      {
+        "name": "Andrea Spano",
+        "url": "andreaspano.github.io"
+      }
+    ],
+    "date": "2020-09-20",
+    "categories": [],
+    "preview": {},
+    "last_modified": "2020-09-20T19:06:07+02:00",
+    "input_file": "how-to-move-docker-data-direcory.utf8.md"
+  },
+  {
     "path": "posts/2020-09-15-install-docker-engine/",
     "title": "Install Docker Engine",
     "description": "How to install Docker system on Ubuntu",
