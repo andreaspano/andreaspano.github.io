@@ -8,24 +8,13 @@ author:
     affiliation: Quantide
     affiliation_url: www.quantide.com
 date: "`r Sys.Date()`"
-references:
-  - id: augusto2019a
-    title: How to move docker data directory to another location on Ubuntu
-    author:
-    - family: Augusto
-      given: Destrero
-    URL: 'https://www.guguweb.com/2019/02/07/how-to-move-docker-data-directory-to-another-location-on-ubuntu/'
-    type: article-journal
-    issued:
-      year: 2019
-      month: 2
+bibliography: 
+  biblio.bib
 output:
   distill::distill_article
   
+  
 ---
-
-
-
 
 
 ```{r setup, include=FALSE}
@@ -84,3 +73,7 @@ When you are sure that the new directory is being used correctly by docker daemo
 sudo rm /var/lib/docker
 ```
 
+
+## insights
+
+Please check  [@Destrero2020docker] for more detailed tutorial on this topic
