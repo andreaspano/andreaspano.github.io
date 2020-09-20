@@ -2,6 +2,7 @@
 title: "How to dockerise a Shiny app"
 description: |
   How to port a shiny app into a container 
+preview: images/shinylogo.jpg
 author:
   - name: Andrea Spano
     url: andreaspano.github.io

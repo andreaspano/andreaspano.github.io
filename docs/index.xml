@@ -15,6 +15,7 @@
       <description>How to port a shiny app into a container</description>
       <guid>https://andreaspano.github.io/posts/2020-09-19-shiny-app-in-a-container</guid>
       <pubDate>sab, 19 set 2020 00:00:00 +0000</pubDate>
+      <media:content url="https://andreaspano.github.io/posts/2020-09-19-shiny-app-in-a-container/images/shinylogo.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
       <title>Install Docker Engine</title>
