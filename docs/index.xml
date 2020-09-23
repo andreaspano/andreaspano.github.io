@@ -7,14 +7,14 @@
     <description>andreaspano blog: a place where I can store and share all what I learn and write about
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>mar, 22 set 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>mer, 23 set 2020 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Install Portainer</title>
       <dc:creator>Andrea Spano</dc:creator>
       <link>https://andreaspano.github.io/posts/2020-09-22-install-portainer</link>
       <description>How to install Portainer on Ubuntu</description>
       <guid>https://andreaspano.github.io/posts/2020-09-22-install-portainer</guid>
-      <pubDate>mar, 22 set 2020 00:00:00 +0000</pubDate>
+      <pubDate>mer, 23 set 2020 00:00:00 +0000</pubDate>
       <media:content url="https://andreaspano.github.io/posts/2020-09-22-install-portainer/distill-preview.png" medium="image" type="image/png" width="1871" height="439"/>
     </item>
     <item>
@@ -34,7 +34,7 @@
       <pubDate>dom, 20 set 2020 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Install Docker Engine</title>
+      <title>Docker Installation</title>
       <dc:creator>Andrea Spano</dc:creator>
       <link>https://andreaspano.github.io/posts/2020-09-15-install-docker-engine</link>
       <description>How to install Docker system on Ubuntu</description>

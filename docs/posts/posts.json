@@ -13,7 +13,7 @@
     "categories": [],
     "preview": "posts/2020-09-22-install-portainer/distill-preview.png",
     "last_modified": "2020-09-23T00:19:12+02:00",
-    "input_file": "install-portainer.utf8.md",
+    "input_file": {},
     "preview_width": 1871,
     "preview_height": 439
   },
@@ -31,7 +31,7 @@
     "categories": [],
     "preview": {},
     "last_modified": "2020-09-20T11:51:52+02:00",
-    "input_file": "shiny-app-in-a-container.utf8.md"
+    "input_file": {}
   },
   {
     "path": "posts/2020-09-20-how-to-move-docker-data-direcory/",
@@ -47,11 +47,11 @@
     "categories": [],
     "preview": {},
     "last_modified": "2020-09-20T20:17:07+02:00",
-    "input_file": "how-to-move-docker-data-direcory.utf8.md"
+    "input_file": {}
   },
   {
     "path": "posts/2020-09-15-install-docker-engine/",
-    "title": "Install Docker Engine",
+    "title": "Docker Installation",
     "description": "How to install Docker system on Ubuntu",
     "author": [
       {
@@ -62,8 +62,8 @@
     "date": "2020-09-15",
     "categories": [],
     "preview": {},
-    "last_modified": "2020-09-15T23:12:51+02:00",
-    "input_file": "install-docker-engine.utf8.md"
+    "last_modified": "2020-09-15T23:03:38+02:00",
+    "input_file": {}
   },
   {
     "path": "posts/welcome/",
@@ -79,6 +79,6 @@
     "categories": [],
     "preview": "posts/welcome/images/welcome.jpg",
     "last_modified": "2020-09-19T22:44:09+02:00",
-    "input_file": "welcome.utf8.md"
+    "input_file": {}
   }
 ]
