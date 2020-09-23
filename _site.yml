@@ -5,7 +5,7 @@ description: |
 base_url: https://andreaspano.github.io/
 collections:
   posts:
-    disqus: reproducible-finance-with-r
+    disqus: What I learn and write about
     share: [twitter, linkedin]
     custom: _custom.html
 output_dir: "docs"
