@@ -25,8 +25,8 @@
   
   
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2020-09-15" />
-  <meta property="article:created" itemprop="dateCreated" content="2020-09-15" />
+  <meta property="article:published" itemprop="datePublished" content="2020-09-23" />
+  <meta property="article:created" itemprop="dateCreated" content="2020-09-23" />
   <meta name="article:author" content="Andrea Spano" />
   
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
@@ -44,7 +44,7 @@
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Docker Installation"]},{"type":"character","attributes":{},"value":["How to install Docker system on Ubuntu \n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Andrea Spano"]},{"type":"character","attributes":{},"value":["https://example.com/norajones"]},{"type":"character","attributes":{},"value":["Quantide"]},{"type":"character","attributes":{},"value":["www.quantide.com"]}]}]},{"type":"character","attributes":{},"value":["2020-09-15"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Docker Installation"]},{"type":"character","attributes":{},"value":["How to install Docker system on Ubuntu \n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Andrea Spano"]},{"type":"character","attributes":{},"value":["https://example.com/norajones"]},{"type":"character","attributes":{},"value":["Quantide"]},{"type":"character","attributes":{},"value":["www.quantide.com"]}]}]},{"type":"character","attributes":{},"value":["2020-09-23"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1942,7 +1942,7 @@ distill-header .nav a {
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Docker Installation","description":"How to install Docker system on Ubuntu","authors":[{"author":"Andrea Spano","authorURL":"https://example.com/norajones","affiliation":"Quantide","affiliationURL":"www.quantide.com"}],"publishedDate":"2020-09-15T00:00:00.000+02:00","citationText":"Spano, 2020"}
+{"title":"Docker Installation","description":"How to install Docker system on Ubuntu","authors":[{"author":"Andrea Spano","authorURL":"https://example.com/norajones","affiliation":"Quantide","affiliationURL":"www.quantide.com"}],"publishedDate":"2020-09-23T00:00:00.000+02:00","citationText":"Spano, 2020"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1959,11 +1959,17 @@ distill-header .nav a {
 <div class="d-byline">
   Andrea Spano <a href="https://example.com/norajones" class="uri">https://example.com/norajones</a> (Quantide)www.quantide.com
   
-<br />2020-09-15
+<br />2020-09-23
 </div>
 
 <div class="d-article">
-<p>How to install Docker on Ubuntu</p>
+<!-- COMMENTS 
+Build with 
+R -e "rmarkdown::render('test.Rmd',output_file='test.html')" 
+Issue sudo cmd priior building 
+
+First of docker articles
+-->
 <h2 id="prerequisites">Prerequisites</h2>
 <p>Install Java</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1974,7 +1980,10 @@ sudo apt install default-jre</code></pre>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="bash"><code>
 java -version</code></pre>
-<pre><code>
+</div>
+<p>you should see something like:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="bash"><code>
 openjdk version &quot;11.0.8&quot; 2020-07-14
 OpenJDK Runtime Environment (build 11.0.8+10-post-Ubuntu-0ubuntu120.04)
 OpenJDK 64-Bit Server VM (build 11.0.8+10-post-Ubuntu-0ubuntu120.04, mixed mode, sharing)</code></pre>
@@ -2003,8 +2012,10 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</co
 <div class="layout-chunk" data-layout="l-body">
 <pre class="bash"><code>
 sudo apt-key fingerprint 0EBFCD88</code></pre>
-<pre><code>
-Warning: apt-key output should not be parsed (stdout is not a terminal)
+</div>
+<p>and it should return</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="bash"><code>
 pub   rsa4096 2017-02-22 [SCEA]
       9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
 uid           [ unknown] Docker Release (CE deb) &lt;docker@docker.com&gt;
@@ -2025,11 +2036,20 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io</code></pre>
 </div>
 <h2 id="verify-installation">Verify installation</h2>
-<p>Your system should take care of downloading the docker image from Docker Hub, build it and run it. Output should look like:</p>
+<p>You can now test your docker engine with the basic <code>hello-world</code> container</p>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="bash"><code>
 sudo docker run hello-world</code></pre>
-<pre><code>
+</div>
+<p>Your system should take care of downloading the docker image from Docker Hub, build it and run it. Output should look like:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="bash"><code>
+Unable to find image &#39;hello-world:latest&#39; locally
+latest: Pulling from library/hello-world
+0e03bdcc26d7: Pull complete 
+Digest: sha256:4cf9c47f86df71d48364001ede3a4fcd85ae80ce02ebad74156906caff5378bc
+Status: Downloaded newer image for hello-world:latest
+
 Hello from Docker!
 This message shows that your installation appears to be working correctly.
 
@@ -2055,64 +2075,12 @@ For more examples and ideas, visit:
 <div class="layout-chunk" data-layout="l-body">
 <pre class="bash"><code>
 sudo service docker status</code></pre>
-<pre><code>
-● docker.service - Docker Application Container Engine
-     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
-     Active: active (running) since Mon 2020-09-14 12:22:16 CEST; 1 day 10h ago
-TriggeredBy: ● docker.socket
-       Docs: https://docs.docker.com
-   Main PID: 568796 (dockerd)
-      Tasks: 35
-     Memory: 3.7G
-     CGroup: /system.slice/docker.service
-             ├─568796 /usr/bin/dockerd -H fd:// -D -H tcp://127.0.0.1:2375
-             └─569731 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 9000 -container-ip 172.18.0.2 -container-port 9000
-
-set 15 22:41:07 margot dockerd[568796]: time=&quot;2020-09-15T22:41:07.936541888+02:00&quot; level=debug msg=event module=libcontainerd namespace=moby topic=/tasks/delete
-set 15 22:41:07 margot dockerd[568796]: time=&quot;2020-09-15T22:41:07.936597359+02:00&quot; level=info msg=&quot;ignoring event&quot; module=libcontainerd namespace=moby topic=/tasks/delete type=&quot;*events.TaskDelete&quot;
-set 15 22:41:07 margot dockerd[568796]: time=&quot;2020-09-15T22:41:07.936562625+02:00&quot; level=debug msg=&quot;attach: stderr: end&quot;
-set 15 22:41:07 margot dockerd[568796]: time=&quot;2020-09-15T22:41:07.936565959+02:00&quot; level=debug msg=&quot;attach: stdout: end&quot;
-set 15 22:41:07 margot dockerd[568796]: time=&quot;2020-09-15T22:41:07.936692235+02:00&quot; level=debug msg=&quot;attach done&quot;
-set 15 22:41:07 margot dockerd[568796]: time=&quot;2020-09-15T22:41:07.937040443+02:00&quot; level=debug msg=&quot;Revoking external connectivity on endpoint confident_lederberg (aa97dea31e78236f7acf40adbb537860a34fb803db9b60b53dd78ebd0c360667)&quot;
-set 15 22:41:07 margot dockerd[568796]: time=&quot;2020-09-15T22:41:07.939942517+02:00&quot; level=debug msg=&quot;DeleteConntrackEntries purged ipv4:0, ipv6:0&quot;
-set 15 22:41:08 margot dockerd[568796]: time=&quot;2020-09-15T22:41:08.100393963+02:00&quot; level=debug msg=&quot;Releasing addresses for endpoint confident_lederberg&#39;s interface on network bridge&quot;
-set 15 22:41:08 margot dockerd[568796]: time=&quot;2020-09-15T22:41:08.100448230+02:00&quot; level=debug msg=&quot;ReleaseAddress(LocalDefault/172.18.0.0/16, 172.18.0.3)&quot;
-set 15 22:41:08 margot dockerd[568796]: time=&quot;2020-09-15T22:41:08.100493974+02:00&quot; level=debug msg=&quot;Released address PoolID:LocalDefault/172.18.0.0/16, Address:172.18.0.3 Sequence:App: ipam/default/data, ID: LocalDefault/172.18.0.0/16, DBIndex: 0x0, Bits: 65536, Unselected: 65531, Sequence: (0xf0000000, 1)-&gt;(0x0, 2046)-&gt;(0x1, 1)-&gt;end Curr:4&quot;</code></pre>
 </div>
 <p>Docker version is returned by:</p>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="bash"><code>
 sudo docker version</code></pre>
-<pre><code>
-Client: Docker Engine - Community
- Version:           19.03.12
- API version:       1.40
- Go version:        go1.13.10
- Git commit:        48a66213fe
- Built:             Mon Jun 22 15:45:44 2020
- OS/Arch:           linux/amd64
- Experimental:      false
-
-Server: Docker Engine - Community
- Engine:
-  Version:          19.03.12
-  API version:      1.40 (minimum version 1.12)
-  Go version:       go1.13.10
-  Git commit:       48a66213fe
-  Built:            Mon Jun 22 15:44:15 2020
-  OS/Arch:          linux/amd64
-  Experimental:     false
- containerd:
-  Version:          1.2.13
-  GitCommit:        7ad184331fa3e55e52b890ea95e65ba581ae3429
- runc:
-  Version:          1.0.0-rc10
-  GitCommit:        dc9208a3303feef5b3839f4323d9beb36df0a9dd
- docker-init:
-  Version:          0.18.0
-  GitCommit:        fec3683</code></pre>
 </div>
-<!--   R -e "rmarkdown::render('test.Rmd',output_file='test.html')" -->
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

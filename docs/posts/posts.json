@@ -18,6 +18,22 @@
     "preview_height": 439
   },
   {
+    "path": "posts/2020-09-15-install-docker-engine/",
+    "title": "Docker Installation",
+    "description": "How to install Docker system on Ubuntu",
+    "author": [
+      {
+        "name": "Andrea Spano",
+        "url": "https://example.com/norajones"
+      }
+    ],
+    "date": "2020-09-23",
+    "categories": [],
+    "preview": {},
+    "last_modified": "2020-09-23T10:27:51+02:00",
+    "input_file": "install-docker-engine.utf8.md"
+  },
+  {
     "path": "posts/2020-09-19-shiny-app-in-a-container/",
     "title": "How to dockerise a Shiny app",
     "description": "How to port a shiny app into a container",
@@ -50,22 +66,6 @@
     "input_file": {}
   },
   {
-    "path": "posts/2020-09-15-install-docker-engine/",
-    "title": "Docker Installation",
-    "description": "How to install Docker system on Ubuntu",
-    "author": [
-      {
-        "name": "Andrea Spano",
-        "url": "https://example.com/norajones"
-      }
-    ],
-    "date": "2020-09-15",
-    "categories": [],
-    "preview": {},
-    "last_modified": "2020-09-15T23:03:38+02:00",
-    "input_file": {}
-  },
-  {
     "path": "posts/welcome/",
     "title": "Welcome to andreaspano blog ",
     "description": "Welcome to my blog; \nthe place where I am trying to write what I learn about",
@@ -78,7 +78,7 @@
     "date": "2020-09-01",
     "categories": [],
     "preview": "posts/welcome/images/welcome.jpg",
-    "last_modified": "2020-09-19T22:44:09+02:00",
-    "input_file": {}
+    "last_modified": "2020-09-23T09:34:10+02:00",
+    "input_file": "welcome.utf8.md"
   }
 ]
