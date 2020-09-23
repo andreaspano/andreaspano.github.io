@@ -1620,7 +1620,7 @@ function init_posts_list() {
 
 
 
-<div class="posts-container posts-apply-limit l-page">
+<div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
 <div class="posts-list">
 <h1 class="posts-list-caption">andreaspano blog </h1>
 <a href="posts/2020-09-22-install-portainer/" class="post-preview">
@@ -1689,6 +1689,23 @@ function init_posts_list() {
 the place where I am trying to write what I learn about</p>
 </div>
 </a>
+</div>
+<div class="posts-sidebar">
+<div><div class="sidebar-section custom">
+  <h3>About</h3>
+  Where I can write and share what I learn about
+</div>
+
+<div class="sidebar-section custom">
+  <h3>Search</h3>
+  <form action="https://duckduckgo.com/">
+    <input type="text" name="q" placeholder="Search...">
+    <input type="hidden" name="sites"
+      value="https://andreaspano.github.com"> <!-- Replace with your blog URL -->
+    <!--<button type="submit">Search</button>-->
+  </form>
+</div>
+</div>
 </div>
 <div class="posts-more">
 <a href="#">More articles &raquo;</a>

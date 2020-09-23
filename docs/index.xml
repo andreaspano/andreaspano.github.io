@@ -4,7 +4,7 @@
     <title>andreaspano blog </title>
     <link>https://andreaspano.github.io/</link>
     <atom:link href="https://andreaspano.github.io/index.xml" rel="self" type="application/rss+xml"/>
-    <description>andreaspano blog: a place where I can store and share all what I learn and write about
+    <description>andreaspano blog: a place where I can save and share all what I learn and write about.
 </description>
     <generator>Distill</generator>
     <lastBuildDate>mer, 23 set 2020 00:00:00 +0000</lastBuildDate>
