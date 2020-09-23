@@ -9,6 +9,14 @@
     <generator>Distill</generator>
     <lastBuildDate>mer, 23 set 2020 00:00:00 +0000</lastBuildDate>
     <item>
+      <title>Docker Installation</title>
+      <dc:creator>Andrea Spano</dc:creator>
+      <link>https://andreaspano.github.io/posts/2020-09-15-install-docker-engine</link>
+      <description>How to install Docker system on Ubuntu</description>
+      <guid>https://andreaspano.github.io/posts/2020-09-15-install-docker-engine</guid>
+      <pubDate>mer, 23 set 2020 00:00:00 +0000</pubDate>
+    </item>
+    <item>
       <title>Install Portainer</title>
       <dc:creator>Andrea Spano</dc:creator>
       <link>https://andreaspano.github.io/posts/2020-09-22-install-portainer</link>
@@ -16,14 +24,6 @@
       <guid>https://andreaspano.github.io/posts/2020-09-22-install-portainer</guid>
       <pubDate>mer, 23 set 2020 00:00:00 +0000</pubDate>
       <media:content url="https://andreaspano.github.io/posts/2020-09-22-install-portainer/distill-preview.png" medium="image" type="image/png" width="1871" height="439"/>
-    </item>
-    <item>
-      <title>Docker Installation</title>
-      <dc:creator>Andrea Spano</dc:creator>
-      <link>https://andreaspano.github.io/posts/2020-09-15-install-docker-engine</link>
-      <description>How to install Docker system on Ubuntu</description>
-      <guid>https://andreaspano.github.io/posts/2020-09-15-install-docker-engine</guid>
-      <pubDate>mar, 22 set 2020 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>How to dockerise a Shiny app</title>
