@@ -1,0 +1,86 @@
+---
+title: "minicran"
+description: |
+  A short description of the post.
+author:
+  - name: Andrea Spano
+    url: https://example.com/norajones
+date: 09-26-2020
+output:
+  distill::distill_article:
+    self_contained: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T)
+```
+
+```{r}
+require(miniCRAN)
+```
+
+```{r, eval = F}
+repo <- 'https://cran.wu.ac.at/'
+my_pkgs <- 'tidyverse'
+all_pkgs <- pkgDep(my_pkgs, repo = repo, type = 'source', suggest = FALSE)
+```
+
+```{r eval = F}
+path <- '/data/minicran'
+dir.create(path, 'minicran')
+makeRepo(all_pkgs, path = path , repo = repo, type = 'source') 
+```
+
+
+install from minicran
+
+
+```{r, eval = F}
+install.packages(pkgs = 'utf8', repo = 'file:///data/minicran/')
+
+```
+
+add to minicran
+```{r}
+addPackage('scuba',  path = path , repo = repo, type = 'source') 
+```
+
+A function to download directlt from github. Non all packagges are on cran from https://github.com/andrie/miniCRAN/issues/50#issuecomment-374624319
+
+
+
+```{r }
+
+addGithubPackage <- function(githubPath,...){
+    packageName <- basename(githubPath)
+    exDir <- file.path(tempdir(),packageName)
+    if(file.exists(exDir)) unlink(exDir, recursive=TRUE)
+    zipFile <- file.path(tempdir(),paste0(packageName,".zip"))
+    download.file(paste0(githubPath,"/","zipball/master"),zipFile)
+    unzip(zipFile, exdir = exDir)
+    file.rename(list.files(exDir,full.names=TRUE)[1],file.path(exDir,packageName))
+    addLocalPackage(packageName,exDir,...)
+}
+```
+
+NOTE: The package cannot be on CRAN because it changes code already loaded by R and this is prohibited by the CRAN Repository Policy. The package replaces the functions that output results and messages to R Console, and this is necessary because we cannot colorize the output without replacing these functions.
+
+
+addGithubPackage(githubPath="https://github.com/js229/Vennerable/",path=reposPath,build=TRUE)
+
+colorout 
+
+```{r}
+addGithubPackage(githubPath="https://github.com/jalvesaq/colorout",path=path,build=TRUE)
+install.packages(pkgs = 'colorout', repo = 'file:///data/minicran/')
+```
+
+```{r}
+updatePackages(path = path, repo = repo, type = "source", ask = FALSE) 
+```
+
+
+
+function `available.packages` returns a list of all packages ... just in case you want to repoliacet a full copy of cran in your minicran

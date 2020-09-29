@@ -1,5 +1,37 @@
 [
   {
+    "path": "posts/2020-09-29-run-an-r-script-as-a-background-job/",
+    "title": "Run an R script as a background job",
+    "description": "How to run an R script from within R in background mode",
+    "author": [
+      {
+        "name": "Andrea Spano",
+        "url": "andreaspano.github.io"
+      }
+    ],
+    "date": "2020-09-29",
+    "categories": [],
+    "preview": {},
+    "last_modified": "2020-09-29T22:29:22+02:00",
+    "input_file": "run-an-r-script-as-a-background-job.utf8.md"
+  },
+  {
+    "path": "posts/2020-09-24-install-shinyproxy/",
+    "title": "Install ShinyProxy",
+    "description": "How to install shiny proxy in Ubuntu",
+    "author": [
+      {
+        "name": "Andrea Spano",
+        "url": "andreaspano.github.io"
+      }
+    ],
+    "date": "2020-09-24",
+    "categories": [],
+    "preview": {},
+    "last_modified": "2020-09-24T01:22:50+02:00",
+    "input_file": "install-shinyproxy.utf8.md"
+  },
+  {
     "path": "posts/2020-09-15-install-docker-engine/",
     "title": "Docker Installation",
     "description": "How to install Docker system on Ubuntu",

@@ -1,0 +1,59 @@
+---
+title: "Run an R script as a background job"
+description: |
+  How to run an R script from within R in background mode
+author:
+  - name: Andrea Spano
+    url: andreaspano.github.io
+    affiliation: Quantide
+    affiliation_url: www.quantide.com
+date: "`r Sys.Date()`"
+bibliography: 
+  biblio.bib
+output:
+  distill::distill_article:
+    self_contained: false
+editor_options: 
+  chunk_output_type: console
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+When working with R you may want to run a script that require quite a long time to complete. 
+
+As a basic non sense example consider:
+
+```{r, eval = FALSE}
+n <- 1200
+y <- numeric(n)
+for ( i in seq_len(n)){
+  y[[i]] <- i 
+  Sys.sleep(3)
+}
+sum(y)
+```
+
+This script, say `wait-for-me.R` when executed takes about one hour. 
+
+If executed directly from the R console it will keep your R session busy for one hour preventing you to keep working on you current R session. 
+
+In order to avoid this waste of time you can use the function `jobRunScript()` from package `rstudioapi` [@rstudioapi]
+
+```{r,  eval = FALSE}
+require(rstudioapi)
+jobRunScript(path = './wait-for-me.R', 
+             name = 'wait for me',
+             encoding = "unknown", 
+             workingDir = NULL,
+             importEnv = FALSE, 
+             exportEnv = "R_GlobalEnv")
+```
+
+This command explains to R to run your script and export the objects created within this environment  
+
+
+3600/3

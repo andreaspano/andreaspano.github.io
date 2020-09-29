@@ -1,0 +1,66 @@
+---
+title: "Install ShinyProxy"
+description: |
+  How to install shiny proxy in Ubuntu
+author:
+  - name: Andrea Spano
+    url: andreaspano.github.io
+    affiliation: Quantide
+    affiliation_url: www.quantide.com
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+You can have ShinyProxy container up and running on your Ubuntu machine bu following the next four steps:
+
+(1) Get shyproxy Dockerfile
+(2) Write your own application.yml configuration file
+(3) build the container 
+(4) Run the container
+
+
+## Dockerfile
+
+You can download the Dockerfile for shinyServer at https://github.com/og-analytics.
+
+Cloning this repository provides several files required to follow all the tutorials displayed at the page
+
+Nevertheless, the only file you need to accomplish step (1) is text file named `Dockerfile` with the following content:
+
+```{bash, eval = F}
+FROM openjdk:8-jre
+
+RUN mkdir -p /opt/shinyproxy/
+RUN wget https://www.shinyproxy.io/downloads/shinyproxy-2.3.1.jar -O /opt/shinyproxy/shinyproxy.jar
+COPY application.yml /opt/shinyproxy/application.yml
+
+WORKDIR /opt/shinyproxy/
+CMD ["java", "-jar", "/opt/shinyproxy/shinyproxy.jar"]
+```
+
+This dockerfile contains the instructions for performing the next four tasks 
+
+(a) gets the basic jre container from dockerhub
+(b) gets shinyproxy application and copy it inside the docker 
+(c) copies application.yml inside the docker 
+(d) starts ShinyProxy inside the container when the container starts
+
+Tasks (c) requires `application.yml` that, in turn, require to be there and properly configured when building the container. This files basically tells the container how to interact with the surrounding environment including how to interact with any shiny application.
+
+## application.yml
+
+
+
+
+
+
+
+

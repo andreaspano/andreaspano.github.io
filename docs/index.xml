@@ -7,7 +7,23 @@
     <description>andreaspano blog: a place where I can save and share all what I learn and write about.
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>mer, 23 set 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>lun, 28 set 2020 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Run an R script as a background job</title>
+      <dc:creator>Andrea Spano</dc:creator>
+      <link>https://andreaspano.github.io/posts/2020-09-29-run-an-r-script-as-a-background-job</link>
+      <description>How to run an R script from within R in background mode</description>
+      <guid>https://andreaspano.github.io/posts/2020-09-29-run-an-r-script-as-a-background-job</guid>
+      <pubDate>lun, 28 set 2020 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Install ShinyProxy</title>
+      <dc:creator>Andrea Spano</dc:creator>
+      <link>https://andreaspano.github.io/posts/2020-09-24-install-shinyproxy</link>
+      <description>How to install shiny proxy in Ubuntu</description>
+      <guid>https://andreaspano.github.io/posts/2020-09-24-install-shinyproxy</guid>
+      <pubDate>gio, 24 set 2020 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Docker Installation</title>
       <dc:creator>Andrea Spano</dc:creator>
