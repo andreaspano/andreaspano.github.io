@@ -1,0 +1,281 @@
+---
+title: "Data Analysis with Sparklyr"
+description: |
+  Data analysis with Sparklyr
+author:
+  - name: Andrea Spano
+    url: andreaspano.github.io
+    affiliation: Quantide
+    affiliation_url: www.quantide.com 
+date: "`r Sys.Date()`" 
+output:
+  distill::distill_article:
+    self_contained: false
+editor_options: 
+  chunk_output_type: console
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Pkgs
+
+Load required packages
+
+
+```{r}
+require(sparklyr)
+require(dplyr)
+require(readr)
+require(ggplot2)
+```
+
+## Set up 
+
+Spark environment setup 
+
+
+```{r}
+# global spark memory
+Sys.setenv("SPARK_MEM" = "32g")
+# Initialize configuration with defaults
+config <- spark_config()
+# Memory
+config["sparklyr.shell.driver-memory"] <- "32g"
+# Cores
+config["sparklyr.connect.cores.local"] <- 6
+```
+
+## Connect 
+
+Create local Spark context 
+
+```{r context}
+sc <- spark_connect(master = "local", version = "3.0", config = config)
+```
+
+## csv files
+
+Load csv files
+
+```{r read csv} 
+system.time({
+d_all <- spark_read_csv(sc , 
+               name = 'd_all',
+               path = "file:///data/airline/csv",
+               header = T)
+})
+```
+
+Save as parquet 
+
+```{r write parquet}
+system('rm -rf /data/airline/prq/')
+system.time({
+  spark_write_parquet(d_all, path = '/data/airline/prq/')
+})
+```
+
+Disconnect from spark context and reload
+
+```{r disconnect and reconnect}
+spark_disconnect(sc)
+sc <- spark_connect(master = "local", version = "3.0", config = config)
+```
+
+
+load parquet
+
+```{r  read parquet}
+system.time({
+  d_all <- spark_read_parquet(sc , 
+                          name = 'd_all',
+                          path = "file:///data/airline/prq/", 
+                          header = T)
+  
+})
+```
+
+
+## Check data size
+
+```{r check data size}
+system.time({
+n <- d_all %>% 
+  summarise(n = n()) %>% 
+  collect()
+
+print(n) 
+})
+```
+
+
+##  prepare  model data  
+
+Select variables of interests only 
+
+```{r dplyr}
+system.time({
+d_model <- d_all %>%
+  mutate(ArrDelay = as.numeric(ArrDelay) ,
+         DepDelay = as.numeric(DepDelay) ,
+         Distance = as.numeric(Distance)) %>% 
+  filter(!is.na(ArrDelay) & !is.na(DepDelay) & !is.na(Distance)) %>%
+  filter(DepDelay > -10 & DepDelay < 240) %>%
+  filter(ArrDelay > -60 & ArrDelay < 360) %>% 
+  mutate(Gain = DepDelay - ArrDelay) %>%
+  select(Year, Month, ArrDelay, DepDelay, Distance, UniqueCarrier, Gain)
+})
+```
+
+Check newdata dimension 
+
+```{r count 2}
+system.time({
+n <- d_model %>% 
+  summarise(n = n()) %>% 
+  collect()
+print(n)
+})
+
+```
+
+import carriers data 
+
+```{r import carriers}
+d_carrier <- spark_read_csv(sc , 
+                          name = 'd_carrier',
+                          path = "file:///data/airline/csv/carriers.csv", 
+                          header = T)
+```
+
+join airlines data with carriers data
+
+```{r left join }
+system.time({
+d_model <- d_model %>% 
+  left_join(d_carrier, by = c("UniqueCarrier" = "Code"))
+})
+```
+
+split data into training and out of sample test 
+
+```{r split}
+system.time({
+  d_model_2008 <- d_model %>% filter(Year == 2008)
+  d_model <- d_model %>% filter(Year <= 2007)
+})
+```
+
+
+check dimensions 
+
+```{r check 3}
+system.time({
+n <- d_model %>%  summarise(n = n())
+n2008 <- d_model_2008 %>%  summarise(n = n())
+print(n)
+print(n2008)
+})
+
+
+```
+ 
+partition the data into training and validation sets
+
+```{r partition }
+system.time({
+model_partition <- d_model %>% 
+  sdf_random_split(d_trn = 0.8, d_tst = 0.2, seed = 5555)
+})
+```
+
+## Modelling 
+
+Fit a linear model
+
+```{r model }
+system.time({
+  fm <-  ml_linear_regression(model_partition$d_trn, 
+                            formula = Gain ~ Distance + DepDelay + UniqueCarrier)
+})
+```
+
+Show summary
+
+```{r sumnmary}
+system.time({  
+  summary(fm) 
+})
+```
+
+Calculate average gains by predicted decile
+
+
+```{r gain}
+system.time({
+model_deciles <- lapply(model_partition, 
+                        function(x) {
+                            ml_predict(fm, x) %>%
+                              mutate(Decile = ntile(desc(prediction), 10)) %>%
+                              group_by(Decile) %>%
+                              summarize(Gain = mean(Gain)) %>%
+                              select(Decile, Gain) %>%
+                              collect()}
+                        )
+})
+```
+
+
+Create a summary dataset for plotting
+
+```{r for plot }
+d_decile <- bind_rows(
+  as_tibble(model_deciles$d_trn) %>% mutate(partition = 'trn'),
+  as_tibble(model_deciles$d_tst) %>% mutate(partition = 'tst'))
+```
+  
+
+Plot average gains by predicted decile
+
+```{r plot}
+d_decile %>%
+  ggplot(aes(factor(Decile), Gain, fill = partition)) +
+  geom_bar(stat = 'identity', position = 'dodge') +
+  labs(title = 'Average gain by predicted decile', x = 'Decile', y = 'Minutes')
+```
+
+prediction time ahead
+
+```{r pred}
+system.time({
+pred_2008 <- ml_predict(fm, d_model_2008) %>%
+  group_by(Description) %>%
+  summarize(Gain = mean(Gain), prediction = mean(prediction), freq = n()) %>%
+  filter(freq > 10000) %>%
+  collect()
+})
+```
+
+Plot actual gains and predicted gains by airline carrier
+
+```{r plot 2}
+ggplot(pred_2008, aes(Gain, prediction)) + 
+  geom_point(alpha = 0.75, color = 'red', shape = 3) +
+  geom_abline(intercept = 0, slope = 1, alpha = 0.15, color = 'blue') +
+  geom_text(aes(label = substr(Description, 1, 20)), size = 3, alpha = 0.75, vjust = -1) +
+  labs(title='Average Gains Forecast', x = 'Actual', y = 'Predicted')
+```
+
+
+## Closing 
+
+Disconnect from spark context
+
+```{r disconnect}
+spark_disconnect(sc)
+```

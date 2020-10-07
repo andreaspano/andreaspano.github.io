@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Wed Oct 07 01:52:06 CEST 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0175-0054-4c30-00004882c740 
+on database directory memory:/home/andrea/dev/andreaspano.github.io/_posts/2020-10-06-data-analysis-with-spraklyr/databaseName=metastore_db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@67424e82 
+Loaded from file:/home/andrea/spark/spark-3.0.0-bin-hadoop2.7/jars/derby-10.12.1.1.jar
+java.vendor=Ubuntu
+java.runtime.version=11.0.8+10-post-Ubuntu-0ubuntu120.04
+user.dir=/home/andrea/dev/andreaspano.github.io/_posts/2020-10-06-data-analysis-with-spraklyr
+os.name=Linux
+os.arch=amd64
+os.version=5.4.0-48-generic
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
