@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Functional Programming with R</title>
+  
+  <meta property="description" itemprop="description" content="`R` can be considered as a functional programming language as it focuses on the creation and manipulation of functions and has what&#39;s known as first class functions. Understanding the functional nature of `R` may help to improve clarity and avoid redundancy."/>
+  
+  
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2020-10-07"/>
+  <meta property="article:created" itemprop="dateCreated" content="2020-10-07"/>
+  <meta name="article:author" content="Andrea Spano"/>
+  
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Functional Programming with R"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="`R` can be considered as a functional programming language as it focuses on the creation and manipulation of functions and has what&#39;s known as first class functions. Understanding the functional nature of `R` may help to improve clarity and avoid redundancy."/>
+  <meta property="og:locale" content="en_US"/>
+  
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Functional Programming with R"/>
+  <meta property="twitter:description" content="`R` can be considered as a functional programming language as it focuses on the creation and manipulation of functions and has what&#39;s known as first class functions. Understanding the functional nature of `R` may help to improve clarity and avoid redundancy."/>
+  
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Functional Programming with R"]},{"type":"character","attributes":{},"value":["`R` can be considered as a functional programming language as it focuses on the creation and manipulation of functions and has what's known as first class functions. Understanding the functional nature of `R` may help to improve clarity and avoid redundancy.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Andrea Spano"]},{"type":"character","attributes":{},"value":["andreaspano.github.io"]},{"type":"character","attributes":{},"value":["Quantide"]},{"type":"character","attributes":{},"value":["www.quantide.com"]}]}]},{"type":"character","attributes":{},"value":["2020-10-07"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["functional-programming-with-r_files/bowser-1.9.3/bowser.min.js","functional-programming-with-r_files/distill-2.2.21/template.v2.js","functional-programming-with-r_files/figure-html5/closures-023-1.png","functional-programming-with-r_files/figure-html5/closures-030-1.png","functional-programming-with-r_files/figure-html5/closures-044-1.png","functional-programming-with-r_files/figure-html5/closures-045-1.png","functional-programming-with-r_files/figure-html5/closures-046-1.png","functional-programming-with-r_files/jquery-1.11.3/jquery.min.js","functional-programming-with-r_files/webcomponents-2.0.0/webcomponents.js"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+  
+  <style type="text/css">
+  
+  body {
+    background-color: white;
+  }
+  
+  .pandoc-table {
+    width: 100%;
+  }
+  
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+  
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+  
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+  
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+  
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+  
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+  
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .shaded-content {
+    background: white;
+  }
+  
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+  
+  .hidden {
+    display: none !important;
+  }
+  
+  d-article {
+    padding-bottom: 30px;
+  }
+  
+  d-appendix {
+    padding-top: 30px;
+  }
+  
+  d-article>p>img {
+    width: 100%;
+  }
+  
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+  
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  /* CSS for table of contents */
+  
+  .d-toc {
+    color: rgba(0,0,0,0.8);
+    font-size: 0.8em;
+    line-height: 1em;
+  }
+  
+  .d-toc-header {
+    font-size: 0.6rem;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 1.3em;
+  }
+  
+  .d-toc a {
+    border-bottom: none;
+  }
+  
+  .d-toc ul {
+    padding-left: 0;
+  }
+  
+  .d-toc li>ul {
+    padding-top: 0.8em;
+    padding-left: 16px;
+    margin-bottom: 0.6em;
+  }
+  
+  .d-toc ul,
+  .d-toc li {
+    list-style-type: none;
+  }
+  
+  .d-toc li {
+    margin-bottom: 0.9em;
+  }
+  
+  .d-toc-separator {
+    margin-top: 20px;
+    margin-bottom: 2em;
+  }
+  
+  .d-article-with-toc {
+    border-top: none;
+    padding-top: 0;
+  }
+  
+  
+  
+  /* Tweak code blocks (note that this CSS is repeated above in an injection
+     into the d-code shadow dom) */
+  
+  d-code {
+    overflow-x: auto !important;
+  }
+  
+  pre.d-code code.d-code {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+  
+  pre.text-output {
+  
+    font-size: 12px;
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  @media(min-width: 768px) {
+  
+  d-code {
+    overflow-x: visible !important;
+  }
+  
+  pre.d-code code.d-code  {
+      padding-left: 18px;
+      font-size: 14px;
+  }
+  pre.text-output {
+    font-size: 14px;
+  }
+  }
+  
+  /* Figure */
+  
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+  
+  .figure img {
+    width: 100%;
+  }
+  
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+  
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+  
+  
+  
+  /* Tweak 1000px media break to show more text */
+  
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+  
+    .grid {
+      grid-column-gap: 16px;
+    }
+  
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+  
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+  
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+  
+  
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+  
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  
+  /* Social footer */
+  
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+  
+  .disqus-comments {
+    margin-right: 30px;
+  }
+  
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+  
+  #disqus_thread {
+    margin-top: 30px;
+  }
+  
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+  
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+  
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+  
+  
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+  
+  
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+  
+  
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+  
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+  
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+  
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+  
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+  
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+  
+  
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+  
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+  
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+  
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+  
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  </style>
+  
+  <script type="application/javascript">
+  
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+  
+  // show body when load is complete
+  function on_load_complete() {
+  
+    // set body to visible
+    document.body.style.visibility = 'visible';
+  
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+  
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+  
+  function init_distill() {
+  
+    init_common();
+  
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+  
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+  
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+  
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+  
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+  
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+  
+    // create d-bibliography
+    var bibliography = $('<d-bibliography></d-bibliography>');
+    $('#distill-bibliography').wrap(bibliography);
+  
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+  
+    // replace citations with <d-cite>
+    $('.citation').each(function(i, val) {
+      appendix = true;
+      var cites = $(this).attr('data-cites').split(" ");
+      var dt_cite = $('<d-cite></d-cite>');
+      dt_cite.attr('key', cites.join());
+      $(this).replaceWith(dt_cite);
+    });
+    // remove refs
+    $('#refs').remove();
+  
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+  
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-toc a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+  
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+  
+    // replace code blocks with d-code
+    $('pre>code').each(function(i, val) {
+      var code = $(this);
+      var pre = code.parent();
+      var clz = "";
+      var language = pre.attr('class');
+      if (language) {
+        // map unknown languages to "clike" (without this they just dissapear)
+        if ($.inArray(language, ["bash", "clike", "css", "go", "html",
+                                 "javascript", "js", "julia", "lua", "markdown",
+                                 "markup", "mathml", "python", "svg", "xml"]) == -1)
+          language = "clike";
+        language = ' language="' + language + '"';
+        var dt_code = $('<d-code block' + language + clz + '></d-code>');
+        dt_code.text(code.text());
+        pre.replaceWith(dt_code);
+      } else {
+        code.addClass('text-output').unwrap().changeElementType('pre');
+      }
+    });
+  
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+  
+      // capture layout
+      var layout = $(this).attr('data-layout');
+  
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('d-code, pre.text-output, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+  
+  
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+  
+    // load distill framework
+    load_distill_framework();
+  
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+  
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+  
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+  
+      // table of contents
+      if (have_authors) // adjust border if we are in authors
+        $('.d-toc').parent().addClass('d-article-with-toc');
+  
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+  
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+  
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+  
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+  
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+  
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+  
+      // inject pre code styles (can't do this with a global stylesheet b/c a shadow root is used)
+      $('d-code').each(function(i, val) {
+        var style = document.createElement('style');
+        style.innerHTML = 'pre code { padding-left: 10px; font-size: 12px; border-left: 2px solid rgba(0,0,0,0.1); } ' +
+                          '@media(min-width: 768px) { pre code { padding-left: 18px; font-size: 14px; } }';
+        if (this.shadowRoot)
+          this.shadowRoot.appendChild(style);
+      });
+  
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+  
+      // clear polling timer
+      clearInterval(tid);
+  
+      // show body now that everything is ready
+      on_load_complete();
+    }
+  
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+  
+  }
+  
+  function init_downlevel() {
+  
+    init_common();
+  
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+  
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+  
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+  
+    // remove toc
+    $('.d-toc-header').remove();
+    $('.d-toc').remove();
+    $('.d-toc-separator').remove();
+  
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+  
+  
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+  
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+  
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+  
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+  
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+  
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+  
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+  
+    $('body').addClass('downlevel');
+  
+    on_load_complete();
+  }
+  
+  
+  function init_common() {
+  
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+  
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+  
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+  
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+  
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+  
+      }
+    });
+  
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+  
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+  
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+  
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+  
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+  
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+  
+  </script>
+  
+  <!--/radix_placeholder_distill-->
+  <script src="functional-programming-with-r_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="functional-programming-with-r_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="functional-programming-with-r_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="functional-programming-with-r_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Functional Programming with R","description":"`R` can be considered as a functional programming language as it focuses on the creation and manipulation of functions and has what's known as first class functions. Understanding the functional nature of `R` may help to improve clarity and avoid redundancy.","authors":[{"author":"Andrea Spano","authorURL":"andreaspano.github.io","affiliation":"Quantide","affiliationURL":"www.quantide.com"}],"publishedDate":"2020-10-07T00:00:00.000+02:00","citationText":"Spano, 2020"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Functional Programming with R</h1>
+<p><p><code>R</code> can be considered as a functional programming language as it focuses on the creation and manipulation of functions and has what’s known as first class functions. Understanding the functional nature of <code>R</code> may help to improve clarity and avoid redundancy.</p></p>
+</div>
+
+<div class="d-byline">
+  Andrea Spano andreaspano.github.io (Quantide)www.quantide.com
+  
+<br/>2020-10-07
+</div>
+
+<div class="d-article">
+<p><code>R</code> can be considered as a functional programming language as it focuses on the creation and manipulation of functions and has what’s known as first class functions.</p>
+<p>In computer science, functional programming is a programming paradigm, a style of building the structure and elements of computer programs, that treats computation as the evaluation of mathematical functions and avoids state and mutable data.</p>
+<p>Functional programming emphasizes functions that produce results that depend only on their inputs and not on the program state</p>
+<p>In functional code, the output value of a function depends only on the arguments that are input to the function, so calling a function <code>f()</code> twice with the same value for an argument <code>x</code> will produce the same result <code>f(x)</code> both times. <code>R</code> is clearly a functional programming language.</p>
+<p>Understanding the functional nature of <code>R</code> may help to improve clarity and avoid redundancy.</p>
+<p>We will examine:</p>
+<ul>
+<li>First Class Functions</li>
+<li>Functions Closures</li>
+<li>Functions Factories</li>
+<li>Anonymous Functions</li>
+<li>Lists of Functions</li>
+<li>Functionals</li>
+</ul>
+<h2 id="first-class-functions">First class functions</h2>
+<p>First-class functions are a key component of functional programming style.</p>
+<p>A programming language is said to have first-class functions when the language supports:</p>
+<ul>
+<li>passing functions as arguments to other functions</li>
+<li>creating anonymous functions</li>
+<li>returning functions as the values from other functions</li>
+<li>storing functions in data structures.</li>
+</ul>
+<p>and <code>R</code> has has first-class functions indeed.</p>
+<p>In this example we pass function: <code>identity()</code> as argument to function <code>lapply()</code></p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[[1]]
+[1] 0</code></pre>
+</div>
+<p>Here we make use of an anonymous function:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 0.5270463</code></pre>
+</div>
+<p>We can easily define a function that return a function</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Finaly we store functions within a list:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h2 id="functions-closures">Functions closures</h2>
+<p>A <strong>function closure</strong> or <strong>closure</strong> is a function together with a referencing environment.</p>
+<p>Almost all functions in <code>R</code> are closures as they remember the environment where they were created. Generally, but not always, the global environment:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+&lt;environment: R_GlobalEnv&gt;</code></pre>
+</div>
+<p>or the package environment</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+&lt;environment: namespace:base&gt;</code></pre>
+</div>
+<p>Functions that cannot be classified as <em>closures</em>, and therefore do not have a referencing environment, are know as <em>primitives</em>. These are internal <code>R</code> function calling the underlying <code>C</code> code. <code>sum()</code> and <code>c()</code> are good cases in point:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+NULL</code></pre>
+</div>
+<p>As functions remember the environments where they were created, the following example does not return any error:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 2</code></pre>
+</div>
+<p>This is possible as <code>f()</code> is declared within the global environment and therefore <code>f()</code> remembers all objects bounded to that environment (the referencing environment), <code>y</code> included.</p>
+<p>When we call a function, a new environment is created to hold the function’s execution and, normally, that environment is destroyed when the function exits. But, if we define a function <code>g()</code> that returns a function <code>f()</code>, the environment where <code>f()</code> is created is the execution environment of <code>g()</code>, that is, the execution environment of <code>g()</code> is the referencing environment of <code>f()</code>. As a consequence, the execution environment of <code>g()</code> is not destroyed as <code>g()</code> exits but it persists as long as <code>f()</code> exists. Finally, as <code>f()</code> remembers all objects bounded to its referencing environment, <code>f()</code> remembers all objects bounded to the execution environment of <code>g()</code></p>
+<!-- aggiungere esempio di funzione con un exec env dichiarato e poi distrutto che pero rimane -->
+<p>With this idea in mind, we can use the referencing environment of <code>f()</code>, that is the execution environment of <code>g()</code>, to hold any object and these objects will be available to <code>f()</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 4</code></pre>
+</div>
+<p>Moreover, as <code>f()</code> is created within <code>g()</code> any argument passed to <code>g()</code> will be available to <code>f()</code> in its later executions.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 4</code></pre>
+</div>
+<p>As a proof of concept, we may temporaly modify function <code>g()</code> in order to print the execution environment of <code>g()</code></p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Than use <code>g()</code> to produce <code>f()</code></p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+&lt;environment: 0x55657d9cce68&gt;</code></pre>
+</div>
+<p>and finaly ask <code>R</code> for the environment associated with <code>f()</code></p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+&lt;environment: 0x55657d9cce68&gt;</code></pre>
+</div>
+<p>As we can see, the execution environment of <code>g_tmp()</code> corresponds to the environment associated to <code>f()</code>.</p>
+<p>Finally,</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 1</code></pre>
+</div>
+<p>shows where <code>y</code> is stored.</p>
+<p>Notice that each call to <code>g()</code> returns a function with its own referencing environment:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+&lt;environment: 0x55657d9cce68&gt;</code></pre>
+<pre><code>
+&lt;environment: 0x55657e0bd1b0&gt;</code></pre>
+</div>
+<p>The referencing environments for <code>f1()</code> and <code>f2()</code> are different, despite that <code>f1()</code> and <code>f2()</code> are both returned by <code>g()</code>.</p>
+<h2 id="functions-factories">Functions Factories</h2>
+<p>In practice, we can use closures to write specific functions that, in turn, can be used to generate new functions. This allows us to have a double layer of development: a first layer that is used to do all the complex work in common to all functions and a second layer that defines the details of each function.</p>
+<h3 id="example-a-basic-case-in-point">Example: A basic case in point</h3>
+<p>We can think of a simple function <code>add(x,i)</code> that add the value <code>i</code> to the value <code>x</code>. We could define this function as:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Alternatively, we may consider a set of functions, say <code>f1(x)</code>, <code>f2(x)</code>, <code>...</code>, <code>fi(x)</code>, <code>...</code>, <code>fn{x}</code> that add <code>1,2,...,i,...,n</code> to the <code>x</code> argument. Clearly, we do not want to define all these functions but we want to define a unique function <code>f(i)</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>capable of generating all <code>fi(x)</code> functions:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 4</code></pre>
+<pre><code>
+[1] 6</code></pre>
+</div>
+<p>In this simple example, this approach shows no benefit and possibly increases the complexity of our codes but, for more structured cases, it is definitely worth.</p>
+<h3 id="example-mle-functions">Example: MLE functions</h3>
+<p>As a more structured example, we may consider the development of a set of functions: <code>lnorm(x)</code>, <code>lweibull(x)</code>, <code>...</code> that compute max likelihood estimates for those distributions given a vector of data <code>x</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p><code>new_estimate</code> returns a second function: <code>estimate()</code> whose body depends on the argument <code>dist</code> passed to <code>new_estimate()</code>.</p>
+<p>Within <code>estimate()</code> we first define a third function <code>neglik()</code> and secondly, we minimize it within <code>optim()</code>.</p>
+<p>The returned function: <code>estimate()</code> can be used as a generator of maximum likelihood estimation functions for any distribution as long as its corresponding <code>ddist()</code> exists in <code>R</code>.</p>
+<p>Once we have <code>new_estimate()</code>, we can use it to define any MLE estimation function as long as its density function is defined. That is, we can now write a <code>llnorm()</code> that computes log-normal maximum likelihood estimates as simply as:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 7.0450710 0.9897945</code></pre>
+</div>
+<p>and similarly:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 2.038939 1.009835</code></pre>
+</div>
+<h3 id="example-moving-statistics">Example: moving statistics</h3>
+<p>As a further example of functions factories we may consider a function <code>moving(f)</code> that returns <code>moving_f()</code> where <code>f()</code> could be <code>mean()</code>, <code>median()</code> or any other statistical function as long it returns a single value.</p>
+<p>As a first step we may consider a simple function <code>g()</code> that returns the value of <code>f()</code> for any backward window of length <code>n</code> starting at <code>i</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 4</code></pre>
+<pre><code>
+[1] 1</code></pre>
+</div>
+<p>Note that <code>g()</code> takes, among its inputs, a second function <code>f()</code> and apply it to the window <code>[(i-n+1):i]</code> of <code>x</code>.</p>
+<p>As a second step we define a function <code>moving(f)</code> that takes any function <code>f()</code> as an input and define function <code>g()</code> within its body.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Function <code>moving()</code> returns function <code>h()</code> that, in turn can be used to generate any <code>moving_f()</code> functions:</p>
+<p>Function <code>vapply()</code> within <code>h()</code> is a <em>functional</em> used as a for loop replacement that will be fully explored when discussing <em>functionals</em>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 11.00000 11.66667 10.66667 13.00000 11.66667 10.33333 11.00000
+[8] 11.66667</code></pre>
+</div>
+<p>Eventually, argument ’‘<code>...</code>’’ can be used to pass extra arguments to <code>f()</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 15  7  7  7  7  7 10 11</code></pre>
+</div>
+<p>If necessary, function <code>moving()</code> ca be used in the form of anonymous function:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 2.915476 4.000000 4.816638 5.029911 3.781534 2.701851</code></pre>
+</div>
+<p>Finally:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:closures-023"></span>
+<img src="functional-programming-with-r_files/figure-html5/closures-023-1.png" alt="Plot of moving average and median" width="672" />
+<p class="caption">
+Figure 1: Plot of moving average and median
+</p>
+</div>
+</div>
+<h3 id="example-truncated-density-function">Example: Truncated density function</h3>
+<p>Density function in R are usually specified by the prefixes <code>d</code> followed by a standard suffix for each ditribution. <code>dnorm()</code>, <code>dlnorm()</code>, <code>dweibull()</code>, etc …</p>
+<p>Therefore, we use to write:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 0.05690844 0.03810909 0.02616136</code></pre>
+</div>
+<p>in order to get density values at <code>x</code> from a lognormal distribution with parameters <code>2</code> and <code>1</code>.</p>
+<p>In case we need value from a truncated distribution, as far as we know, we need to load an extra package such as <code>truncdist</code>. The package itself works perfectly. In fact, assuming that a <code>dlnorm()</code> function exists, we can get density values from a left truncated lognormal distribution with parameters <code>meanlog = 2</code> and <code>sdlog = 1</code> by simply writing:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 0.15962754 0.05237882 0.02127653</code></pre>
+</div>
+<p>where <code>a = 5</code> represents the left threshold for truncation</p>
+<p>Nevertheless, the above command require a change in our programming style.</p>
+<p>In principle, we would like to be able to write:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>where <code>L = 5</code> represents the left threshold for truncation</p>
+<p>so that we could have the same programming style, just with different parameters, for both truncated and not truncated distribution.</p>
+<p>Within this frame, when <code>tdlnorm()</code> is called with <code>L</code> and <code>U</code> set to their default values it behaves as <code>stats::dlnorm()</code></p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>but when called with different settings for <code>L</code> and <code>U</code>; such as:</p>
+<p><code>tdlnorm(x, meanlog = 2, sdlog = 1, L = 5, U = 20)</code></p>
+<p>it behaves as a lognormal density left truncated at <code>L=5</code> and right truncated at <code>U=20</code>.</p>
+<p>This goal could be achieved by writing a <code>tdlnorm()</code> as:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>That returns the same results as function <code>truncdist::dtrunc()</code></p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 0.11523518 0.07297029 0.05109291</code></pre>
+<pre><code>
+[1] 0.11523518 0.07297029 0.05109291</code></pre>
+</div>
+<p>As this function clearly works, next step could be to write something similar for other distributions such as <code>weibull</code>, <code>gumbel</code> or <code>gamma</code>. We have to admit that all of this may become as quite time consuming.</p>
+<p>A different approach could be to define a different function, <code>dtruncate()</code>, taking the name of a density distribution as an argument and returning a second function that computes density values for the truncated distribution:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>with:</p>
+<ul>
+<li>envir: the environment <code>plnorm()</code> and <code>dlnorm()</code> belong to</li>
+</ul>
+<p>We can now define a new <code>tdlnorm()</code> as:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>and use it as:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="functional-programming-with-r_files/figure-html5/closures-030-1.png" width="624" /></p>
+</div>
+<p>clearly, <code>tdlnorm()</code> returns the same results as <code>truncdist::dtrunc()</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 0.3791833 0.2780953 0.2084880 0.1593537</code></pre>
+<pre><code>
+[1] 0.0000000 0.2780953 0.2084880 0.1593537</code></pre>
+</div>
+<p>Moreover, our newly created <code>tdlnorm()</code> function takes as argument <code>meanlog</code> and <code>sdlog</code>, as well as <code>lower.tail = TRUE</code>, <code>log.p = FALSE</code>, <code>as stats::plnorm()</code> does, despite these arguments were not mentioned when calling <code>dtruncate()</code>.</p>
+<p>Now that we have <code>dtruncate()</code>, the same exercise can be replicate, at no extra programming effort, to any density function:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h2 id="functions-with-memory">Functions with memory</h2>
+<p>When talking about clousures, we used the referencing environment of <code>f()</code> to hold any value passed by <code>g()</code>. Similarly, we can use the same environment to keep a state across multiple executions of <code>f()</code>.</p>
+<h3 id="example-track-how-many-times-a-function-is-called">Example: Track how many times a function is called</h3>
+<p>We may consider a function that simply returns the current date but tracks how many times it has ben called:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+this function has been called  1  times </code></pre>
+<pre><code>
+[1] &quot;Wed Oct  7 11:06:13 2020&quot;</code></pre>
+<pre><code>
+this function has been called  2  times </code></pre>
+<pre><code>
+[1] &quot;Wed Oct  7 11:06:13 2020&quot;</code></pre>
+<pre><code>
+this function has been called  3  times </code></pre>
+<pre><code>
+[1] &quot;Wed Oct  7 11:06:13 2020&quot;</code></pre>
+</div>
+<p>Note that, we used the <code>&lt;&lt;-</code> operator that assigns in the parent environment. This is equivalent to:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h3 id="example-avoid-re-calculate-previous-results">Example: Avoid re-calculate previous results</h3>
+<p>We can use the referencing environment of a function to keep previous returned values of the same function. By using this idea, we could try to avoid re-calculating previously computed values.</p>
+<p>Supose we want a function that takes <code>n</code> as argument and returns all primes less or equal to <code>n</code>. This function already exists within library <code>pracma</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 2 3 5 7</code></pre>
+</div>
+<p>In order to keep previous results we can define a function <code>makefprime()</code> that, when called, returns a second function with an environment <code>.env</code> attached:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>We can now create a function named for instance <code>fprimes()</code> by calling function <code>makefprime()</code> which returns identical results when compared with <code>primes()</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 2 3 5 7</code></pre>
+</div>
+<p>Now suppose we need to compute prime numbers several time within a working session or a for loop. When <code>n</code> is large, this computation may require a substancial ammount of time.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+   user  system elapsed 
+  0.338   0.040   0.378 </code></pre>
+</div>
+<p>Nevertheless, because of the way we defined <code>fprimes()</code>, second time this function is called with <code>n = 10^7</code> computing time is practicaly zero as the function reuse previously computed results as stored in environment <code>.env</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+   user  system elapsed 
+  0.001   0.000   0.000 </code></pre>
+</div>
+<!--- questo non mi piace 
+### Example: Conditioning a function to its previous result
+--->
+<h3 id="example-add-to-an-existing-plot">Example: Add to an existing plot</h3>
+<p>As a last example, we may want to have a function that add to an existing plot any time a new observation becomes available, using the same mechanism, we can define a <code>new_plot()</code> function that instances a new plot the first time it is called:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>and add to the same plot at each next call:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:closures-044"></span>
+<img src="functional-programming-with-r_files/figure-html5/closures-044-1.png" alt="first call" width="672" />
+<p class="caption">
+Figure 2: first call
+</p>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:closures-045"></span>
+<img src="functional-programming-with-r_files/figure-html5/closures-045-1.png" alt="second call" width="672" />
+<p class="caption">
+Figure 3: second call
+</p>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:closures-046"></span>
+<img src="functional-programming-with-r_files/figure-html5/closures-046-1.png" alt="third call" width="672" />
+<p class="caption">
+Figure 4: third call
+</p>
+</div>
+</div>
+<!--
+Ref: http://www.lemnica.com/esotericR/Introducing-Closures/
+-->
+<h2 id="anonymous-functions">Anonymous functions</h2>
+<p>In R, we usually assign functions to variable names. Nevertheless, functions can exists without been assigned to symbol. Functions that don’t have a name are called <strong>anonymous functions</strong>.</p>
+<p>We can call anonymous functions directly, as we do with named functions, but the code is a little unusual as we have to use brackets both to include the whole function definition and to pass arguments to the function:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 13</code></pre>
+</div>
+Note that this is exactly the same as:
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 13</code></pre>
+</div>
+<p>We use anonymous functions when it’s not worth the effort of assigning functions to a name. We could plot a function <code>s(x)</code> by:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+1.609553 with absolute error &lt; 4.5e-11</code></pre>
+</div>
+<p>or alternatively by:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+1.609553 with absolute error &lt; 4.5e-11</code></pre>
+</div>
+<p>in this case <code>function(x) sin(x)/sqrt(x)</code> is an example of anonymous function.</p>
+<p>Finally, anonymous functions are, by all rights, normal R functions as they have <code>formals()</code>, a <code>body()</code>, and a parent <code>environment()</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+$x</code></pre>
+<pre><code>
+x + 1</code></pre>
+<pre><code>
+&lt;environment: R_GlobalEnv&gt;</code></pre>
+</div>
+<h2 id="lists-of-functions">Lists of functions</h2>
+<p>Functions, as any type of <code>R</code> object, can be stored in a list.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>This makes it easier to work with groups of related functions.</p>
+<p>Functions defined within a list are still accessible at least in three different ways:</p>
+<p>using function <code>with()</code></p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 5.5</code></pre>
+</div>
+<p>by using the <code>$</code> operator</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 5.5</code></pre>
+</div>
+<p>by attaching the list:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 5.5</code></pre>
+</div>
+<p>Lists of functions can be most useful when we want to apply all functions of the list to the same set of data.</p>
+<p>We can achieve this goal in two logical steps.</p>
+<p>We first define a function</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>that takes a function <code>f()</code> as argument along with any other arguments ’‘<code>...</code>’’ and returns <code>f(...)</code>. In practice:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] 5.5</code></pre>
+</div>
+<p>Secondly, we apply function <code>fun()</code> to the list of functions. Arguments required by the functions stored in the list are passed by the ’‘<code>...</code>’’ argument:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+$m
+[1] 5.5
+
+$s
+[1] 3.02765</code></pre>
+</div>
+<p>Under almost all circumstances, equivalent results can be achieved by using function <code>do.call()</code> within a call to <code>lapply()</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+$m
+[1] 5.5
+
+$s
+[1] 3.02765</code></pre>
+</div>
+<p>the only difference being that arguments to functions within the list must be enclosed in a list too.</p>
+<!-- AS 
+capire perche questo non restituisce  x = "x"" ma tutti i valori di x in data.names 
+lapply(list(ad.test), do.call, list(x = x, distn = "pnorm", fit = list(mean = mean(x), sd = sd(x))))
+Stefano ... qualche idea?
+-->
+<h3 id="example-multiple-anderson-darling-tests">Example: Multiple <em>Anderson-Darling</em> tests</h3>
+<p>As a simple example we may want to compare the results of four <strong>Anderson-Darling</strong> type tests from the <code>truncgof</code> package applied to the same data.</p>
+<p>We can define a list that holds these four functions and store it in the global environment:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>and, afterword, apply function <code>fun()</code> to each element of this list:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+$ad2.test
+
+    Quadratic Class Anderson-Darling Test
+
+data:  x
+AD2 = 0.47672, p-value = 0.18
+
+treshold = -Inf, simulations: 100
+
+
+$ad2up.test
+
+    Quadratic Class Anderson-Darling Upper Tail Test
+
+data:  x
+AD2up = 7.568, p-value = 0.13
+
+treshold = -Inf, simulations: 100
+
+
+$ad.test
+
+    Supremum Class Anderson-Darling Test
+
+data:  x
+AD = 2.8444, p-value = 0.17
+alternative hypothesis: two.sided
+
+treshold = -Inf, simulations: 100
+
+
+$adup.test
+
+    Anderson-Darling Upper Tail Test
+
+data:  x
+ADup = 89.826, p-value = 0.07
+alternative hypothesis: two.sided
+
+treshold = -Inf, simulations: 100</code></pre>
+</div>
+<h3 id="example-summary-statistics">Example: Summary statistics</h3>
+<p>We may want to define a function that returns some specific statistics for a given set of variables in the form of a <code>data.frame</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+          Girth    Height   Volume
+mean  13.248387 76.000000 30.17097
+sd     3.138139  6.371813 16.43785
+range 12.300000 24.000000 66.80000</code></pre>
+</div>
+<p>We may achieve the same result by writing a more general function that will work with any kind of statistics as long as they return a single value:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+           speed       dist
+mean  15.4000000 42.9800000
+stdev  5.2876444 25.7693775
+cv     0.3433535  0.5995667</code></pre>
+</div>
+<h3 id="fapply">fapply</h3>
+<p>Working with this mind set we may even define a function <code>fapply()</code> that applies all functions of a list to the same set of arguments</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>and use it as:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+$mean
+[1] 5.5
+
+$median
+[1] 5.5
+
+$sd
+[1] 3.02765</code></pre>
+</div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>
