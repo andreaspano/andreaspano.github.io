@@ -9,14 +9,14 @@ Most og this stuff is just coipied from other articles, possibly with some chang
 Mainly, I tend to write otherwise I will surely forget later
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>ven, 09 ott 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>sab, 10 ott 2020 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Functional Programming with R</title>
       <dc:creator>Andrea Spano</dc:creator>
       <link>https://andreaspano.github.io/posts/2020-10-07-functional-programming-with-r</link>
       <description>`R` can be considered as a functional programming language as it focuses on the creation and manipulation of functions and has what's known as first class functions. Understanding the functional nature of `R` may help to improve clarity and avoid redundancy.</description>
       <guid>https://andreaspano.github.io/posts/2020-10-07-functional-programming-with-r</guid>
-      <pubDate>ven, 09 ott 2020 00:00:00 +0000</pubDate>
+      <pubDate>sab, 10 ott 2020 00:00:00 +0000</pubDate>
       <media:content url="https://andreaspano.github.io/posts/2020-10-07-functional-programming-with-r/functional-programming-with-r_files/figure-html5/closures-023-1.png" medium="image" type="image/png" width="1344" height="768"/>
     </item>
     <item>
