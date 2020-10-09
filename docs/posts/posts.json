@@ -1,5 +1,23 @@
 [
   {
+    "path": "posts/2020-10-07-functional-programming-with-r/",
+    "title": "Functional Programming with R",
+    "description": "`R` can be considered as a functional programming language as it focuses on the creation and manipulation of functions and has what's known as first class functions. Understanding the functional nature of `R` may help to improve clarity and avoid redundancy.",
+    "author": [
+      {
+        "name": "Andrea Spano",
+        "url": "andreaspano.github.io"
+      }
+    ],
+    "date": "2020-10-10",
+    "categories": [],
+    "preview": "posts/2020-10-07-functional-programming-with-r/functional-programming-with-r_files/figure-html5/closures-023-1.png",
+    "last_modified": "2020-10-10T01:11:07+02:00",
+    "input_file": {},
+    "preview_width": 1344,
+    "preview_height": 768
+  },
+  {
     "path": "posts/2020-10-06-data-analysis-with-spraklyr/",
     "title": "Data Analysis with Sparklyr",
     "description": "Data analysis with Sparklyr",
@@ -15,24 +33,6 @@
     "last_modified": "2020-10-07T02:17:44+02:00",
     "input_file": {},
     "preview_width": 1248,
-    "preview_height": 768
-  },
-  {
-    "path": "posts/2020-10-07-functional-programming-with-r/",
-    "title": "Functional Programming with R",
-    "description": "`R` can be considered as a functional programming language as it focuses on the creation and manipulation of functions and has what's known as first class functions. Understanding the functional nature of `R` may help to improve clarity and avoid redundancy.",
-    "author": [
-      {
-        "name": "Andrea Spano",
-        "url": "andreaspano.github.io"
-      }
-    ],
-    "date": "2020-10-07",
-    "categories": [],
-    "preview": "posts/2020-10-07-functional-programming-with-r/functional-programming-with-r_files/figure-html5/closures-023-1.png",
-    "last_modified": "2020-10-07T11:06:16+02:00",
-    "input_file": {},
-    "preview_width": 1344,
     "preview_height": 768
   },
   {

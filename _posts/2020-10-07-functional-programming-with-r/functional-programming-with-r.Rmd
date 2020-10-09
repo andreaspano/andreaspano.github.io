@@ -16,7 +16,7 @@ output:
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
@@ -623,6 +623,7 @@ We can call anonymous functions directly, as we do with named functions, but the
 ```
 
 Note that this is exactly the same as:
+
 ```{r functions-086}
 f <- function(x) x + 3
 f(10)
