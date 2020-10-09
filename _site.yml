@@ -1,7 +1,7 @@
 name: "andreaspano.github.io"
 title: "andreaspano blog "
 description: |
-  andreaspano blog: This is teh place where I try to save and share all what I learn and write about.
+  andreaspano blog: This is the place where I try to save and share all what I learn and write about.
   Most og this stuff is just coipied from other articles, possibly with some changes from my side.
   Mainly, I tend to write otherwise I will surely forget later
 base_url: https://andreaspano.github.io/
@@ -10,7 +10,6 @@ collections:
   posts:
     disqus: What I learn and write about
     share: [twitter, linkedin]
-    custom: _custom.html
 output_dir: "docs"
 navbar:
   right:
@@ -23,6 +22,9 @@ navbar:
     - icon: fab fa-github
       href: https://github.com/andreaspano/andreaspano.github.io
   logo:
-    image: images/logo.jpg
+    image: ./avatar.jpg
     href: http://www.quantide.com
-output: distill::distill_article
+output:
+  distill::distill_article:
+    css: style.css
+

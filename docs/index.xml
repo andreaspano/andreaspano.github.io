@@ -4,7 +4,9 @@
     <title>andreaspano blog </title>
     <link>https://andreaspano.github.io/</link>
     <atom:link href="https://andreaspano.github.io/index.xml" rel="self" type="application/rss+xml"/>
-    <description>andreaspano blog: a place where I can save and share all what I learn and write about.
+    <description>andreaspano blog: This is the place where I try to save and share all what I learn and write about.
+Most og this stuff is just coipied from other articles, possibly with some changes from my side.
+Mainly, I tend to write otherwise I will surely forget later
 </description>
     <generator>Distill</generator>
     <lastBuildDate>mer, 07 ott 2020 00:00:00 +0000</lastBuildDate>
@@ -23,7 +25,7 @@
       <link>https://andreaspano.github.io/posts/2020-10-07-functional-programming-with-r</link>
       <description>`R` can be considered as a functional programming language as it focuses on the creation and manipulation of functions and has what's known as first class functions. Understanding the functional nature of `R` may help to improve clarity and avoid redundancy.</description>
       <guid>https://andreaspano.github.io/posts/2020-10-07-functional-programming-with-r</guid>
-      <pubDate>mar, 06 ott 2020 00:00:00 +0000</pubDate>
+      <pubDate>mer, 07 ott 2020 00:00:00 +0000</pubDate>
       <media:content url="https://andreaspano.github.io/posts/2020-10-07-functional-programming-with-r/functional-programming-with-r_files/figure-html5/closures-023-1.png" medium="image" type="image/png" width="1344" height="768"/>
     </item>
     <item>

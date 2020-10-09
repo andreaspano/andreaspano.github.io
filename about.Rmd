@@ -1,9 +1,11 @@
 ---
-title: "andreaspano blog"
+title: "About this blog"
 description: |
   This is the place where I try to save and share all what I learn and write about.
+  
   Most of this stuff is just coipied from other articles, possibly with some changes from my side.
-  Mainly, I tend to write otherwise as I study otherwise I will surely forget later
+  
+  Mainly, I tend to write now otherwise I will surely forget later
 ---
 
 ```{r setup, include=FALSE}
