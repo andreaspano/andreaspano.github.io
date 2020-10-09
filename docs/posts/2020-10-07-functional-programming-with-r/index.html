@@ -1559,14 +1559,14 @@ g_tmp &lt;- function(y){
 <pre class="r"><code>
 f1 &lt;- g_tmp(1)</code></pre>
 <pre><code>
-&lt;environment: 0x5636ab8fae00&gt;</code></pre>
+&lt;environment: 0x56068b663e00&gt;</code></pre>
 </div>
 <p>and finaly ask <code>R</code> for the environment associated with <code>f()</code></p>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="r"><code>
 environment(f1)</code></pre>
 <pre><code>
-&lt;environment: 0x5636ab8fae00&gt;</code></pre>
+&lt;environment: 0x56068b663e00&gt;</code></pre>
 </div>
 <p>As we can see, the execution environment of <code>g_tmp()</code> corresponds to the environment associated to <code>f()</code>.</p>
 <p>Finally,</p>
@@ -1583,11 +1583,11 @@ get(&quot;y&quot; , env = environment(f1))</code></pre>
 f2 &lt;- g(1)
 environment(f1)</code></pre>
 <pre><code>
-&lt;environment: 0x5636ab8fae00&gt;</code></pre>
+&lt;environment: 0x56068b663e00&gt;</code></pre>
 <pre class="r"><code>
 environment(f2)</code></pre>
 <pre><code>
-&lt;environment: 0x5636aadc41f0&gt;</code></pre>
+&lt;environment: 0x56068ab2d1f0&gt;</code></pre>
 </div>
 <p>The referencing environments for <code>f1()</code> and <code>f2()</code> are different, despite that <code>f1()</code> and <code>f2()</code> are both returned by <code>g()</code>.</p>
 <h2 id="functions-factories">Functions Factories</h2>
@@ -1647,7 +1647,7 @@ llnorm &lt;- new_estimate(&quot;dlnorm&quot;)
 x &lt;- rlnorm(100, 7 , 1)
 llnorm(x, theta = c(mean(log(x)), sd(log(x))))</code></pre>
 <pre><code>
-[1] 6.8330553 0.9510471</code></pre>
+[1] 6.972047 1.005196</code></pre>
 </div>
 <p>and similarly:</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1656,7 +1656,7 @@ lweibull &lt;- new_estimate(&quot;dweibull&quot;)
 w &lt;- rweibull(100, 2 , 1)
 lweibull(w, theta = c(mean(w), sd(w)))</code></pre>
 <pre><code>
-[1] 2.2589571 0.9791072</code></pre>
+[1] 1.868930 1.008663</code></pre>
 </div>
 <h3 id="example-moving-statistics">Example: moving statistics</h3>
 <p>As a further example of functions factories we may consider a function <code>moving(f)</code> that returns <code>moving_f()</code> where <code>f()</code> could be <code>mean()</code>, <code>median()</code> or any other statistical function as long it returns a single value.</p>
@@ -1692,22 +1692,22 @@ return(h)
 moving_average &lt;- moving(mean)  
 moving_average(x = rpois(10, 10), n = 3)</code></pre>
 <pre><code>
-[1] 10.333333  7.666667  6.333333  6.666667  8.000000  8.000000
-[7]  7.000000  8.666667</code></pre>
+[1]  9.666667 10.333333 13.666667 12.000000 11.666667  8.000000
+[7]  9.666667  8.333333</code></pre>
 </div>
 <p>Eventually, argument ’‘<code>...</code>’’ can be used to pass extra arguments to <code>f()</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="r"><code>
 moving_average(x = rpois(10, 10), n = 3, trim = .5)</code></pre>
 <pre><code>
-[1] 12  7 12 12 12 11  9  9</code></pre>
+[1]  7 11 11 11  8  8 10 10</code></pre>
 </div>
 <p>If necessary, function <code>moving()</code> ca be used in the form of anonymous function:</p>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="r"><code>
 moving(sd)(rpois(10, 10), n = 5)</code></pre>
 <pre><code>
-[1] 2.607681 1.870829 2.073644 2.915476 3.114482 2.387467</code></pre>
+[1] 3.563706 3.563706 3.114482 3.962323 4.159327 3.114482</code></pre>
 </div>
 <p>Finally:</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1911,21 +1911,21 @@ f()</code></pre>
 <pre><code>
 this function has been called  1  times </code></pre>
 <pre><code>
-[1] &quot;Sat Oct 10 01:11:05 2020&quot;</code></pre>
+[1] &quot;Sat Oct 10 01:15:39 2020&quot;</code></pre>
 <pre class="r"><code>
 #second call
 f() </code></pre>
 <pre><code>
 this function has been called  2  times </code></pre>
 <pre><code>
-[1] &quot;Sat Oct 10 01:11:05 2020&quot;</code></pre>
+[1] &quot;Sat Oct 10 01:15:39 2020&quot;</code></pre>
 <pre class="r"><code>
 #third call
 f()</code></pre>
 <pre><code>
 this function has been called  3  times </code></pre>
 <pre><code>
-[1] &quot;Sat Oct 10 01:11:05 2020&quot;</code></pre>
+[1] &quot;Sat Oct 10 01:15:39 2020&quot;</code></pre>
 </div>
 <p>Note that, we used the <code>&lt;&lt;-</code> operator that assigns in the parent environment. This is equivalent to:</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1974,7 +1974,7 @@ fprimes(10)</code></pre>
 system.time({p1 = fprimes(n = 10^7)})</code></pre>
 <pre><code>
    user  system elapsed 
-  0.305   0.076   0.381 </code></pre>
+  0.338   0.041   0.383 </code></pre>
 </div>
 <p>Nevertheless, because of the way we defined <code>fprimes()</code>, second time this function is called with <code>n = 10^7</code> computing time is practicaly zero as the function reuse previously computed results as stored in environment <code>.env</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2180,7 +2180,7 @@ $ad2.test
     Quadratic Class Anderson-Darling Test
 
 data:  x
-AD2 = 0.14193, p-value = 0.99
+AD2 = 0.77067, p-value = 0.03
 
 treshold = -Inf, simulations: 100
 
@@ -2190,7 +2190,7 @@ $ad2up.test
     Quadratic Class Anderson-Darling Upper Tail Test
 
 data:  x
-AD2up = 1.9694, p-value = 0.74
+AD2up = 2.7084, p-value = 0.61
 
 treshold = -Inf, simulations: 100
 
@@ -2200,7 +2200,7 @@ $ad.test
     Supremum Class Anderson-Darling Test
 
 data:  x
-AD = 3.5443, p-value = 0.09
+AD = 1.6421, p-value = 0.7
 alternative hypothesis: two.sided
 
 treshold = -Inf, simulations: 100
@@ -2211,7 +2211,7 @@ $adup.test
     Anderson-Darling Upper Tail Test
 
 data:  x
-ADup = 10, p-value = 0.41
+ADup = 10, p-value = 0.51
 alternative hypothesis: two.sided
 
 treshold = -Inf, simulations: 100</code></pre>
