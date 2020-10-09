@@ -1,5 +1,5 @@
 ---
-title: "andreaspano blog "
+title: "Mainly about R"
 site: distill::distill_website
 listing: posts
 ---
