@@ -35,14 +35,16 @@
 <meta property="og:type" content="article"/>
 <meta property="og:description" content="When working with R you may want to run a script that require quite a long time to complete. &#10;As modern computers generally have more cores and ram than required this is not going to be a problem in terms of computer resources.&#10;Nevertheless, the script will take your R prompt busy preventing you from any other activity. &#10;Function `rstudioapi::jobRunScript()` allows you avoid this problem."/>
 <meta property="og:url" content="https://andreaspano.github.io/posts/2020-09-29-run-an-r-script-as-a-background-job/"/>
+<meta property="og:image" content="https://andreaspano.github.io/posts/2020-09-29-run-an-r-script-as-a-background-job/logo.svg"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="andreaspano blog"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
-<meta property="twitter:card" content="summary"/>
+<meta property="twitter:card" content="summary_large_image"/>
 <meta property="twitter:title" content="andreaspano blog: Run an R script as a background job"/>
 <meta property="twitter:description" content="When working with R you may want to run a script that require quite a long time to complete. &#10;As modern computers generally have more cores and ram than required this is not going to be a problem in terms of computer resources.&#10;Nevertheless, the script will take your R prompt busy preventing you from any other activity. &#10;Function `rstudioapi::jobRunScript()` allows you avoid this problem."/>
 <meta property="twitter:url" content="https://andreaspano.github.io/posts/2020-09-29-run-an-r-script-as-a-background-job/"/>
+<meta property="twitter:image" content="https://andreaspano.github.io/posts/2020-09-29-run-an-r-script-as-a-background-job/logo.svg"/>
 
 <!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
 <meta name="citation_title" content="andreaspano blog: Run an R script as a background job"/>
@@ -57,12 +59,12 @@
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","bibliography","output","editor_options","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["Run an R script as a background job"]},{"type":"character","attributes":{},"value":["When working with R you may want to run a script that require quite a long time to complete. \nAs modern computers generally have more cores and ram than required this is not going to be a problem in terms of computer resources.\nNevertheless, the script will take your R prompt busy preventing you from any other activity. \nFunction `rstudioapi::jobRunScript()` allows you avoid this problem."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Andrea Spano"]},{"type":"character","attributes":{},"value":["andreaspano.github.io"]},{"type":"character","attributes":{},"value":["Quantide"]},{"type":"character","attributes":{},"value":["www.quantide.com"]}]}]},{"type":"character","attributes":{},"value":["2020-10-10"]},{"type":"character","attributes":{},"value":["biblio.bib"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["chunk_output_type"]}},"value":[{"type":"character","attributes":{},"value":["console"]}]},{"type":"character","attributes":{},"value":["https://andreaspano.github.io/posts/2020-09-29-run-an-r-script-as-a-background-job/"]},{"type":"character","attributes":{},"value":["https://andreaspano.github.io/posts/2020-09-29-run-an-r-script-as-a-background-job/"]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","bibliography","output","editor_options","preview","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["Run an R script as a background job"]},{"type":"character","attributes":{},"value":["When working with R you may want to run a script that require quite a long time to complete. \nAs modern computers generally have more cores and ram than required this is not going to be a problem in terms of computer resources.\nNevertheless, the script will take your R prompt busy preventing you from any other activity. \nFunction `rstudioapi::jobRunScript()` allows you avoid this problem."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Andrea Spano"]},{"type":"character","attributes":{},"value":["andreaspano.github.io"]},{"type":"character","attributes":{},"value":["Quantide"]},{"type":"character","attributes":{},"value":["www.quantide.com"]}]}]},{"type":"character","attributes":{},"value":["2020-10-10"]},{"type":"character","attributes":{},"value":["biblio.bib"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["chunk_output_type"]}},"value":[{"type":"character","attributes":{},"value":["console"]}]},{"type":"character","attributes":{},"value":["logo.svg"]},{"type":"character","attributes":{},"value":["https://andreaspano.github.io/posts/2020-09-29-run-an-r-script-as-a-background-job/"]},{"type":"character","attributes":{},"value":["https://andreaspano.github.io/posts/2020-09-29-run-an-r-script-as-a-background-job/"]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["biblio.bib","run-an-r-script-as-a-background-job_files/bowser-1.9.3/bowser.min.js","run-an-r-script-as-a-background-job_files/distill-2.2.21/template.v2.js","run-an-r-script-as-a-background-job_files/jquery-1.11.3/jquery.min.js","run-an-r-script-as-a-background-job_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["biblio.bib","logo.svg","run-an-r-script-as-a-background-job_files/bowser-1.9.3/bowser.min.js","run-an-r-script-as-a-background-job_files/distill-2.2.21/template.v2.js","run-an-r-script-as-a-background-job_files/jquery-1.11.3/jquery.min.js","run-an-r-script-as-a-background-job_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 
@@ -1294,6 +1296,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <!--radix_placeholder_site_in_header-->
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Lato');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Mono');
 
 
@@ -1315,8 +1318,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 html, body, p {
 
-  font-family: 'Lato', sans-serif;
-  font-weight: 200;
+  font-family: 'Montserrat';
+  font-weight: 100;
   line-height: 1.3;
   font-size: 1.0em;
   color: #333333;
@@ -1324,12 +1327,6 @@ html, body, p {
 
 }
 
-code {
-  font-family: 'Fira Mono', sans-serif;
-  color: #383838;
-  font-weight: 400;
-  font-size: 0.9em;
-}
 
 d-code {
   background: #e5e5e5;
@@ -1337,8 +1334,9 @@ d-code {
 
 
 
+
 h1, h2, h3, h4, h5 {
-  font-family: 'Fira Mono', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 
@@ -1444,6 +1442,7 @@ for ( i in seq_len(n)){
 }
 sum(y)</code></pre>
 </div>
+<p><br></p>
 <p>This script, say <code>wait-for-me.R</code> when executed takes about one hour.</p>
 <p>If executed directly from the R console it will keep your R session busy for one hour preventing you to keep working on you current R session.</p>
 <p>In order to avoid this waste of time you can use the function <code>jobRunScript()</code> from package <code>rstudioapi</code> <span class="citation" data-cites="rstudioapi">(Kevin <a href="#ref-rstudioapi" role="doc-biblioref">2020</a>)</span></p>
@@ -1457,6 +1456,7 @@ jobRunScript(path = &#39;./wait-for-me.R&#39;,
              importEnv = FALSE, 
              exportEnv = &quot;R_GlobalEnv&quot;)</code></pre>
 </div>
+<p><br></p>
 <p>This command tells R to run your script and export the objects created within this environment</p>
 <p>As stated by the function help:</p>
 <ul>

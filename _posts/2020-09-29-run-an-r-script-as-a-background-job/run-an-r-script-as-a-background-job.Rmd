@@ -19,6 +19,7 @@ output:
     self_contained: false
 editor_options: 
   chunk_output_type: console
+preview: logo.svg  
 ---
 
 
@@ -31,6 +32,7 @@ When working with R you may want to run a script that require quite a long time 
 
 As a basic non sense example consider:
 
+
 ```{r, eval = FALSE}
 n <- 1200
 y <- numeric(n)
@@ -40,12 +42,14 @@ for ( i in seq_len(n)){
 }
 sum(y)
 ```
+<br>
 
 This script, say `wait-for-me.R` when executed takes about one hour. 
 
 If executed directly from the R console it will keep your R session busy for one hour preventing you to keep working on you current R session. 
 
 In order to avoid this waste of time you can use the function `jobRunScript()` from package `rstudioapi` [@rstudioapi]
+
 
 ```{r,  eval = FALSE}
 require(rstudioapi)
@@ -56,6 +60,7 @@ jobRunScript(path = './wait-for-me.R',
              importEnv = FALSE, 
              exportEnv = "R_GlobalEnv")
 ```
+<br>
 
 This command tells R to run your script and export the objects created within this environment  
 
