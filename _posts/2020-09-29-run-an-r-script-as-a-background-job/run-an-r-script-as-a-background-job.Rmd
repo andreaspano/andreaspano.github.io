@@ -1,7 +1,11 @@
 ---
 title: "Run an R script as a background job"
 description: |
-  How to run an R script from within R in background mode
+  When working with R you may want to run a script that require quite a long time to complete. 
+  As modern computers generally have more cores and ram than required this is not going to be a problem in terms of computer resources.
+  Nevertheless, the script will take your R prompt busy preventing you from any other activity. 
+  Function `rstudioapi::jobRunScript()` allows you avoid this problem. 
+
 author:
   - name: Andrea Spano
     url: andreaspano.github.io
@@ -53,7 +57,27 @@ jobRunScript(path = './wait-for-me.R',
              exportEnv = "R_GlobalEnv")
 ```
 
-This command explains to R to run your script and export the objects created within this environment  
+This command tells R to run your script and export the objects created within this environment  
+
+As stated by the function help:
+
+* __path__: The path to the R script to be run.
+
+* __name__: A name for the background job. When NULL (the default), the filename of the script is used as the job name.
+
+* __encoding__: The text encoding of the script, if known.
+
+* __workingDir__: The working directory in which to run the job. When NULL (the default), the parent directory of the R script is used.
+
+* __importEnv__: Whether to import the global environment into the job.
+
+* __exportEnv__: The name of the environment in which to export the R objects created by the job. Use "" (the default) to skip export, "R_GlobalEnv"' to export to the global environment, or the name of an environment object to create an object with that name.
+
+Therefore, if you want to run a job a collect the results back in your working environmentyou need to set exportEnv = "R_GlobalEnv"
+
+In case you need to pass any object from your global environmemnt to teh script you may want to use importEnv = TRUE. Personally, I woulkd not reccomend this choice. A script would be better to be seft contained and not to depend to objects created elsewhere. 
 
 
-3600/3
+
+
+

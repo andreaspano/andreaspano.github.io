@@ -38,18 +38,18 @@
   {
     "path": "posts/2020-09-29-run-an-r-script-as-a-background-job/",
     "title": "Run an R script as a background job",
-    "description": "How to run an R script from within R in background mode",
+    "description": "When working with R you may want to run a script that require quite a long time to complete. \nAs modern computers generally have more cores and ram than required this is not going to be a problem in terms of computer resources.\nNevertheless, the script will take your R prompt busy preventing you from any other activity. \nFunction `rstudioapi::jobRunScript()` allows you avoid this problem.",
     "author": [
       {
         "name": "Andrea Spano",
         "url": "andreaspano.github.io"
       }
     ],
-    "date": "2020-09-29",
+    "date": "2020-10-10",
     "categories": [],
     "preview": {},
-    "last_modified": "2020-09-29T22:29:22+02:00",
-    "input_file": {}
+    "last_modified": "2020-10-10T18:57:02+02:00",
+    "input_file": "run-an-r-script-as-a-background-job.utf8.md"
   },
   {
     "path": "posts/2020-09-24-install-shinyproxy/",
