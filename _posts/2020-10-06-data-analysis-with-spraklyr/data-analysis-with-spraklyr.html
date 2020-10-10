@@ -21,35 +21,35 @@
   <!--radix_placeholder_meta_tags-->
   <title>Data Analysis with Sparklyr</title>
   
-  <meta property="description" itemprop="description" content="Data analysis with Sparklyr"/>
+  <meta property="description" itemprop="description" content="Sparklyr is an open-source package that provides an interface between R and Apache Spark. &#10;Sparklyr provide an interface to use Spark as the backend for dplyr along with acess to Spark’s distributed machine learning algorithms&#10;This article is about using sparkly within an R session"/>
   
   
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2020-10-07"/>
-  <meta property="article:created" itemprop="dateCreated" content="2020-10-07"/>
+  <meta property="article:published" itemprop="datePublished" content="2020-10-10"/>
+  <meta property="article:created" itemprop="dateCreated" content="2020-10-10"/>
   <meta name="article:author" content="Andrea Spano"/>
   
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="Data Analysis with Sparklyr"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Data analysis with Sparklyr"/>
+  <meta property="og:description" content="Sparklyr is an open-source package that provides an interface between R and Apache Spark. &#10;Sparklyr provide an interface to use Spark as the backend for dplyr along with acess to Spark’s distributed machine learning algorithms&#10;This article is about using sparkly within an R session"/>
   <meta property="og:locale" content="en_US"/>
   
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
   <meta property="twitter:title" content="Data Analysis with Sparklyr"/>
-  <meta property="twitter:description" content="Data analysis with Sparklyr"/>
+  <meta property="twitter:description" content="Sparklyr is an open-source package that provides an interface between R and Apache Spark. &#10;Sparklyr provide an interface to use Spark as the backend for dplyr along with acess to Spark’s distributed machine learning algorithms&#10;This article is about using sparkly within an R session"/>
   
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","editor_options"]}},"value":[{"type":"character","attributes":{},"value":["Data Analysis with Sparklyr"]},{"type":"character","attributes":{},"value":["Data analysis with Sparklyr\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Andrea Spano"]},{"type":"character","attributes":{},"value":["andreaspano.github.io"]},{"type":"character","attributes":{},"value":["Quantide"]},{"type":"character","attributes":{},"value":["www.quantide.com"]}]}]},{"type":"character","attributes":{},"value":["2020-10-07"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["chunk_output_type"]}},"value":[{"type":"character","attributes":{},"value":["console"]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","editor_options"]}},"value":[{"type":"character","attributes":{},"value":["Data Analysis with Sparklyr"]},{"type":"character","attributes":{},"value":["Sparklyr is an open-source package that provides an interface between R and Apache Spark. \nSparklyr provide an interface to use Spark as the backend for dplyr along with acess to Spark’s distributed machine learning algorithms\nThis article is about using sparkly within an R session \n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Andrea Spano"]},{"type":"character","attributes":{},"value":["andreaspano.github.io"]},{"type":"character","attributes":{},"value":["Quantide"]},{"type":"character","attributes":{},"value":["www.quantide.com"]}]}]},{"type":"character","attributes":{},"value":["2020-10-10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["chunk_output_type"]}},"value":[{"type":"character","attributes":{},"value":["console"]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["data-analysis-with-spraklyr_files/bowser-1.9.3/bowser.min.js","data-analysis-with-spraklyr_files/distill-2.2.21/template.v2.js","data-analysis-with-spraklyr_files/figure-html5/plot 2-1.png","data-analysis-with-spraklyr_files/figure-html5/plot-1.png","data-analysis-with-spraklyr_files/jquery-1.11.3/jquery.min.js","data-analysis-with-spraklyr_files/webcomponents-2.0.0/webcomponents.js","derby.log","hs_err_pid372661.log","logs/log4j.spark.log","logs/log4j.spark.log.2020-10-06"]}
+  {"type":"character","attributes":{},"value":["data-analysis-with-spraklyr_files/bowser-1.9.3/bowser.min.js","data-analysis-with-spraklyr_files/distill-2.2.21/template.v2.js","data-analysis-with-spraklyr_files/figure-html5/plot 2-1.png","data-analysis-with-spraklyr_files/figure-html5/plot-1.png","data-analysis-with-spraklyr_files/jquery-1.11.3/jquery.min.js","data-analysis-with-spraklyr_files/webcomponents-2.0.0/webcomponents.js","derby.log","hs_err_pid372661.log","logs/log4j.spark.log","logs/log4j.spark.log.2020-10-06","logs/log4j.spark.log.2020-10-07"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -952,7 +952,7 @@
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Data Analysis with Sparklyr","description":"Data analysis with Sparklyr","authors":[{"author":"Andrea Spano","authorURL":"andreaspano.github.io","affiliation":"Quantide","affiliationURL":"www.quantide.com"}],"publishedDate":"2020-10-07T00:00:00.000+02:00","citationText":"Spano, 2020"}
+{"title":"Data Analysis with Sparklyr","description":"Sparklyr is an open-source package that provides an interface between R and Apache Spark. \nSparklyr provide an interface to use Spark as the backend for dplyr along with acess to Spark’s distributed machine learning algorithms\nThis article is about using sparkly within an R session","authors":[{"author":"Andrea Spano","authorURL":"andreaspano.github.io","affiliation":"Quantide","affiliationURL":"www.quantide.com"}],"publishedDate":"2020-10-10T00:00:00.000+02:00","citationText":"Spano, 2020"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -963,13 +963,13 @@
 
 <div class="d-title">
 <h1>Data Analysis with Sparklyr</h1>
-<p><p>Data analysis with Sparklyr</p></p>
+<p><p>Sparklyr is an open-source package that provides an interface between R and Apache Spark. Sparklyr provide an interface to use Spark as the backend for dplyr along with acess to Spark’s distributed machine learning algorithms This article is about using sparkly within an R session</p></p>
 </div>
 
 <div class="d-byline">
   Andrea Spano andreaspano.github.io (Quantide)www.quantide.com
   
-<br/>2020-10-07
+<br/>2020-10-10
 </div>
 
 <div class="d-article">
@@ -1013,7 +1013,7 @@ d_all &lt;- spark_read_csv(sc ,
 })</code></pre>
 <pre><code>
    user  system elapsed 
-  0.328   0.048 318.641 </code></pre>
+  0.386   0.021 349.361 </code></pre>
 </div>
 <p>Save as parquet</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1024,7 +1024,7 @@ system.time({
 })</code></pre>
 <pre><code>
    user  system elapsed 
-  0.090   0.005 152.293 </code></pre>
+  0.100   0.009 166.966 </code></pre>
 </div>
 <p>Disconnect from spark context and reload</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1044,7 +1044,7 @@ system.time({
 })</code></pre>
 <pre><code>
    user  system elapsed 
-  0.269   0.013 240.223 </code></pre>
+  0.296   0.009 255.523 </code></pre>
 </div>
 <h2 id="check-data-size">Check data size</h2>
 <div class="layout-chunk" data-layout="l-body">
@@ -1063,7 +1063,7 @@ print(n)
 1 123536460</code></pre>
 <pre><code>
    user  system elapsed 
-  0.104   0.004   0.635 </code></pre>
+  0.106   0.000   0.665 </code></pre>
 </div>
 <h2 id="prepare-model-data">prepare model data</h2>
 <p>Select variables of interests only</p>
@@ -1082,7 +1082,7 @@ d_model &lt;- d_all %&gt;%
 })</code></pre>
 <pre><code>
    user  system elapsed 
-  0.015   0.000   0.015 </code></pre>
+  0.018   0.000   0.018 </code></pre>
 </div>
 <p>Check newdata dimension</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1100,7 +1100,7 @@ print(n)
 1 118734210</code></pre>
 <pre><code>
    user  system elapsed 
-  0.219   0.000  40.011 </code></pre>
+  0.219   0.007  51.889 </code></pre>
 </div>
 <p>import carriers data</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1152,7 +1152,7 @@ print(n2008)
 1 6552690</code></pre>
 <pre><code>
    user  system elapsed 
-  0.963   0.006  84.664 </code></pre>
+  1.103   0.004  87.384 </code></pre>
 </div>
 <p>partition the data into training and validation sets</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1163,7 +1163,7 @@ model_partition &lt;- d_model %&gt;%
 })</code></pre>
 <pre><code>
    user  system elapsed 
-  0.122   0.001   0.254 </code></pre>
+  0.129   0.000   0.274 </code></pre>
 </div>
 <h2 id="modelling">Modelling</h2>
 <p>Fit a linear model</p>
@@ -1175,7 +1175,7 @@ system.time({
 })</code></pre>
 <pre><code>
    user  system elapsed 
-  0.777   0.028 436.077 </code></pre>
+  0.831   0.017 452.703 </code></pre>
 </div>
 <p>Show summary</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1186,7 +1186,7 @@ system.time({
 <pre><code>
 Deviance Residuals (approximate):
      Min       1Q   Median       3Q      Max 
--330.169   -4.976    1.246    6.932   76.823 
+-265.919   -5.051    1.269    6.894   65.380 
 
 Coefficients:
          (Intercept)             Distance             DepDelay 
@@ -1216,7 +1216,7 @@ R-Squared: 0.01378
 Root Mean Squared Error: 12.73</code></pre>
 <pre><code>
    user  system elapsed 
-  0.152   0.012 189.535 </code></pre>
+  0.155   0.017 196.604 </code></pre>
 </div>
 <p>Calculate average gains by predicted decile</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1234,7 +1234,7 @@ model_deciles &lt;- lapply(model_partition,
 })</code></pre>
 <pre><code>
    user  system elapsed 
-   0.55    0.04  511.46 </code></pre>
+  0.560   0.021 532.135 </code></pre>
 </div>
 <p>Create a summary dataset for plotting</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1264,7 +1264,7 @@ pred_2008 &lt;- ml_predict(fm, d_model_2008) %&gt;%
 })</code></pre>
 <pre><code>
    user  system elapsed 
-  0.254   0.000  34.079 </code></pre>
+  0.240   0.004  35.131 </code></pre>
 </div>
 <p>Plot actual gains and predicted gains by airline carrier</p>
 <div class="layout-chunk" data-layout="l-body">

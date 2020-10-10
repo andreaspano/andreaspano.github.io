@@ -23,9 +23,11 @@ Mainly, I tend to write otherwise I will surely forget later
       <title>Data Analysis with Sparklyr</title>
       <dc:creator>Andrea Spano</dc:creator>
       <link>https://andreaspano.github.io/posts/2020-10-06-data-analysis-with-spraklyr</link>
-      <description>Data analysis with Sparklyr</description>
+      <description>Sparklyr is an open-source package that provides an interface between R and Apache Spark. 
+Sparklyr provide an interface to use Spark as the backend for dplyr along with acess to Spark’s distributed machine learning algorithms
+This article is about using sparkly within an R session</description>
       <guid>https://andreaspano.github.io/posts/2020-10-06-data-analysis-with-spraklyr</guid>
-      <pubDate>mer, 07 ott 2020 00:00:00 +0000</pubDate>
+      <pubDate>ven, 09 ott 2020 00:00:00 +0000</pubDate>
       <media:content url="https://andreaspano.github.io/posts/2020-10-06-data-analysis-with-spraklyr/data-analysis-with-spraklyr_files/figure-html5/plot-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>

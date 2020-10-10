@@ -1,7 +1,10 @@
 ---
 title: "Data Analysis with Sparklyr"
 description: |
-  Data analysis with Sparklyr
+  Sparklyr is an open-source package that provides an interface between R and Apache Spark. 
+  Sparklyr provide an interface to use Spark as the backend for dplyr along with acess to Spark’s distributed machine learning algorithms
+  This article is about using sparkly within an R session 
+
 author:
   - name: Andrea Spano
     url: andreaspano.github.io
