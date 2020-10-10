@@ -40,7 +40,7 @@ Nevertheless, the script will take your R prompt busy preventing you from any ot
 Function `rstudioapi::jobRunScript()` allows you avoid this problem.</description>
       <guid>https://andreaspano.github.io/posts/2020-09-29-run-an-r-script-as-a-background-job</guid>
       <pubDate>ven, 09 ott 2020 00:00:00 +0000</pubDate>
-      <media:content url="https://andreaspano.github.io/posts/2020-09-29-run-an-r-script-as-a-background-job/logo.svg" medium="image" type="image/svg+xml"/>
+      <media:content url="https://andreaspano.github.io/posts/2020-09-29-run-an-r-script-as-a-background-job/logo.png" medium="image" type="image/png" width="240" height="278"/>
     </item>
     <item>
       <title>Install ShinyProxy</title>

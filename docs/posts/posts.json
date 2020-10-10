@@ -47,9 +47,11 @@
     ],
     "date": "2020-10-10",
     "categories": [],
-    "preview": "posts/2020-09-29-run-an-r-script-as-a-background-job/logo.svg",
-    "last_modified": "2020-10-10T19:23:24+02:00",
-    "input_file": "run-an-r-script-as-a-background-job.utf8.md"
+    "preview": "posts/2020-09-29-run-an-r-script-as-a-background-job/logo.png",
+    "last_modified": "2020-10-10T19:34:49+02:00",
+    "input_file": "run-an-r-script-as-a-background-job.utf8.md",
+    "preview_width": 240,
+    "preview_height": 278
   },
   {
     "path": "posts/2020-09-24-install-shinyproxy/",
