@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
   <meta name="generator" content="distill" />
-  <link rel="alternate" type="application/rss+xml" href="https://andreaspano.github.io/index.xml" />
 
   <style type="text/css">
   /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
@@ -20,26 +19,29 @@
  <!--/radix_placeholder_import_source-->
 
   <!--radix_placeholder_meta_tags-->
-  <title>andreaspano blog: Mainly about R</title>
+  <title>andreaspano blog: About this blog</title>
   
+  <meta property="description" itemprop="description" content="This is the place where I try to save and share all what I learn and write about.&#10;&#10;Most of this stuff is just coipied from other articles, possibly with some changes from my side.&#10;&#10;Mainly, I tend to write now otherwise I will surely forget later"/>
   
   
   
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="andreaspano blog: Mainly about R"/>
+  <meta property="og:title" content="andreaspano blog: About this blog"/>
   <meta property="og:type" content="article"/>
+  <meta property="og:description" content="This is the place where I try to save and share all what I learn and write about.&#10;&#10;Most of this stuff is just coipied from other articles, possibly with some changes from my side.&#10;&#10;Mainly, I tend to write now otherwise I will surely forget later"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="andreaspano blog"/>
   
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="andreaspano blog: Mainly about R"/>
+  <meta property="twitter:title" content="andreaspano blog: About this blog"/>
+  <meta property="twitter:description" content="This is the place where I try to save and share all what I learn and write about.&#10;&#10;Most of this stuff is just coipied from other articles, possibly with some changes from my side.&#10;&#10;Mainly, I tend to write now otherwise I will surely forget later"/>
   
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site","listing"]}},"value":[{"type":"character","attributes":{},"value":["Mainly about R"]},{"type":"character","attributes":{},"value":["distill::distill_website"]},{"type":"character","attributes":{},"value":["posts"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description"]}},"value":[{"type":"character","attributes":{},"value":["About this blog"]},{"type":"character","attributes":{},"value":["This is the place where I try to save and share all what I learn and write about.\n\nMost of this stuff is just coipied from other articles, possibly with some changes from my side.\n\nMainly, I tend to write now otherwise I will surely forget later"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -1366,12 +1368,12 @@
 
 </head>
 
-<body class="layout-listing">
+<body>
 
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Mainly about R","authors":[]}
+{"title":"About this blog","description":"This is the place where I try to save and share all what I learn and write about.\n\nMost of this stuff is just coipied from other articles, possibly with some changes from my side.\n\nMainly, I tend to write now otherwise I will surely forget later","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1400,459 +1402,12 @@
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
-<!--radix_placeholder_article_listing-->
-
-<style type="text/css">
-
-/* Styles for listing layout (hide title) */
-.layout-listing d-title, .layout-listing .d-title {
-  display: none;
-}
-
-/* Styles for posts lists (not auto-injected) */
-
-
-.posts-with-sidebar {
-  padding-left: 45px;
-  padding-right: 45px;
-}
-
-.posts-list .description h2,
-.posts-list .description p {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
-}
-
-.posts-list .description h2 {
-  font-weight: 700;
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.posts-list h2.post-tag {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  padding-bottom: 12px;
-}
-.posts-list {
-  margin-top: 60px;
-  margin-bottom: 24px;
-}
-
-.posts-list .post-preview {
-  text-decoration: none;
-  overflow: hidden;
-  display: block;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 24px 0;
-}
-
-.post-preview-last {
-  border-bottom: none !important;
-}
-
-.posts-list .posts-list-caption {
-  grid-column: screen;
-  font-weight: 400;
-}
-
-.posts-list .post-preview h2 {
-  margin: 0 0 6px 0;
-  line-height: 1.2em;
-  font-style: normal;
-  font-size: 24px;
-}
-
-.posts-list .post-preview p {
-  margin: 0 0 12px 0;
-  line-height: 1.4em;
-  font-size: 16px;
-}
-
-.posts-list .post-preview .thumbnail {
-  box-sizing: border-box;
-  margin-bottom: 24px;
-  position: relative;
-  max-width: 500px;
-}
-.posts-list .post-preview img {
-  width: 100%;
-  display: block;
-}
-
-.posts-list .metadata {
-  font-size: 12px;
-  line-height: 1.4em;
-  margin-bottom: 18px;
-}
-
-.posts-list .metadata > * {
-  display: inline-block;
-}
-
-.posts-list .metadata .publishedDate {
-  margin-right: 1em;
-}
-
-.posts-list .metadata .tags {
-  margin-top: 1em;
-}
-
-.posts-list .tags .tag {
-  color: rgba(0,0,0,0.67);
-  padding: 0.3em 0.5em;
-  margin: 0;
-  font-size: 80%;
-  border: 1px solid rgba(0,0,0,0.4);
-  border-radius: 3px;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-
-.posts-list img {
-  opacity: 1;
-}
-
-.posts-list img[data-src] {
-  opacity: 0;
-}
-
-.posts-more {
-  clear: both;
-}
-
-
-.posts-sidebar {
-  font-size: 16px;
-}
-
-.posts-sidebar h3 {
-  font-size: 16px;
-  margin-top: 0;
-  margin-bottom: 0.5em;
-  font-weight: 400;
-  text-transform: uppercase;
-}
-
-.sidebar-section {
-  margin-bottom: 30px;
-}
-
-.categories ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.categories li {
-  color: rgba(0, 0, 0, 0.8);
-  margin-bottom: 0;
-}
-
-.categories li>a {
-  border-bottom: none;
-}
-
-.categories li>a:hover {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-}
-
-.categories .active {
-  font-weight: 600;
-}
-
-.categories .category-count {
-  color: rgba(0, 0, 0, 0.4);
-}
-
-
-@media(min-width: 768px) {
-  .posts-list .post-preview h2 {
-    font-size: 26px;
-  }
-  .posts-list .post-preview .thumbnail {
-    float: right;
-    width: 35%;
-    margin-bottom: 0;
-  }
-  .posts-list .post-preview .description {
-    float: left;
-    width: 45%;
-  }
-  .posts-list .post-preview .metadata {
-    float: left;
-    width: 15%;
-    margin-top: 8px;
-  }
-  .posts-list .post-preview p {
-    margin: 0 0 12px 0;
-    line-height: 1.5em;
-    font-size: 16px;
-  }
-  .posts-with-sidebar .posts-list {
-    float: left;
-    width: 72%;
-  }
-  .posts-with-sidebar .posts-sidebar {
-    float: right;
-    width: 20%;
-    margin-top: 60px;
-    padding-top: 24px;
-    padding-bottom: 24px;
-  }
-}
-
-.downlevel .posts-list .post-preview {
-  color: inherit;
-}
-
-</style>
-
-<script type="application/javascript">
-
-function init_posts_list() {
-
-  function load_image(img) {
-    var src = $(img).attr('data-src');
-    if (src) {
-      $(img).attr('src', src);
-      $(img).load(function() {
-        img.removeAttribute('data-src');
-      });
-    }
-  }
-
-  function set_posts_visible(posts, visible) {
-    if (visible) {
-
-      // show bottom border by default
-      $(posts).removeClass('post-preview-last');
-
-      // apply limits if need be
-      var max_posts = 25;
-      var apply_limits = $('.posts-container').hasClass('posts-apply-limit');
-      if (apply_limits && posts.length > max_posts) {
-        posts = $(posts).slice(0, max_posts);
-      } else {
-        $('.posts-more a').addClass('hidden');
-      }
-
-      // apply last style
-      $(posts.slice(-1)[0]).addClass('post-preview-last');
-
-      $(posts).removeClass('hidden');
-      $(posts).find('img[data-src]').each(function(i, img) {
-        load_image(img);
-      });
-    } else {
-      $(posts).addClass('hidden');
-    }
-  }
-
-  function apply_hash_filter() {
-
-    // clear active state
-    $('.categories .active').removeClass('active');
-
-    // mark all posts invisible to start
-    set_posts_visible($('.posts-list').children('a'), false);
-
-    // if we have a hash filter
-    if (window.location.hash) {
-
-      // mark posts that match the category visible
-      var page_category = window.location.hash.replace("#", "");
-      var posts = $('.post-metadata').map(function(idx, script) {
-        var metadata = $.parseJSON($(script).html());
-        var post = null;
-        $.each(metadata.categories, function(idx, category) {
-          category = category.replace(/ /g,"_");
-          if (category == page_category) {
-            post = $(script).parent().get();
-            return false;
-          }
-        });
-        return post;
-      });
-      set_posts_visible(posts, true);
-
-      // mark the hash active
-      $('.categories li>a[href="' + window.location.hash + '"]').addClass('active');
-
-    } else {
-
-      // no hash filter, make all posts visible (subject to max display)
-      set_posts_visible($('.posts-list').children(), true);
-
-    }
-  }
-
-  // more articles
-  function apply_post_limits(apply) {
-    if (apply) {
-      $('.posts-container').addClass('posts-apply-limit');
-      $('.posts-more a').removeClass('hidden');
-    } else {
-      $('.posts-container').removeClass('posts-apply-limit');
-      $('.posts-more a').addClass('hidden');
-    }
-  }
-
-  // hash filter handling
-  apply_hash_filter();
-  $(window).on('hashchange',function() {
-    apply_post_limits(true);
-    apply_hash_filter();
-  });
-
-  // more articles link
-  $('.posts-more a').click(function(e) {
-    e.preventDefault();
-    apply_post_limits(false);
-    apply_hash_filter();
-    return false;
-  });
-
-}
-
-</script>
-
-
-
-<div class="posts-container posts-apply-limit l-page">
-<div class="posts-list">
-<h1 class="posts-list-caption">Mainly about R</h1>
-<a href="posts/2020-09-29-run-an-r-script-as-a-background-job/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Oct. 11, 2020</div>
-</div>
-<div class="thumbnail">
-<img data-src="posts/2020-09-29-run-an-r-script-as-a-background-job/logo.png"/>
-</div>
-<div class="description">
-<h2>Run an R script as a background job</h2>
-<p>When working with R you may want to run a script that require quite a long time to complete. 
-As modern computers generally have more cores and ram than required this is not going to be a problem in terms of computer resources.
-Nevertheless, the script will take your R prompt busy preventing you from any other activity. 
-Function `rstudioapi::jobRunScript()` allows you avoid this problem.</p>
-</div>
-</a>
-<a href="posts/2020-10-06-data-analysis-with-spraklyr/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Oct. 10, 2020</div>
-</div>
-<div class="thumbnail">
-<img data-src="posts/2020-10-06-data-analysis-with-spraklyr/data-analysis-with-spraklyr_files/figure-html5/plot-1.png"/>
-</div>
-<div class="description">
-<h2>Data Analysis with Sparklyr</h2>
-<p>Sparklyr is an open-source package that provides an interface between R and Apache Spark. 
-Sparklyr provide an interface to use Spark as the backend for dplyr along with acess to Spark’s distributed machine learning algorithms
-This article is about using sparkly within an R session</p>
-</div>
-</a>
-<a href="posts/2020-10-07-functional-programming-with-r/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Oct. 10, 2020</div>
-</div>
-<div class="thumbnail">
-<img data-src="posts/2020-10-07-functional-programming-with-r/functional-programming-with-r_files/figure-html5/closures-023-1.png"/>
-</div>
-<div class="description">
-<h2>Functional Programming with R</h2>
-<p>`R` can be considered as a functional programming language as it focuses on the creation and manipulation of functions and has what's known as first class functions. Understanding the functional nature of `R` may help to improve clarity and avoid redundancy.</p>
-</div>
-</a>
-<a href="posts/2020-09-24-install-shinyproxy/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Sept. 24, 2020</div>
-</div>
-<div class="thumbnail">
-<img/>
-</div>
-<div class="description">
-<h2>Install ShinyProxy</h2>
-<p>How to install shiny proxy in Ubuntu</p>
-</div>
-</a>
-<a href="posts/2020-09-15-install-docker-engine/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Sept. 23, 2020</div>
-</div>
-<div class="thumbnail">
-<img/>
-</div>
-<div class="description">
-<h2>Docker Installation</h2>
-<p>How to install Docker system on Ubuntu</p>
-</div>
-</a>
-<a href="posts/2020-09-22-install-portainer/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Sept. 23, 2020</div>
-</div>
-<div class="thumbnail">
-<img data-src="posts/2020-09-22-install-portainer/distill-preview.png"/>
-</div>
-<div class="description">
-<h2>Install Portainer</h2>
-<p>How to install Portainer on Ubuntu</p>
-</div>
-</a>
-<a href="posts/2020-09-19-shiny-app-in-a-container/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Sept. 20, 2020</div>
-</div>
-<div class="thumbnail">
-<img/>
-</div>
-<div class="description">
-<h2>How to dockerise a Shiny app</h2>
-<p>How to port a shiny app into a container</p>
-</div>
-</a>
-<a href="posts/2020-09-20-how-to-move-docker-data-direcory/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Sept. 20, 2020</div>
-</div>
-<div class="thumbnail">
-<img/>
-</div>
-<div class="description">
-<h2>Docker data direcory</h2>
-<p>How to move docker data direcory to a different location in ubuntu.</p>
-</div>
-</a>
-<a href="posts/welcome/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Sept. 1, 2020</div>
-</div>
-<div class="thumbnail">
-<img data-src="posts/welcome/images/welcome.jpg"/>
-</div>
-<div class="description">
-<h2>Welcome to andreaspano blog </h2>
-<p>Welcome to my blog; 
-the place where I am trying to write what I learn about</p>
-</div>
-</a>
-</div>
-<div class="posts-more">
-<a href="#">More articles &raquo;</a>
-</div>
-</div>
-<!--/radix_placeholder_article_listing-->
 
 <div class="d-title">
-<h1>Mainly about R</h1>
-
+<h1>About this blog</h1>
+<p><p>This is the place where I try to save and share all what I learn and write about.</p>
+<p>Most of this stuff is just coipied from other articles, possibly with some changes from my side.</p>
+<p>Mainly, I tend to write now otherwise I will surely forget later</p></p>
 </div>
 
 
