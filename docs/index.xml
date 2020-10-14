@@ -9,7 +9,7 @@ Most og this stuff is just coipied from other articles, possibly with some chang
 Mainly, I tend to write otherwise I will surely forget later
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>dom, 11 ott 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>mar, 13 ott 2020 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Run an R script as a background job</title>
       <dc:creator>Andrea Spano</dc:creator>
@@ -19,7 +19,7 @@ As modern computers generally have more cores and ram than required this is not 
 Nevertheless, the script will take your R prompt busy preventing you from any other activity. 
 Function `rstudioapi::jobRunScript()` allows you avoid this problem.</description>
       <guid>https://andreaspano.github.io/posts/2020-09-29-run-an-r-script-as-a-background-job</guid>
-      <pubDate>dom, 11 ott 2020 00:00:00 +0000</pubDate>
+      <pubDate>mar, 13 ott 2020 00:00:00 +0000</pubDate>
       <media:content url="https://andreaspano.github.io/posts/2020-09-29-run-an-r-script-as-a-background-job/logo.png" medium="image" type="image/png" width="120" height="139"/>
     </item>
     <item>

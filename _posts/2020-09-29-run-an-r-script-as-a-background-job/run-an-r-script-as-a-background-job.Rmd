@@ -28,6 +28,8 @@ preview: logo.png
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+##  Introduction 
+
 When working with R you may want to run a script that require quite a long time to complete. 
 
 As a basic non sense example consider:
@@ -48,7 +50,37 @@ This script, say `wait-for-me.R` when executed takes about one hour.
 
 If executed directly from the R console it will keep your R session busy for one hour preventing you to keep working on you current R session. 
 
-In order to avoid this waste of time you can use the function `jobRunScript()` from package `rstudioapi` [@rstudioapi]
+In order to avoid this waste of time you can use three different approaches: 
+
+1. R CMD BATCH 
+2. RScript 
+3. jobRunScript
+
+## R CMD BATCH 
+
+R CMD BATCH is a bash utility that allows you to run R in batch mode at the unix terminal
+
+The usual command is:
+
+```{shell , eval = FALSE}
+R CMD BATCH infile.R outfile.log
+```
+<br>
+
+`R` executes the instructions from `infile.R` and writes the output, both stdout and stderr, to `outfile.log`
+
+When R terminates the execution of `infile.R` the working environment where the computation occurred is not saved. 
+Therefore, if you want save any object, this should be done explicitly with instructions like `save()`, `save.image()`,`saveRDS()` or `readr::write_rds()`.
+You can always import the files generated from these functions into your working session by using instructions like `load()`, `readRDS()`. `readr::read_rds()`.
+
+
+## jobRunScript [@rstudioapi]
+
+Function `jobRunScript()` from package `rstudioapi` is a newer and interesting alternative.
+
+`jobRunScript()` is an R function from package `rstudioapi` and not a bash utility. As a result, you can run it at you R prompt within RStudio. `jobRunScript()` will execute your script in background and immediately return your R session available to you. Clearly, as `jobRunScript()` is part of or package `rstudioapi` it will not work outside RStudio
+
+
 
 
 ```{r,  eval = FALSE}
@@ -78,9 +110,9 @@ As stated by the function help:
 
 * __exportEnv__: The name of the environment in which to export the R objects created by the job. Use "" (the default) to skip export, "R_GlobalEnv"' to export to the global environment, or the name of an environment object to create an object with that name.
 
-Therefore, if you want to run a job a collect the results back in your working environmentyou need to set exportEnv = "R_GlobalEnv"
+Therefore, if you want to run a job a collect the results back in your working environmentyou need to set:  `exportEnv = "R_GlobalEnv"`
 
-In case you need to pass any object from your global environmemnt to teh script you may want to use importEnv = TRUE. Personally, I woulkd not reccomend this choice. A script would be better to be seft contained and not to depend to objects created elsewhere. 
+In case you need to pass any object from your global environmemnt to teh script you may want to use importEnv = TRUE. Personally, I woulkd not reccomend this choice. A script would be better to be seft contained and not to depend from objects defined elsewhere. 
 
 
 
