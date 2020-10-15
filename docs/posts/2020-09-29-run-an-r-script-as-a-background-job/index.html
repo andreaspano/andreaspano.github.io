@@ -1538,6 +1538,7 @@ R CMD BATCH --restore --save infile.R outfile.log</code></pre>
 R CMD BATCH --no-restore --no-save infile.R outfile.log</code></pre>
 </div>
 <p><br></p>
+<p>When R terminates the execution of <code>infile.R</code> the working environment where the computation occurred is not saved. Therefore, if you want save any object, this should be done explicitly with instructions like <code>save()</code>,<code>saveRDS()</code> or <code>readr::write_rds()</code>. You can always import the files generated from these functions into your working session by using instructions like <code>load()</code>, <code>readRDS()</code>. <code>readr::read_rds()</code>.</p>
 <p>In the above case, the R script runs in almost complete self isolation. In order to achieve complete isolation you should write:</p>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="shell"><code>
@@ -1555,7 +1556,14 @@ R CMD BATCH --no-restore --no-save --no-environ --no-site-file --no-init-file in
 R CMD BATCH --vanilla infile.R outfile.log</code></pre>
 </div>
 <p><br></p>
-<p>When R terminates the execution of <code>infile.R</code> the working environment where the computation occurred is not saved. Therefore, if you want save any object, this should be done explicitly with instructions like <code>save()</code>, <code>save.image()</code>,<code>saveRDS()</code> or <code>readr::write_rds()</code>. You can always import the files generated from these functions into your working session by using instructions like <code>load()</code>, <code>readRDS()</code>. <code>readr::read_rds()</code>.</p>
+<p>In case you want to run <code>R CMD BATCH</code> and see <code>R</code> output at the unx terminal rather than in a file, the following will do the trick:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="shell"><code>
+mkfifo Rfifo
+cat Rfifo &amp;
+R CMD BATCH --vanilla infile.R Rfifo</code></pre>
+</div>
+<p><br></p>
 <h2 id="jobrunscript-rstudioapi">jobRunScript <span class="citation" data-cites="rstudioapi">(Kevin <a href="#ref-rstudioapi" role="doc-biblioref">2020</a>)</span></h2>
 <p>Function <code>jobRunScript()</code> from package <code>rstudioapi</code> is a newer and interesting alternative.</p>
 <p><code>jobRunScript()</code> is an R function from package <code>rstudioapi</code> and not a bash utility. As a result, you can run it at you R prompt within RStudio. <code>jobRunScript()</code> will execute your script in background and immediately return your R session available to you. Clearly, as <code>jobRunScript()</code> is part of or package <code>rstudioapi</code> it will not work outside RStudio</p>
