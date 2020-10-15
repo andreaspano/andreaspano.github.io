@@ -1,13 +1,17 @@
 ---
 title: "About this blog"
 description: |
-  This is the place where I try to save and share all what I learn and write about.
-  
-  Most of this stuff is just coipied from other articles, possibly with some changes from my side.
-  
-  Mainly, I tend to write now otherwise I will surely forget later
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
+![](images/cresta.jpg)
+
+<BR>
+This is the place where I try to save and share all what I learn and write about.
+  
+Most of this stuff is just coipied from other articles, possibly with some changes from my side.
+  
+Mainly, I tend to write now otherwise I will surely forget later
