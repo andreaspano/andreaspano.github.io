@@ -58,7 +58,7 @@ In order to avoid this waste of time you can use three different approaches:
 
 ## R CMD BATCH 
 
-R CMD BATCH is a bash utility that allows you to run R in batch mode at the unix terminal
+R CMD BATCH is a bash utility that allows you to run R in batch mode at the Unix terminal
 
 The usual command is:
 
@@ -69,9 +69,55 @@ R CMD BATCH infile.R outfile.log
 
 `R` executes the instructions from `infile.R` and writes the output, both stdout and stderr, to `outfile.log`
 
+The above instruction silently implies two extra default parameters:
+
+```{shell , eval = FALSE}
+R CMD BATCH --restore --save infile.R outfile.log
+```
+<br>
+
+ - `--save`: save the environment at the end of the computation into a file named `.RData`
+
+ - `--restore`: restore any `.RData` file into the R environment prior starting the computation
+
+
+I believe batch R scripts should be run by 
+
+```{shell , eval = FALSE}
+R CMD BATCH --no-restore --no-save infile.R outfile.log
+```
+<br>
+
+
+In the above case, the R script runs in almost complete self isolation. In order to achieve complete isolation you should write:
+
+```{shell , eval = FALSE}
+R CMD BATCH --no-restore --no-save --no-environ --no-site-file --no-init-file infile.R outfile.log
+```
+<br>
+
+- `--no-environ`: do not use any environmental variables from teh user profile 
+- `--no-site-file`: do to execute .Rprofile.site  prior running teh computation 
+- `--no-init-file`: do to execute local .Rprofile  prior running teh computation 
+
+Note that the long above command can be  shortened into:
+
+```{shell , eval = FALSE}
+R CMD BATCH --vanilla infile.R outfile.log
+```
+<br>
+
+
+
+
+
+
 When R terminates the execution of `infile.R` the working environment where the computation occurred is not saved. 
 Therefore, if you want save any object, this should be done explicitly with instructions like `save()`, `save.image()`,`saveRDS()` or `readr::write_rds()`.
 You can always import the files generated from these functions into your working session by using instructions like `load()`, `readRDS()`. `readr::read_rds()`.
+
+
+
 
 
 ## jobRunScript [@rstudioapi]
