@@ -75,7 +75,11 @@ R CMD BATCH --no-restore --no-save infile.R outfile.log
 ```
 <br>
 
+<<<<<<< HEAD
 With the above command,  when R terminates the execution of `infile.R` the working environment where the computation occurred is not saved. 
+=======
+When R terminates the execution of `infile.R` the working environment where the computation occurred is not saved. 
+>>>>>>> e6a723046c6dabbd02877af2b1c39608a7641094
 Therefore, if you want save any object, this should be done explicitly with instructions like `save()`,`saveRDS()` or `readr::write_rds()`.
 You can always import the files generated from these functions into your working session by using instructions like `load()`, `readRDS()`. `readr::read_rds()`.
 
@@ -97,8 +101,10 @@ R CMD BATCH --vanilla infile.R outfile.log
 ```
 <br>
 
+In case you want to run `R CMD BATCH` and see `R` output at the unx terminal rather than in a file, the following will do the trick:
 
 
+<<<<<<< HEAD
 In some situations you may want to pass arguments to the batch script. 
 Quite often this happens when you want to run the same script against different data sources 
 In this case, you do not want to write a version of your script for each data source but a single script that takes teh data source as a parameter
@@ -126,12 +132,15 @@ In this case your R script should be written as:
 In case you want to run `R CMD BATCH` and see `R` output at the unx terminal rather than in a file, the following will do the trick:
 
 
+=======
+>>>>>>> e6a723046c6dabbd02877af2b1c39608a7641094
 ```{shell , eval = FALSE}
 mkfifo Rfifo
 cat Rfifo &
 R CMD BATCH --vanilla infile.R Rfifo
 ```
 <br>
+<<<<<<< HEAD
 
 
 
@@ -142,6 +151,11 @@ R CMD BATCH --vanilla infile.R Rfifo
 
 
 
+=======
+
+
+
+>>>>>>> e6a723046c6dabbd02877af2b1c39608a7641094
 
 
 

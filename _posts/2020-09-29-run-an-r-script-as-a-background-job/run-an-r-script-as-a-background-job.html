@@ -1019,7 +1019,11 @@ R CMD BATCH --restore --save infile.R outfile.log</code></pre>
 R CMD BATCH --no-restore --no-save infile.R outfile.log</code></pre>
 </div>
 <p><br></p>
+<<<<<<< HEAD
 <p>With the above command, when R terminates the execution of <code>infile.R</code> the working environment where the computation occurred is not saved. Therefore, if you want save any object, this should be done explicitly with instructions like <code>save()</code>,<code>saveRDS()</code> or <code>readr::write_rds()</code>. You can always import the files generated from these functions into your working session by using instructions like <code>load()</code>, <code>readRDS()</code>. <code>readr::read_rds()</code>.</p>
+=======
+<p>When R terminates the execution of <code>infile.R</code> the working environment where the computation occurred is not saved. Therefore, if you want save any object, this should be done explicitly with instructions like <code>save()</code>,<code>saveRDS()</code> or <code>readr::write_rds()</code>. You can always import the files generated from these functions into your working session by using instructions like <code>load()</code>, <code>readRDS()</code>. <code>readr::read_rds()</code>.</p>
+>>>>>>> e6a723046c6dabbd02877af2b1c39608a7641094
 <p>In the above case, the R script runs in almost complete self isolation. In order to achieve complete isolation you should write:</p>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="shell"><code>
@@ -1037,6 +1041,7 @@ R CMD BATCH --no-restore --no-save --no-environ --no-site-file --no-init-file in
 R CMD BATCH --vanilla infile.R outfile.log</code></pre>
 </div>
 <p><br></p>
+<<<<<<< HEAD
 <p>In some situations you may want to pass arguments to the batch script. Quite often this happens when you want to run the same script against different data sources In this case, you do not want to write a version of your script for each data source but a single script that takes teh data source as a parameter</p>
 <p>Suppose a piece of code, saved in a file count.R, that simply count the number of rows in a file:</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1054,6 +1059,8 @@ R CMD BATCH --vanilla &#39;--args ~/tmp/count.R i.txt&#39;  count.R count.log </
 <p><BR></p>
 <p>You can read the output by editing count.log</p>
 <p>In this case your R script should be written as:</p>
+=======
+>>>>>>> e6a723046c6dabbd02877af2b1c39608a7641094
 <p>In case you want to run <code>R CMD BATCH</code> and see <code>R</code> output at the unx terminal rather than in a file, the following will do the trick:</p>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="shell"><code>
