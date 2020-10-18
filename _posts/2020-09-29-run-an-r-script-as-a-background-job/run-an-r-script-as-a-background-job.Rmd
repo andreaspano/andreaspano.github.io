@@ -31,27 +31,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ##  Introduction 
 
-When working with R you may want to run a script that require quite a long time to complete. 
+When working with R you may want to run a script, say `infile.R`, that requires quite a long time to complete. 
 
-As a basic non sense example consider:
+If you execute this script directly from the R console, it will keep your R session busy for long time preventing you from working on you current R session. 
 
+Note that R is single thread, meaning that it takes resources from a single core, while modern computer have plenty of resources available, usually eight or more cores. Assuming that your script is not too eager in terms of RAM, you can easily send your script on anther core and keep working on your current R session.
 
-```{r, eval = FALSE}
-n <- 1200
-y <- numeric(n)
-for ( i in seq_len(n)){
-  y[[i]] <- i 
-  Sys.sleep(3)
-}
-sum(y)
-```
-<br>
-
-This script, say `wait-for-me.R` when executed takes about one hour. 
-
-If executed directly from the R console it will keep your R session busy for one hour preventing you to keep working on you current R session. 
-
-In order to avoid this waste of time you can use three different approaches: 
+In order to achive this goal you can use three different approaches: 
 
 1. R CMD BATCH 
 2. RScript 
@@ -170,8 +156,8 @@ Function `jobRunScript()` from package `rstudioapi` is a newer and interesting a
 
 ```{r,  eval = FALSE}
 require(rstudioapi)
-jobRunScript(path = './wait-for-me.R', 
-             name = 'wait for me',
+jobRunScript(path = 'infile.R', 
+             name = 'my long script',
              encoding = "unknown", 
              workingDir = NULL,
              importEnv = FALSE, 
