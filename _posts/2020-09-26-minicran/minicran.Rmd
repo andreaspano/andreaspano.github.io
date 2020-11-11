@@ -1,7 +1,7 @@
 ---
 title: "minicran"
 description: |
-  A short description of the post.
+  Use minicran to manage multiple subsets of CRAN version locally 
 author:
   - name: Andrea Spano
     url: https://example.com/norajones
@@ -17,15 +17,33 @@ editor_options:
 knitr::opts_chunk$set(echo = T)
 ```
 
+MiniCRAN makes it possible to create an internally consistent repository of R packages consisting of selected packages from CRAN-like repositories. 
+You specify a set of desired packages, and miniCRAN recursively reads the dependency tree for these packages, then downloads only this subset. 
+You can then install packages from this repository directly, rather than from CRAN. 
+This is useful in dev/test/prod environmnent 
+
+## The basic
+
+First create a local miniCRAN 
+
 ```{r}
 require(miniCRAN)
 ```
 
+Then specify the set of pkgs you want to download into your miniCRAN and the official CRAN you want to download pkgs from:
+
 ```{r, eval = F}
 repo <- 'https://cran.wu.ac.at/'
-my_pkgs <- 'tidyverse'
+my_pkgs <- c('tidyverse', 'caret')
+```
+
+After that, just let minicran to complete the list of dependencies for you 
+
+```{r, eval = F}
 all_pkgs <- pkgDep(my_pkgs, repo = repo, type = 'source', suggest = FALSE)
 ```
+
+Assuming `path` the location, you can create your miniCRAN by:
 
 ```{r eval = F}
 path <- '/data/minicran'
@@ -33,25 +51,75 @@ dir.create(path, 'minicran')
 makeRepo(all_pkgs, path = path , repo = repo, type = 'source') 
 ```
 
+If you want to add a pkg to your miniCRAN just do:
 
-install from minicran
+add to minicran
+```{r, eval = F}
+addPackage('scuba',  path = path , repo = repo, type = 'source') 
+```
+
+Be careful when adding a package to an existing Minicran, if your miniCRAN is too old, you may create a broken dependencies in your set of packages. 
+
+One of the main advantages of having a local miniCRAN consists in freezing the existing CRAN at given time.
+
+You can create as many miniCRAN as tou need over time and each of them represents a snapshot of the existing CRAN at snapshot time.
+
+For istance, In order to keep, monthly snapshot of cran into your local miniCran, you may decide to organize your miniCRAN system into something like: 
+
+`\data\R\minicran\4.0\202001\`
+`\data\R\minicran\4.0\202092\`
+
+where `4.0` is the R version you ar eusing at installation time and `202001` corresponds to January 2020.
+
+
+## Install from minicran
+
+After your miniCRAN is locally setup, you can install from your local miniCRAN as follows:
+
+
 
 
 ```{r, eval = F}
-install.packages(pkgs = 'utf8', repo = 'file:///data/minicran/')
-
+install.packages(pkgs = 'scuba', repo = 'file:///data/minicran/')
 ```
 
-add to minicran
-```{r}
-addPackage('scuba',  path = path , repo = repo, type = 'source') 
-```
+
+## Using Multiple library location (libloc)
+
+
+Libloc is the place where your R pkgs are installed. 
+
+When you install R, in a Debian like system, R installation is located at: `/usr/lib/R`. 
+Default packages such as: `base`, `Matrix` or `nnet` are installed at `/usr/lib/R/library`. 
+
+When you install any other package you have two installation  options:
+
+- local: in your home directory: i.e:  `/home/user/R/x86_64-pc-linux-gnu-library/4.0`
+- site: in a system directory: i.e: `/usr/lib/R/site-library`
+
+In order to perform a site installation you need sudo privileges.
+
+
+
+
+
+
+
+
+
+
+Any other pkg is installed to one of:
+
+
+
+
+
 
 A function to download directlt from github. Non all packagges are on cran from https://github.com/andrie/miniCRAN/issues/50#issuecomment-374624319
 
 
 
-```{r }
+```{r, eval = F }
 
 addGithubPackage <- function(githubPath,...){
     packageName <- basename(githubPath)
@@ -72,12 +140,12 @@ addGithubPackage(githubPath="https://github.com/js229/Vennerable/",path=reposPat
 
 colorout 
 
-```{r}
+```{r, eval = F}
 addGithubPackage(githubPath="https://github.com/jalvesaq/colorout",path=path,build=TRUE)
 install.packages(pkgs = 'colorout', repo = 'file:///data/minicran/')
 ```
 
-```{r}
+```{r, eval = F}
 updatePackages(path = path, repo = repo, type = "source", ask = FALSE) 
 ```
 

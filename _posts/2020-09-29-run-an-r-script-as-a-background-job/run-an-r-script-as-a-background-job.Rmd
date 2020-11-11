@@ -75,12 +75,11 @@ R CMD BATCH --no-restore --no-save infile.R outfile.log
 ```
 <br>
 
-<<<<<<< HEAD
+
 With the above command,  when R terminates the execution of `infile.R` the working environment where the computation occurred is not saved. 
-=======
-When R terminates the execution of `infile.R` the working environment where the computation occurred is not saved. 
->>>>>>> e6a723046c6dabbd02877af2b1c39608a7641094
+
 Therefore, if you want save any object, this should be done explicitly with instructions like `save()`,`saveRDS()` or `readr::write_rds()`.
+
 You can always import the files generated from these functions into your working session by using instructions like `load()`, `readRDS()`. `readr::read_rds()`.
 
 In the above case, the R script runs in almost complete self isolation. In order to achieve complete isolation you should write:
@@ -101,13 +100,18 @@ R CMD BATCH --vanilla infile.R outfile.log
 ```
 <br>
 
-In case you want to run `R CMD BATCH` and see `R` output at the unx terminal rather than in a file, the following will do the trick:
+In case you want to run `R CMD BATCH` and see `R` output at the Unix terminal rather than in a file, the following will do the trick:
 
+```{shell , eval = FALSE}
+mkfifo Rfifo
+cat Rfifo &
+R CMD BATCH --vanilla infile.R Rfifo
+```
+<br>
 
-<<<<<<< HEAD
 In some situations you may want to pass arguments to the batch script. 
 Quite often this happens when you want to run the same script against different data sources 
-In this case, you do not want to write a version of your script for each data source but a single script that takes teh data source as a parameter
+In this case, you do not want to write a version of your script for each data source but a single script that takes your data source as a parameter.
 
 Suppose a piece of code, saved in a file count.R, that simply count the number of rows in a file:
 
@@ -116,46 +120,15 @@ args <- commandArgs(trailingOnly = TRUE)
 file <- args[[1]]
 length(readLines(file))
 ```
-<BR>
 
 You can invoke script count.R with:
 
 ```{shell  inv,  eval = FALSE}
 R CMD BATCH --vanilla '--args ~/tmp/count.R i.txt'  count.R count.log 
 ```
-<BR>
-
 You can read the output by editing count.log
 
-In this case your R script should be written as:
 
-In case you want to run `R CMD BATCH` and see `R` output at the unx terminal rather than in a file, the following will do the trick:
-
-
-=======
->>>>>>> e6a723046c6dabbd02877af2b1c39608a7641094
-```{shell , eval = FALSE}
-mkfifo Rfifo
-cat Rfifo &
-R CMD BATCH --vanilla infile.R Rfifo
-```
-<br>
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-=======
-
-
-
->>>>>>> e6a723046c6dabbd02877af2b1c39608a7641094
 
 
 

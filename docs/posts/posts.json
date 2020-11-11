@@ -9,11 +9,11 @@
         "url": "andreaspano.github.io"
       }
     ],
-    "date": "2020-10-18",
+    "date": "2020-11-11",
     "categories": [],
     "preview": "posts/2020-09-29-run-an-r-script-as-a-background-job/logo.png",
-    "last_modified": "2020-10-18T17:35:19+02:00",
-    "input_file": {},
+    "last_modified": "2020-11-11T21:16:19+01:00",
+    "input_file": "run-an-r-script-as-a-background-job.utf8.md",
     "preview_width": 120,
     "preview_height": 139
   },
@@ -52,6 +52,22 @@
     "input_file": {},
     "preview_width": 1344,
     "preview_height": 768
+  },
+  {
+    "path": "posts/2020-09-26-minicran/",
+    "title": "minicran",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Andrea Spano",
+        "url": "https://example.com/norajones"
+      }
+    ],
+    "date": "2020-09-26",
+    "categories": [],
+    "preview": {},
+    "last_modified": "2020-10-30T08:32:41+01:00",
+    "input_file": "minicran.utf8.md"
   },
   {
     "path": "posts/2020-09-24-install-shinyproxy/",
