@@ -129,6 +129,27 @@ R CMD BATCH --vanilla '--args ~/tmp/count.R i.txt'  count.R count.log
 You can read the output by editing count.log
 
 
+## Rscript
+`RScript` is an executable command that comes with R.
+
+It takes as input any properly quoted R expression or script file. Output is usually redirected to stdout.
+
+As a basic example with a single expression 
+
+```{shell  rs1,  eval = FALSE}
+Rscript  -e '1+1'
+```
+Or with more than one expression separated bu semicolon 
+
+```{shell  rs2,  eval = FALSE}
+Rscript  -e '1+1; 2+2'
+```
+
+
+
+
+
+
 
 
 
@@ -137,8 +158,6 @@ You can read the output by editing count.log
 Function `jobRunScript()` from package `rstudioapi` is a newer and interesting alternative.
 
 `jobRunScript()` is an R function from package `rstudioapi` and not a bash utility. As a result, you can run it at you R prompt within RStudio. `jobRunScript()` will execute your script in background and immediately return your R session available to you. Clearly, as `jobRunScript()` is part of or package `rstudioapi` it will not work outside RStudio
-
-
 
 
 ```{r,  eval = FALSE}

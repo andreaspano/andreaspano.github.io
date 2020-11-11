@@ -1496,6 +1496,7 @@ line-height: inherit;
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#r-cmd-batch">R CMD BATCH</a></li>
+<li><a href="#rscript">Rscript</a></li>
 <li><a href="#jobrunscript-rstudioapi">jobRunScript <span class="citation" data-cites="rstudioapi">(Kevin <span>2020</span>)</span></a></li>
 </ul>
 </nav>
@@ -1577,7 +1578,14 @@ length(readLines(file))</code></pre>
 R CMD BATCH --vanilla &#39;--args ~/tmp/count.R i.txt&#39;  count.R count.log </code></pre>
 </div>
 <p>You can read the output by editing count.log</p>
-<p>In this case your R script should be written as:</p>
+<h2 id="rscript">Rscript</h2>
+<p><code>RScript</code> is an executable command that comes with R.</p>
+<p>It takes as input any properly quoted R expression or script file. Output is usually redirected to stdout.</p>
+<p>As a basic example with a single expression</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="shell"><code>
+Rscript  -e &#39;1+1&#39;</code></pre>
+</div>
 <h2 id="jobrunscript-rstudioapi">jobRunScript <span class="citation" data-cites="rstudioapi">(Kevin <a href="#ref-rstudioapi" role="doc-biblioref">2020</a>)</span></h2>
 <p>Function <code>jobRunScript()</code> from package <code>rstudioapi</code> is a newer and interesting alternative.</p>
 <p><code>jobRunScript()</code> is an R function from package <code>rstudioapi</code> and not a bash utility. As a result, you can run it at you R prompt within RStudio. <code>jobRunScript()</code> will execute your script in background and immediately return your R session available to you. Clearly, as <code>jobRunScript()</code> is part of or package <code>rstudioapi</code> it will not work outside RStudio</p>
