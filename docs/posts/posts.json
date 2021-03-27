@@ -17,6 +17,23 @@
     "input_file": "interactive-plotly.utf8.md"
   },
   {
+    "path": "posts/2020-09-29-run-an-r-script-as-a-background-job/",
+    "title": "Run an R script as a background job",
+    "description": "When working with R you may want to run a script that require quite a long time to complete. \nAs modern computers generally have more cores and ram than required this is not going to be a problem in terms of computer resources.\nNevertheless, the script will take your R prompt busy preventing you from any other activity. \nFunction `rstudioapi::jobRunScript()` allows you avoid this problem.",
+    "author": [
+      {
+        "name": "Andrea Spano",
+        "url": "andreaspano.github.io"
+      }
+    ],
+    "date": "2021-03-27",
+    "categories": [],
+    "contents": "\n\nContents\nIntroduction\nR CMD BATCH\nRscript\njobRunScript (Kevin 2020)\n\nIntroduction\nWhen working with R you may want to run a script, say infile.R, that requires quite a long time to complete.\nIf you execute this script directly from the R console, it will keep your R session busy for long time preventing you from working on you current R session.\nNote that R is single thread, meaning that it takes resources from a single core, while modern computer have plenty of resources available, usually eight or more cores. Assuming that your script is not too eager in terms of RAM, you can easily send your script on anther core and keep working on your current R session.\nIn order to achive this goal you can use three different approaches:\nR CMD BATCH\nRScript\njobRunScript\nR CMD BATCH\nR CMD BATCH is a bash utility that allows you to run R in batch mode at the Unix terminal\nThe usual command is:\n\nR CMD BATCH infile.R outfile.log\n\n\nR executes the instructions from infile.R and writes the output, both stdout and stderr, to outfile.log\nThe above instruction silently implies two extra default parameters:\n\nR CMD BATCH --restore --save infile.R outfile.log\n\n\n--save: save the environment at the end of the computation into a file named .RData\n--restore: restore any .RData file into the R environment prior starting the computation\nI believe batch R scripts should be run by\n\nR CMD BATCH --no-restore --no-save infile.R outfile.log\n\n\nWith the above command, when R terminates the execution of infile.R the working environment where the computation occurred is not saved.\nTherefore, if you want save any object, this should be done explicitly with instructions like save(),saveRDS() or readr::write_rds().\nYou can always import the files generated from these functions into your working session by using instructions like load(), readRDS(). readr::read_rds().\nIn the above case, the R script runs in almost complete self isolation. In order to achieve complete isolation you should write:\n\nR CMD BATCH --no-restore --no-save --no-environ --no-site-file --no-init-file infile.R outfile.log\n\n\n--no-environ: do not use any environmental variables from the user profile\n--no-site-file: do to execute .Rprofile.site prior running the computation\n--no-init-file: do to execute local .Rprofile prior running the computation\nNote that the long above command can be shortened into:\n\nR CMD BATCH --vanilla infile.R outfile.log\n\n\nIn case you want to run R CMD BATCH and see R output at the Unix terminal rather than in a file, the following will do the trick:\n\nmkfifo Rfifo\ncat Rfifo &\nR CMD BATCH --vanilla infile.R Rfifo\n\n\nIn some situations you may want to pass arguments to the batch script. Quite often this happens when you want to run the same script against different data sources In this case, you do not want to write a version of your script for each data source but a single script that takes your data source as a parameter.\nSuppose a piece of code, saved in a file count.R, that simply count the number of rows in a file:\n\n\nargs <- commandArgs(trailingOnly = TRUE)\nfile <- args[[1]]\nlength(readLines(file))\n\n\n\nYou can invoke script count.R with:\n\nR CMD BATCH --vanilla '--args ~/tmp/count.R i.txt'  count.R count.log \n\nYou can read the output by editing count.log\nRscript\nRScript is an executable command that comes with R.\nIt takes as input any properly quoted R expression or script file. Output is usually redirected to stdout.\nAs a basic example with a single expression\n\nRscript  -e '1+1'\n\nOr with more than one expression separated bu semicolon\n\nRscript  -e '1+1; 2+2'\n\nTO BE CONTINUED\njobRunScript (Kevin 2020)\nFunction jobRunScript() from package rstudioapi is a newer and interesting alternative.\njobRunScript() is an R function from package rstudioapi and not a bash utility. As a result, you can run it at you R prompt within RStudio. jobRunScript() will execute your script in background and immediately return your R session available to you. Clearly, as jobRunScript() is part of or package rstudioapi it will not work outside RStudio\n\n\nrequire(rstudioapi)\njobRunScript(path = 'infile.R', \n             name = 'my long script',\n             encoding = \"unknown\", \n             workingDir = NULL,\n             importEnv = FALSE, \n             exportEnv = \"R_GlobalEnv\")\n\n\n\n\nThis command tells R to run your script and export the objects created within this environment\nAs stated by the function help:\npath: The path to the R script to be run.\nname: A name for the background job. When NULL (the default), the filename of the script is used as the job name.\nencoding: The text encoding of the script, if known.\nworkingDir: The working directory in which to run the job. When NULL (the default), the parent directory of the R script is used.\nimportEnv: Whether to import the global environment into the job.\nexportEnv: The name of the environment in which to export the R objects created by the job. Use \"\" (the default) to skip export, “R_GlobalEnv”’ to export to the global environment, or the name of an environment object to create an object with that name.\nTherefore, if you want to run a job a collect the results back in your working environmentyou need to set: exportEnv = \"R_GlobalEnv\"\nIn case you need to pass any object from your global environmemnt to teh script you may want to use importEnv = TRUE. Personally, I woulkd not reccomend this choice. A script would be better to be seft contained and not to depend from objects defined elsewhere.\n\n\n\nKevin, Ushey. 2020. “Rstudio Api V0.9.0.” https://www.rdocumentation.org/packages/rstudioapi/versions/0.9.0.\n\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-03-27T22:48:12+01:00",
+    "input_file": "run-an-r-script-as-a-background-job.utf8.md"
+  },
+  {
     "path": "posts/2021-02-27-travis-ci/",
     "title": "Travis CI",
     "description": "How to build R packages more efficiently with __Travis Continuos Integration__ service",
@@ -32,24 +49,6 @@
     "preview": {},
     "last_modified": "2021-02-27T20:50:46+01:00",
     "input_file": "travis-ci.utf8.md"
-  },
-  {
-    "path": "posts/2020-09-29-run-an-r-script-as-a-background-job/",
-    "title": "Run an R script as a background job",
-    "description": "When working with R you may want to run a script that require quite a long time to complete. \nAs modern computers generally have more cores and ram than required this is not going to be a problem in terms of computer resources.\nNevertheless, the script will take your R prompt busy preventing you from any other activity. \nFunction `rstudioapi::jobRunScript()` allows you avoid this problem.",
-    "author": [
-      {
-        "name": "Andrea Spano",
-        "url": "andreaspano.github.io"
-      }
-    ],
-    "date": "2020-11-11",
-    "categories": [],
-    "preview": "posts/2020-09-29-run-an-r-script-as-a-background-job/logo.png",
-    "last_modified": "2020-11-11T23:58:51+01:00",
-    "input_file": "run-an-r-script-as-a-background-job.utf8.md",
-    "preview_width": 120,
-    "preview_height": 139
   },
   {
     "path": "posts/2020-10-06-data-analysis-with-spraklyr/",

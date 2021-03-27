@@ -9,22 +9,14 @@ Most og this stuff is just coipied from other articles, possibly with some chang
 Mainly, I tend to write otherwise I will surely forget later
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Fri, 26 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 27 Mar 2021 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Interactive Plot_ly</title>
       <dc:creator>Andrea Spano</dc:creator>
       <link>https://andreaspano.github.io/posts/2021-02-27-interactive-plotly</link>
       <description>Buildinh interactive plots with `plotly`</description>
       <guid>https://andreaspano.github.io/posts/2021-02-27-interactive-plotly</guid>
-      <pubDate>Fri, 26 Mar 2021 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Travis CI</title>
-      <dc:creator>Andrea Spano</dc:creator>
-      <link>https://andreaspano.github.io/posts/2021-02-27-travis-ci</link>
-      <description>How to build R packages more efficiently with __Travis Continuos Integration__ service</description>
-      <guid>https://andreaspano.github.io/posts/2021-02-27-travis-ci</guid>
-      <pubDate>Sat, 27 Feb 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 27 Mar 2021 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Run an R script as a background job</title>
@@ -35,8 +27,15 @@ As modern computers generally have more cores and ram than required this is not 
 Nevertheless, the script will take your R prompt busy preventing you from any other activity. 
 Function `rstudioapi::jobRunScript()` allows you avoid this problem.</description>
       <guid>https://andreaspano.github.io/posts/2020-09-29-run-an-r-script-as-a-background-job</guid>
-      <pubDate>Wed, 11 Nov 2020 00:00:00 +0000</pubDate>
-      <media:content url="https://andreaspano.github.io/posts/2020-09-29-run-an-r-script-as-a-background-job/logo.png" medium="image" type="image/png" width="120" height="139"/>
+      <pubDate>Fri, 26 Mar 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Travis CI</title>
+      <dc:creator>Andrea Spano</dc:creator>
+      <link>https://andreaspano.github.io/posts/2021-02-27-travis-ci</link>
+      <description>How to build R packages more efficiently with __Travis Continuos Integration__ service</description>
+      <guid>https://andreaspano.github.io/posts/2021-02-27-travis-ci</guid>
+      <pubDate>Sat, 27 Feb 2021 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Data Analysis with Sparklyr</title>
