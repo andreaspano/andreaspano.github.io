@@ -1,7 +1,9 @@
 ---
 title: "Interactive Plot_ly"
 description: |
-  Building interactive plots with `plotly`
+  The idea is about using package `plotly` for producing  interactive plots for a Shiny application.  
+  Official documentation about `plotly` is superb. 
+  Nevertheless, as this graphics grammar, within the `R` community is not as spread as `ggplot` is, few topics require a bit of extra research.
 author:
   - name: Andrea Spano
     url: andreaspano.github.io
@@ -21,10 +23,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ## Intro
-
-The idea is about using package plotly for producing higly interactive plots for a Shiny application 
-
-Official documentation about `plotly` is superb. Nevertheless, as this graphics grammar, within the `R` community is not as spread as ggplot is, few topics require a bit of extra research.
 
 Given 
 
