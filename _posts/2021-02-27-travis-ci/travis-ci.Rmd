@@ -7,6 +7,7 @@ author:
     affiliation: Quantide
     affiliation_url: http://www.quantide.com
 date: "`r Sys.Date()`"
+draft: true
 output: distill::distill_article
 ---
 
