@@ -1,0 +1,125 @@
+---
+title: "Interactive Plot_ly"
+description: |
+  Buildinh interactive plots with `plotly`
+author:
+  - name: Andrea Spano
+    url: andreaspano.github.io
+    affiliation: Quantide
+    affiliation_url: www.quantide.com 
+date: "`r Sys.Date()`" 
+output:
+  distill::distill_article:
+    self_contained: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Intro
+
+The idea is about using package plotly for producing higly interactive plots for a Shiny application 
+
+Official documentation about `plotly` is superb. Nevertheless, as this graphics grammar, within the `R` community is not as spread as ggplot is, few topics require a bit of extra research.
+
+Given 
+
+*  a data set with four columns: `x, y , w, z` 
+*  a plot `x` and `y` onto `pl1`
+*  plot `w` and `z` onto `pl2`
+* `pl` as a subplot of `pl1` and `pl2`
+
+I would like to:
+
+* be able to select a set of contiguos points in `pl1` 
+* observe the selected points marked with new color and larger size
+* observe the same effect on corresponding points on pl2
+
+I will be using the classic `iris` data for this example.
+
+
+## Step 1: 
+
+Load the required packages
+
+```{r}
+require(plotly)
+require(dplyr)
+```
+
+
+## Step 2: 
+
+Add a unique id to data 
+
+
+```{r}
+data <- iris %>% mutate ( id = 1:n())
+```
+
+
+## Step 3: 
+
+Transform  data into a `ShareData` object
+
+```{r}
+data <- data %>% highlight_key(~id) 
+```
+
+
+## Step 4:
+
+Build your plots as you would normally do
+
+``` {r}
+pl1 <- plot_ly(data, 
+               x = ~ Sepal.Length, y = ~Sepal.Width, 
+               type = 'scatter', mode = 'markers', 
+               marker = list ( color = 'green')) %>% 
+  layout(showlegend=F)
+               
+pl2 <- plot_ly(data, 
+               x = ~Petal.Length, y = ~Petal.Width, 
+               type = 'scatter', mode = 'markers',
+               marker = list ( color = 'blue')) %>% 
+  layout(showlegend=F)
+```
+
+## Step 5: 
+
+Bind your plots into a single `subplot`
+      
+```{r}      
+pl <- subplot(pl1, pl2, nrows = 2)
+```
+
+## Step 6:
+
+Link the plots
+
+```{r}
+pl <- pl %>% 
+  highlight(on = "plotly_select", off = 'plotly_doubleclick', 
+            opacityDim = .5, 
+            selected = attrs_selected(marker = list ( size = 20, color = 'orange')))
+```
+  
+## Step 7: 
+
+Display results
+
+```{r}
+pl
+```
+
+
+
+
+
+
+
+
