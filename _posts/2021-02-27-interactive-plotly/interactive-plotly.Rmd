@@ -1,5 +1,5 @@
 ---
-title: "Interactive Plot_ly"
+title: "Interactive Plotly"
 description: |
   The idea is about using package `plotly` for producing  interactive plots for a Shiny application.  
   Official documentation about `plotly` is superb. 
