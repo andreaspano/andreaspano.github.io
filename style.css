@@ -1,192 +1,138 @@
-@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:300, 300i&display=swap');
-
-@import url('https://fonts.googleapis.com/css?family=Work+Sans&display=swap');
-
-@import url('https://fonts.googleapis.com/css?family=DM+Mono&display=swap');
-
-body {
-  font-family: "Work Sans";
-  /*color: #1f1f1f;*/
-  color: #405359;
-  font-size: 16px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Lato');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono');
 
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Libre Baskerville";
-  letter-spacing: 2px;
-  line-height: 2rem; /* increases, so wrapping headers don't overlap */
-  color: #096B72;
-  font-weight: 300;
-}
-
-d-title {
-  padding-top: 13rem; /*so that navbar doesn't overlap fixed title */
-}
-
-d-title h1,
-d-article h2 {
-	font-weight: 300;
-}
-
-d-article div.sourceCode code,
-d-article pre code {
-	font-family: "DM Mono", monospace;
-	font-size: 1rem;
-}
-
-/* --------------Navbar-------------------- */
-
-
-/* background-image for fade-to-white color of navbar */
-.distill-site-header{
-  padding: 40px 0px;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255,255,255,0.5));
-  background-color: transparent;
+.distill-site-nav {
+  font-family: 'Fira Mono', sans-serif;
+  color: #000;
+  background-color: #fff;
   font-size: 15px;
-  font-family: "Libre Baskerville";
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  font-weight: 400;
 }
 
-.distill-site-header .logo img{
-  max-height: 40px; /* Makes logo bigger, default was 20px */
+.distill-site-header {
+  font-family: 'Fira Mono', sans-serif;
+  color: #000;
+  background-color: #fff;
+  font-size: 15px;
+  font-weight: 400;
 }
 
-/* dropdown navbar color on mobile */
+html, body, p {
 
-@media screen and (max-width: 768px){
-  .distill-site-header.responsive {
-      background: rgba(255,255,255,0.99);
-  }
+  font-family: 'Lato', sans-serif;
+  font-weight: 200;
+  line-height: 1.3;
+  font-size: 1.0em;
+  color: #333333;
+  font-style: normal;
+
+}
+
+code {
+  font-family: 'Fira Mono', sans-serif;
+  color: #383838;
+  font-weight: 400;
+  font-size: 0.9em;
 }
 
 
-/* Navbar Links with Animated Hover */
 
 
-.distill-site-header a { /* A normal link in navbar */
-  color: #1f1f1f;
-  display: inline-block; /* This line and line below is so pseudo-element will work later */
-  position: relative;
+h1, h2, h3, h4, h5 {
+  font-family: 'Fira Mono', sans-serif;
+}
+
+
+.distill-site-nav a {
+
+  font-family: 'Fira Mono', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: #000;
   text-decoration: none;
-  padding-left: 0px; /* overrides default so animation looks Ok */
-  padding-right: 0px; /* overrides default so animation looks Ok */
-  margin: 10px 14px; /* replaces default padding values for margin values */
 }
 
-
-.distill-site-header a:hover { /* (unanimated) hover behavior for navbar links */
-  color: #787878;
-  padding-left: 0px; /* overrides default so animation looks Ok */
-  padding-right: 0px; /* overrides default so animation looks Ok */
-  margin: 10px 14px; /* replaces default padding values for margin values */
+.distill-site-nav a:hover {
+  color: #ff6700;
 }
 
-.distill-site-header a:before { /*Creates pseudoelement line under link */
-  background-color: #787878;
-  content: '';
-  height: 1px;
-  position: absolute;
-  bottom: -1px;
-  transition: width 0.3s ease-in-out; /* animate the width */
-  width: 100%;
+.nav-dropdown-content a {
+  font-family: 'Fira Mono', sans-serif;
+  font-weight: 500;
+  color: #ffffff;
 }
 
-.distill-site-header a:hover:before {
-  width: 0; /* Shrinks width of pseudoelement to 0 when hovered */
+.distill-site-header {
+  font-family: 'Fira Mono', sans-serif;
+  font-weight: 500;
+  background-color: #ffffff;
 }
-
-/* Makes sure animation does NOT apply to Title or Logo links (or toggle on mobile) */
-
-.distill-site-header a.title:before, .distill-site-nav a.logo:before, a.nav-toggle:before {
-  display: none;
-}
-
-.distill-site-header a.title, .distill-site-nav a.logo {
-  padding: 10px 0px;
-  margin: 10px 14px;
-}
-
-
-/* No navbar links on mobile except title and nav-toggle */
-
-@media screen and (max-width: 768px) {
-  .distill-site-header a, .distill-site-header .nav-dropdown {
-    display: none;
-  }
-
-  .distill-site-header a.title, .distill-site-header a.nav-toggle {
-    display: inline-block;
-    padding: 10px 0px;
-    margin: 10px 14px;
-  }
-}
-
-/* -------------Appendix---------------- */
-
-d-appendix {
-  background-color: #e6f3fc;
-  border-top: none !important;
-}
-
-/* -------------Footer------------------*/
 
 .distill-site-footer {
-  color: #f7f7f7b0;
-  background-color: #1f1f1f;
-  margin-top: 0px;
-  padding: 50px 20px;
-  font-size: 13px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  line-height: 12px;
-
-}
-
-d-byline div.byline.grid div p,
-d-byline,
-d-byline p,
-p.author,
-p.affiliation,
-d-byline h3,
-.d-toc,
-.d-toc-header,
-.d-toc ul,
-d-appendix p {
-	font-size: 0.9rem;
-}
-
-d-appendix h3 + * {
-	margin-top: 1.5em !important;
+  background-color: #000;
+  color: #ffffff;
 }
 
 
-/*----- COLORED LIST BULLET----*/
-
-d-article ul {
-  list-style: none; /* Remove default bullets */
+@media print {
+  .distill-site-nav {
+    display: none;
+  }
 }
 
-d-article ul li::before {
-  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
-  color: #79beee; /* Change the color */
-  font-weight: normal; /* If you want it to be bold */
-  display: inline-block; /* Needed to add space between the bullet and the text */
-  width: 1.5em; /* Also needed for space (tweak if needed) */
-  margin-left: -1.5em; /* Also needed for space (tweak if needed) */
+details {
+  background-color: hsla(60, 7%, 80%, 0.2);
+  cursor: pointer;
+  color: #2d2d2d;
+  margin-bottom:1vh;
+  padding: 1em;
+  border: none;
+  text-align: left;
+  outline: none;
 }
 
-d-article ul > li > p {
-  display: inline; /* to have content show up next to bullet */
-  line-height: 1.6em;
+.active, details:hover {
+  transition: max-height 0.2s ease-out;
+  /* background-color: #acc2c2; */
 }
 
-d-article ul > li { /*to add back in space between bullet items that I took away by making p display inline */
-  margin-top: 1em;
-  margin-bottom: 1em;
+details {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  border-radius: 4px;
 }
 
-.d-toc ul li::before {
-  content: " ";  /* Remove toc bullets */
+details.active {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
+
+summary::-webkit-details-marker {
+  display: none
+}
+
+summary::after {
+  float: right;
+  font-family: "Font Awesome 5 Free";
+  content: "\f0fe";
+}
+
+details[open] summary::after {
+  float: right;
+  font-family: "Font Awesome 5 Free";
+  content: "\f146";
+}
+
+details h4 {
+margin: 0;
+color: #2d2d2d !important;
+line-height: inherit;
+}
+
+
+.posts-list .post-preview .thumbnail img {
+  width: 33%;
+  display: block;
+  }
