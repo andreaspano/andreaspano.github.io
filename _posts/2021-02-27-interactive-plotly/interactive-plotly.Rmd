@@ -33,7 +33,7 @@ Given
 
 I would like to:
 
-* be able to select a set of contiguos points in `pl1` 
+* be able to select a set of adiacent points in `pl1` 
 * observe the selected points marked with new color and larger size
 * observe the same effect on corresponding points on pl2
 
