@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/2021-10-03-environmental-variables-in-rocker/",
+    "title": "Environmental variables in Rocker",
+    "description": "How to use environmental variables to pass values to a R docker",
+    "author": [
+      {
+        "name": "Andrea Spano",
+        "url": "andreaspano.github.io"
+      }
+    ],
+    "date": "2021-10-03",
+    "categories": [],
+    "contents": "\nIntroduction\nThe idea of having R docker able to get external values when running is quite interesting.\nAs an example, suppose you have a docker that performs x+1 and that you want to pass x to the docker when running it.\nThe easiest way consist of forcing R to read x from an environmental variable, say X and then pass X to the docker with the --env option.\nDocker File\nSuppose you have a R docker build by the following dockerfile:\nFROM rocker/r-ver:4.0.5\n\nRUN mkdir /data\n \nRUN mkdir /app\nRUN chmod -R 755 /app\n\nWORKDIR /app\nADD main.R .\nCMD R -e  \"source('main.R')\"\n\nMain R script\nWhere the script main.R is:\nx <- Sys.getenv(\"X\")\ny <- x+1\nwrite(y, '/data/y.txt')\nRun\nAfter building the docker with:\ndocker build -t mydocker .\nYou can run it with\nsudo docker run --env X=99 --rm -v /data/:/data  mydocker\nYou should see the value of y, presumably 100, in the output file y.txt\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-10-03T23:04:14+02:00",
+    "input_file": "environmental-variables-in-rocker.knit.md"
+  },
+  {
     "path": "posts/2021-02-27-interactive-plotly/",
     "title": "Interactive Plotly",
     "description": "The idea is about using package `plotly` for producing  interactive plots for a Shiny application.  \nOfficial documentation about `plotly` is superb. \nNevertheless, as this graphics grammar, within the `R` community is not as spread as `ggplot` is, few topics require a bit of extra research.",
