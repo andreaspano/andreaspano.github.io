@@ -1,0 +1,74 @@
+---
+title: "Environmental variables in Rocker"
+description: |
+  How to use environmental variables to pass values to a R docker
+author:
+  - name: Andrea Spano
+    url: andreaspano.github.io
+date: 10-03-2021
+output:
+  distill::distill_article:
+    self_contained: false
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introduction 
+
+The idea of having R docker able to get external values when running is quite interesting.
+
+As an example, suppose you have a docker that performs `x+1` and that you want to pass `x` to the docker when running it.
+
+The easiest way consist of forcing `R` to read `x` from an environmental variable, say `X` and then pass `X` to the docker with the `--env` option.
+
+## Docker File
+
+Suppose you have a R docker build by the following dockerfile:
+
+```
+FROM rocker/r-ver:4.0.5
+
+RUN mkdir /data
+ 
+RUN mkdir /app
+RUN chmod -R 755 /app
+
+WORKDIR /app
+ADD main.R .
+CMD R -e  "source('main.R')"
+
+```
+
+## Main R script 
+
+Where the  script `main.R` is:
+
+
+```
+x <- Sys.getenv("X")
+y <- x+1
+write(y, '/data/y.txt')
+```
+
+## Run 
+
+After building the docker with:
+
+```
+docker build -t mydocker .
+```
+
+You can run it with 
+
+```
+sudo docker run --env X=99 --rm -v /data/:/data  mydocker
+```
+
+You should see the value of `y`, presumably 100, in the output file `y.txt`
+
+
