@@ -34,23 +34,6 @@
     "input_file": "run-an-r-script-as-a-background-job.utf8.md"
   },
   {
-    "path": "posts/2021-02-27-travis-ci/",
-    "title": "Travis CI",
-    "description": "How to build R packages more efficiently with __Travis Continuos Integration__ service",
-    "author": [
-      {
-        "name": "Andrea Spano",
-        "url": {}
-      }
-    ],
-    "date": "2021-02-27",
-    "categories": [],
-    "contents": "\nTravis CI: https://travis-ci.org/ is a continuous integration service used to build and test software projects hosted on, but not only, GitHub.\n\n\n\n",
-    "preview": {},
-    "last_modified": "2021-02-27T20:50:46+01:00",
-    "input_file": "travis-ci.utf8.md"
-  },
-  {
     "path": "posts/2020-10-06-data-analysis-with-spraklyr/",
     "title": "Data Analysis with Sparklyr",
     "description": "Sparklyr is an open-source package that provides an interface between R and Apache Spark. \nSparklyr provide an interface to use Spark as the backend for dplyr along with acess to Spark’s distributed machine learning algorithms\nThis article is about using sparkly within an R session",
