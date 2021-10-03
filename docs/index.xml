@@ -9,14 +9,16 @@ Most og this stuff is just coipied from other articles, possibly with some chang
 Mainly, I tend to write otherwise I will surely forget later
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Sat, 27 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 03 Apr 2021 00:00:00 +0000</lastBuildDate>
     <item>
-      <title>Interactive Plot_ly</title>
+      <title>Interactive Plotly</title>
       <dc:creator>Andrea Spano</dc:creator>
       <link>https://andreaspano.github.io/posts/2021-02-27-interactive-plotly</link>
-      <description>Buildinh interactive plots with `plotly`</description>
+      <description>The idea is about using package `plotly` for producing  interactive plots for a Shiny application.  
+Official documentation about `plotly` is superb. 
+Nevertheless, as this graphics grammar, within the `R` community is not as spread as `ggplot` is, few topics require a bit of extra research.</description>
       <guid>https://andreaspano.github.io/posts/2021-02-27-interactive-plotly</guid>
-      <pubDate>Sat, 27 Mar 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 03 Apr 2021 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Run an R script as a background job</title>
@@ -27,7 +29,7 @@ As modern computers generally have more cores and ram than required this is not 
 Nevertheless, the script will take your R prompt busy preventing you from any other activity. 
 Function `rstudioapi::jobRunScript()` allows you avoid this problem.</description>
       <guid>https://andreaspano.github.io/posts/2020-09-29-run-an-r-script-as-a-background-job</guid>
-      <pubDate>Fri, 26 Mar 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 27 Mar 2021 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Travis CI</title>
