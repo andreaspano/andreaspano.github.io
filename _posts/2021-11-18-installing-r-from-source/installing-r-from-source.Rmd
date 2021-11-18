@@ -1,0 +1,116 @@
+---
+title: "Installing R from source"
+description: |
+  Installing a specific version of R on Linux Ubuntu requires to compile it from source code
+   
+author:
+  - name: Andrea Spano
+    url: andreaspano.github.io
+date: 2021-11-18
+output:
+  distill::distill_article:
+    self_contained: false
+bibliography: biblio.bib    
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Intro 
+
+Installing R from source is required whenever you need a specific version of `R` rather than latest release available as binary on either CRAN or Ubuntu repositories. 
+
+
+
+
+## Install required dependencies
+
+Enable the required and optional repositories. You will need them to check R installation dependencies. 
+
+Ad the R pubblic key 
+
+```
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key '95C0FAF38DB3CCAD0C080A7BDC78B2DDEABC47B7'
+```
+
+Add the following lines in `/etc/apt/source.list`
+
+```
+deb http://cloud.r-project.org/bin/linux/debian bullseye-cran40/
+deb-src  http://cloud.r-project.org/bin/linux/debian bullseye-cran40/
+```
+
+Next update and, install the build dependencies for R:
+
+
+```
+sudo apt update
+sudo apt-get build-dep r-base
+```
+
+After checking dependencies you'd better comment those lines in `source.list`.
+
+
+
+## Specify R version
+
+
+```
+export R_VERSION=4.1.2
+```
+
+## Download and extract R
+
+
+```
+curl -O https://cran.rstudio.com/src/base/R-4/R-${R_VERSION}.tar.gz
+tar -xzvf R-${R_VERSION}.tar.gz
+cd R-${R_VERSION}
+```
+
+
+## Configure R 
+
+```
+./configure \
+    --prefix=/opt/R/${R_VERSION} \
+    --enable-memory-profiling \
+    --enable-R-shlib \
+    --with-blas \
+    --with-lapack \
+    --with-tcltk
+```    
+
+
+Tcltk has been added as packages `TSclust` and `TSdist` wont compile
+
+## Build and install R
+
+```
+make
+sudo make install
+```
+
+## Verify R installation#
+
+```
+/opt/R/${R_VERSION}/bin/R --version
+```
+
+## Create a symlink to R
+
+To ensure that R is available on the default system PATH variable, create symbolic links to the version of R that you installed:
+
+
+```
+sudo ln -fs /opt/R/${R_VERSION}/bin/R /usr/local/bin/R
+sudo ln -fs /opt/R/${R_VERSION}/bin/Rscript /usr/local/bin/Rscript
+```
+
+The `f` flag force symlink to recreate and therefore to update from previous R versions
+
+
+

@@ -9,14 +9,22 @@ Most og this stuff is just coipied from other articles, possibly with some chang
 Mainly, I tend to write otherwise I will surely forget later
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Sat, 02 Oct 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 17 Nov 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Installing R from source</title>
+      <dc:creator>Andrea Spano</dc:creator>
+      <link>https://andreaspano.github.io/posts/2021-11-18-installing-r-from-source</link>
+      <description>Installing a specific version of R on Linux Ubuntu requires to compile it from source code</description>
+      <guid>https://andreaspano.github.io/posts/2021-11-18-installing-r-from-source</guid>
+      <pubDate>Wed, 17 Nov 2021 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Environmental variables in Rocker</title>
       <dc:creator>Andrea Spano</dc:creator>
       <link>https://andreaspano.github.io/posts/2021-10-03-environmental-variables-in-rocker</link>
       <description>How to use environmental variables to pass values to a R docker</description>
       <guid>https://andreaspano.github.io/posts/2021-10-03-environmental-variables-in-rocker</guid>
-      <pubDate>Sat, 02 Oct 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 03 Oct 2021 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Interactive Plotly</title>

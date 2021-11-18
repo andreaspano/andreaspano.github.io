@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/2021-11-18-installing-r-from-source/",
+    "title": "Installing R from source",
+    "description": "Installing a specific version of R on Linux Ubuntu requires to compile it from source code",
+    "author": [
+      {
+        "name": "Andrea Spano",
+        "url": "andreaspano.github.io"
+      }
+    ],
+    "date": "2021-11-18",
+    "categories": [],
+    "contents": "\nIntro\nInstalling R from source is required whenever you need a specific version of R rather than latest release available as binary on either CRAN or Ubuntu repositories.\nInstall required dependencies\nEnable the required and optional repositories. You will need them to check R installation dependencies.\nAd the R pubblic key\nsudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key '95C0FAF38DB3CCAD0C080A7BDC78B2DDEABC47B7'\nAdd the following lines in /etc/apt/source.list\ndeb http://cloud.r-project.org/bin/linux/debian bullseye-cran40/\ndeb-src  http://cloud.r-project.org/bin/linux/debian bullseye-cran40/\nNext update and, install the build dependencies for R:\nsudo apt update\nsudo apt-get build-dep r-base\nAfter checking dependencies you’d better comment those lines in source.list.\nSpecify R version\nexport R_VERSION=4.1.2\nDownload and extract R\ncurl -O https://cran.rstudio.com/src/base/R-4/R-${R_VERSION}.tar.gz\ntar -xzvf R-${R_VERSION}.tar.gz\ncd R-${R_VERSION}\nConfigure R\n./configure \\\n    --prefix=/opt/R/${R_VERSION} \\\n    --enable-memory-profiling \\\n    --enable-R-shlib \\\n    --with-blas \\\n    --with-lapack \\\n    --with-tcltk\nTcltk has been added as packages TSclust and TSdist wont compile\nBuild and install R\nmake\nsudo make install\nVerify R installation\n/opt/R/${R_VERSION}/bin/R --version\nCreate a symlink to R\nTo ensure that R is available on the default system PATH variable, create symbolic links to the version of R that you installed:\nsudo ln -fs /opt/R/${R_VERSION}/bin/R /usr/local/bin/R\nsudo ln -fs /opt/R/${R_VERSION}/bin/Rscript /usr/local/bin/Rscript\nThe f flag force symlink to recreate and therefore to update from previous R versions\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-11-18T11:29:50+01:00",
+    "input_file": "installing-r-from-source.knit.md"
+  },
+  {
     "path": "posts/2021-10-03-environmental-variables-in-rocker/",
     "title": "Environmental variables in Rocker",
     "description": "How to use environmental variables to pass values to a R docker",
