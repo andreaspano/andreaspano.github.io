@@ -1,0 +1,66 @@
+---
+title: "Reinstalling all R pkgs"
+description: |
+  When installing a new version of R you may want to  reinstall al previously installed packages for the new R version. 
+  New packages will be installed a new directory.  
+
+author:
+  - name: Andrea Spano
+    url: andreaspano.github.io
+date: 2021-11-18
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+
+Assuming that ol packages have been installed in 
+
+```
+~/R/x86_64-pc-linux-gnu-library/4.0/
+```
+
+and that you want to install new packages in 
+
+```
+~/R/x86_64-pc-linux-gnu-library/4.1/
+```
+
+Define installation directories
+
+```
+ld_loc <- "~/R/x86_64-pc-linux-gnu-library/4.0/"
+new_loc <- "~/R/x86_64-pc-linux-gnu-library/4.1/"
+```
+
+If new path does not exists, create it 
+
+```
+if ( !dir.exists(new_loc)) {dir.create(new_loc)}
+```
+
+Grab all old installed packages
+
+```
+pkgs <- installed.packages(lib.loc = old_loc)[, "Package"]
+```
+
+Install new packages in the location
+
+```
+install.packages(pkgs, 
+                 lib = new_loc, 
+                 ask = FALSE , 
+                 repos =   'https://cran.wu.ac.at/',
+                 dependencies = TRUE, 
+                 Ncpus = 8)
+```
+
+Note that not all packages may install correctly but, the vast majority most of them will.
+
