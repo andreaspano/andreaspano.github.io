@@ -9,13 +9,22 @@ Most og this stuff is just coipied from other articles, possibly with some chang
 Mainly, I tend to write otherwise I will surely forget later
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Wed, 17 Nov 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 18 Nov 2021 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Installing R from source</title>
       <dc:creator>Andrea Spano</dc:creator>
       <link>https://andreaspano.github.io/posts/2021-11-18-installing-r-from-source</link>
       <description>Installing a specific version of R on Linux Ubuntu requires to compile it from source code</description>
       <guid>https://andreaspano.github.io/posts/2021-11-18-installing-r-from-source</guid>
+      <pubDate>Thu, 18 Nov 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Reinstalling all R pkgs</title>
+      <dc:creator>Andrea Spano</dc:creator>
+      <link>https://andreaspano.github.io/posts/2021-11-18-reinstalling-all-r-pkgs</link>
+      <description>When installing a new version of R you may want to  reinstall al previously installed packages for the new R version. 
+New packages will be installed a new directory.</description>
+      <guid>https://andreaspano.github.io/posts/2021-11-18-reinstalling-all-r-pkgs</guid>
       <pubDate>Wed, 17 Nov 2021 00:00:00 +0000</pubDate>
     </item>
     <item>

@@ -17,6 +17,23 @@
     "input_file": "installing-r-from-source.knit.md"
   },
   {
+    "path": "posts/2021-11-18-reinstalling-all-r-pkgs/",
+    "title": "Reinstalling all R pkgs",
+    "description": "When installing a new version of R you may want to  reinstall al previously installed packages for the new R version. \nNew packages will be installed a new directory.",
+    "author": [
+      {
+        "name": "Andrea Spano",
+        "url": "andreaspano.github.io"
+      }
+    ],
+    "date": "2021-11-18",
+    "categories": [],
+    "contents": "\nAssuming that ol packages have been installed in\n~/R/x86_64-pc-linux-gnu-library/4.0/\nand that you want to install new packages in\n~/R/x86_64-pc-linux-gnu-library/4.1/\nDefine installation directories\nld_loc <- \"~/R/x86_64-pc-linux-gnu-library/4.0/\"\nnew_loc <- \"~/R/x86_64-pc-linux-gnu-library/4.1/\"\nIf new path does not exists, create it\nif ( !dir.exists(new_loc)) {dir.create(new_loc)}\nGrab all old installed packages\npkgs <- installed.packages(lib.loc = old_loc)[, \"Package\"]\nInstall new packages in the location\ninstall.packages(pkgs, \n                 lib = new_loc, \n                 ask = FALSE , \n                 repos =   'https://cran.wu.ac.at/',\n                 dependencies = TRUE, \n                 Ncpus = 8)\nNote that not all packages may install correctly but, the vast majority most of them will.\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-11-18T13:25:28+01:00",
+    "input_file": "reinstalling-all-r-pkgs.knit.md"
+  },
+  {
     "path": "posts/2021-10-03-environmental-variables-in-rocker/",
     "title": "Environmental variables in Rocker",
     "description": "How to use environmental variables to pass values to a R docker",
