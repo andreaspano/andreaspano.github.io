@@ -83,7 +83,7 @@ substitute(expr = x , env = env)
 
 ## Substitute constant
 
-When `x` is a variable in `env` and `env` is not the global environment, the value of the variable is returned.
+When `x` is a constant either in `env` or `globalenv` the constant is returned.
 
 
 ```{r}
@@ -142,15 +142,16 @@ f(x = 0)
 
 <!---- ref: http://adv-r.had.co.nz/Computing-on-the-language.html --->
 
+When exp is an `R` expression within `env` or `globalenv` substitute returns 
+
 ```{r}
 x <- 1
-exp <- quote(x+1)
-substitute(exp, env = globalenv())
+e <- quote(x+1)
+substitute(expr = e, env = globalenv())
 
 env <- new.env()
-env$x <- 1
-env$exp <- quote(x+1)
-substitute(exp, env = env)
+env$e <- quote(x+1)
+substitute(e, env = env)
 
 
 
