@@ -4,7 +4,7 @@ description: |
   How to install Docker system on Ubuntu 
 author:
   - name: Andrea Spano
-    url: https://example.com/norajones
+    url: www.quantide.com
     affiliation: Quantide
     affiliation_url: www.quantide.com
 date: "`r Sys.Date()`"

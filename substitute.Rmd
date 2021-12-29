@@ -1,0 +1,189 @@
+---
+title: "Substitute"
+description: |
+  Understanding R function substitute 
+author:
+  - name: Andrea Spano
+    url: www.quantide.com
+    affiliation: Quantide
+    affiliation_url: www.quantide.com
+date: "`r Sys.Date()`"
+output: distill::distill_article
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Introduction 
+
+The scope of this article is to clarify, at least for me, the behaviour of function `substitute()`. 
+
+As a confusing example consider:
+
+```{r}
+x <- 0
+substitute( x  )
+```      
+
+and 
+
+```{r}
+f <- function() {
+  x <- 0
+  substitute(x)
+}  
+f()
+```      
+
+As you can see function `substitute()` returns different result when called either from within the global environment or within a function environment
+
+# Basic Substitute 
+
+Assuming some prior knowledge of `environment` and `promise` objects you can analyse the documentation for `substitute()`. 
+
+Documentation says:
+
+Substitution takes place by examining each component of the parse tree as follows:
+
+* If it is not a bound symbol in env, it is unchanged.
+* If it is a promise object (i.e., a formal argument to a function) the expression slot of the promise replaces the symbol.
+* If it is an ordinary variable, its value is substituted, unless env is .GlobalEnv in which case the symbol is left unchanged.
+
+In practice, function `substitutes()` takes to arguments:
+
+* expr 
+* env
+
+The return value of the function depends on the interaction between the two arguments.
+
+
+We will take into account four cases corresponding to four types of objects to pass to argument `expr`
+
+1. Non existing object 
+2. variable
+3. promise 
+4. expression
+
+For each object we will examine the interaction with the `env` argument
+
+## Substitute non existing object
+
+When symbol `x` does not exist within `env` Symbol `x` is returned
+
+
+```{r}
+env <- new.env()
+substitute(expr = x , env = env)
+```
+
+
+## Substitute constant
+
+When `x` is a variable in `env` and `env` is not the global environment, the value of the variable is returned.
+
+
+```{r}
+env <- new.env()
+substitute(0, env = env)
+
+substitute(0, env = globalenv())
+
+```
+
+
+## Substitute variable
+
+When `x` is a variable in `env` and `env` is not the global environment, the value of the variable is returned.
+
+
+```{r}
+env <- new.env()
+assign('x', 0, envir = env)
+substitute(x, env = env)
+```
+
+
+When `x` is a variable  `globalenv`, the value of the variable the symbol `x` is returned
+
+```{r}
+assign('x', 0, envir = globalenv())
+substitute(x, env = globalenv())
+```
+
+
+
+## Substitute promise
+
+When `x` is a promise in `env`, the the expression slot of the promise is returned.
+
+
+```{r}
+env <- new.env()
+delayedAssign('x', 0, assign.env = env)
+substitute(x, env = env)
+```
+
+
+When the expression is a function formal, therefore a promise, the same rule applies: 
+
+```{r}
+f <- function(x) {
+  substitute(x)
+}
+f(x = 0)
+```  
+
+
+## Substitute expression
+
+<!---- ref: http://adv-r.had.co.nz/Computing-on-the-language.html --->
+
+```{r}
+x <- 1
+exp <- quote(x+1)
+substitute(exp, env = globalenv())
+
+env <- new.env()
+env$x <- 1
+env$exp <- quote(x+1)
+substitute(exp, env = env)
+
+
+
+assign('x', 1+1 , envir = env)
+env$x
+```
+
+```{r}
+env <- new.env()
+assign('x', 1+1 , envir = env)
+env$x
+```
+
+
+
+
+
+
+
+
+## Recap 
+
+In summary:
+
+1. When the evaluation occurs outside the global environment, the value of the variable or the value slot of the promise is returned  
+
+2. When evaluation occurs in the global environment the symbol is returned unchanged.
+
+3. When the symbol does not exists in the evaluation environment, the symbol is returned unchanged.
+
+
+
+
+
+
+

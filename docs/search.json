@@ -1,0 +1,33 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "About this blog",
+      "author": [],
+      "contents": "\n\n This is the place where I try to save and share all what I learn and write about.\nMost of this stuff is just coipied from other articles, possibly with some changes from my side.\nMainly, I tend to write now otherwise I will surely forget later\n\n\n",
+      "last_modified": "2020-10-15T23:15:23+02:00"
+    },
+    {
+      "path": "index.html",
+      "title": "Mainly about R",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2021-11-18T15:05:42+01:00"
+    },
+    {
+      "path": "substitute.html",
+      "title": "Substitute",
+      "description": "Understanding R function substitute \n",
+      "author": [
+        {
+          "name": "Andrea Spano",
+          "url": "www.quantide.com"
+        }
+      ],
+      "date": "`r Sys.Date()`",
+      "contents": "\nIntroduction\nThe scope of this article is to clarify, at least for me, the behaviour of function substitute().\nAs a confusing example consider:\n\n\nx <- 0\nsubstitute( x  )\n\n\nx\n\nand\n\n\nf <- function() {\n  x <- 0\n  substitute(x)\n}  \nf()\n\n\n[1] 0\n\nAs you can see function substitute() returns different result when called either from within the global environment or within a function environment\nBasic Substitute\nAssuming some prior knowledge of environment and promise objects you can analyse the documentation for substitute().\nDocumentation says:\nSubstitution takes place by examining each component of the parse tree as follows:\nIf it is not a bound symbol in env, it is unchanged.\nIf it is a promise object (i.e., a formal argument to a function) the expression slot of the promise replaces the symbol.\nIf it is an ordinary variable, its value is substituted, unless env is .GlobalEnv in which case the symbol is left unchanged.\nIn practice, function substitutes() takes to arguments:\nexpr\nenv\nThe return value of the function depends on the interaction between the two arguments.\nWe will take into account three types of objects to pass to argument expr\nNon existing object\nvariable\npromise\nexpression\nFor each object we will examine the interaction with the env argument\nSubstitute non existing object\nWhen symbol x does not exist within env Symbol x is returned\n\n\nenv <- new.env()\nsubstitute(expr = x , env = env)\n\n\nx\n\nSubstitute variable\nWhen x is a variable in env and env is not the global environment, the value of the variable is returned.\n\n\nenv <- new.env()\nassign('x', 0, envir = env)\nsubstitute(x, env = env)\n\n\n[1] 0\n\nWhen x is a variable globalenv, the value of the variable the symbol x is returned\n\n\nassign('x', 0, envir = globalenv())\nsubstitute(x, env = globalenv())\n\n\nx\n\nSubstitute promise\nWhen x is a promise in env, the the expression slot of the promise is returned.\n\n\nenv <- new.env()\ndelayedAssign('x', 0, assign.env = env)\nsubstitute(x, env = env)\n\n\n[1] 0\n\nWhen the expression is a function formal, therefore a promise, the same rule applies:\n\n\nf <- function(x) {\n  substitute(x)\n}\nf(x = 0)\n\n\n[1] 0\n\nRecap\nIn summary:\nWhen the evaluation occurs outside the global environment, the value of the variable or the value slot of the promise is returned\nWhen evaluation occurs in the global environment the symbol is returned unchanged.\nWhen the symbol does not exists in the evaluation environment, the symbol is returned unchanged.\n\n\n\n",
+      "last_modified": "2021-12-23T14:07:07+01:00"
+    }
+  ],
+  "collections": ["posts/posts.json"]
+}
